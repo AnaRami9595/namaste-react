@@ -131,7 +131,9 @@ We are going to install the most important package in our project: A Bundler📚
     NO! Since it's huge as compared  to the sice of our code. 
     
     - The Best Practice✅ is to put node_modules🔰 inside a file called ".gitignore🛑"
-      Inside ".gitignore🛑" we write "/node_modules"
+      Inside ".gitignore🛑" we write 
+      
+                💻"/node_modules/"
 
     - However, "package.json🎊" and a "package-lock.json🎊" should be sent to production and we need to add them
       to our Git🐈‍⬛ push. Because mantain a metadata of all the dependencies our project need to funtion. So
