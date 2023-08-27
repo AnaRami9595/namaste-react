@@ -1,0 +1,61 @@
+----------Notes✏️--------
+
+🔴---What is NPM?🎁---
+It is NOT Node package management
+It manages packages but it doesn't stand for that. It a standard repository for all packages.
+Any package you need to include in your code, you can use npm.
+
+    🤔How can you make your project use NPM?
+    let's make our project use normaldo
+
+        "npm init"
+        entry point: (index.js)
+
+🔴---What is package.json🎊---
+It is a configuration for NPM🎁
+
+    🤔 Why do we need it?
+    Our project depends of a lot of packages, those packages our project is depending upon,  are called
+    Dependencies⛓️. NPM🎁 manages that. NPM🎁 will take care of the version of that package. 
+
+🔴---Let's start our Dependencies⛓️---
+We are going to install the most important package in our project: A Bundler📚
+
+    🤔What is a Bundler📚
+    Our whole code needs to be bundled together, neat before send to production. A Bundler📚 helps you
+    do that. Webpack, Parcel📦, are exemples of Bundlers📚. They package your app properly so it can be 
+    sent to production. When you use the create-react-app command, it uses Webpack and Babel
+    behind the scenes. In our project we will be using Parcel📦.
+
+        💻To Install Parcel📦 in our project we use: "npm install -D parcel"
+
+    🤔What does the "-D" mean??
+    There are 2 types of Dependencies⛓️: Normal Dependency⛓️ and Dev 🤓 Dependency⛓️
+
+        - A Dev🤓 Dependency⛓️ is regularly required when we are Building our app.
+        We will use Parcel📦 as a Dev🤓 Dependency⛓️ to build our app in our development phase
+        with the expression "npm install -D parcel" we are informing NPM🎁 That we will use
+        this Bundler📚 as a Dev🤓 Dependency⛓️, therefore the "-D".
+        We are fetching Parcel📦 from NPM🎁, which manages ALL the packages!!
+
+        - A normal Dependencies⛓️ is used in production also. 
+    
+    Now that we installed Parcel📦, it shows on package.json🎊 as a Dependency⛓️: "  
+    
+        💻"devDependencies": {
+        "parcel": "^2.9.3"
+        }
+
+    🤔What does the "^" mean??
+    This symbol is known as Caret. It means that if a new minor version, like ""^2.9.4" for example comes out
+    Parcel📦 will automatically upgrade to that minor version, however, it doesn't work for a major version
+
+    
+
+
+
+
+
+
+
+
