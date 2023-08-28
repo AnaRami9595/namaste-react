@@ -2,7 +2,7 @@
 
 Start with runing our project using the command
 
-             🖥️ "parcel index.html"
+             🖥️ "npx parcel index.html"
 
 But to be honest is a little bit of a pain to do that again and again. To avoid that
 in the future, we'll make a scritpt to create a Dev🤓 build and a Production👷🏾‍♂️ build. 

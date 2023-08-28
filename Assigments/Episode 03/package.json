@@ -6,6 +6,18 @@
   "scripts": {
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnaRami9595/namaste-react.git"
+  },
+  "homepage": "https://github.com/AnaRami9595/namaste-react#readme",
   "author": "Ana",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
