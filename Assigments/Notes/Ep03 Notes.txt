@@ -1,0 +1,199 @@
+🟡---------Lets initiallize our app.-----------
+
+Start with runing our project using the command
+
+             🖥️ "parcel index.html"
+
+But to be honest is a little bit of a pain to do that again and again. To avoid that
+in the future, we'll make a scritpt to create a Dev🤓 build and a Production👷🏾‍♂️ build. 
+Inside of the "scripts" package.json🎊 we'll add:
+
+
+          🖥️"scripts": {
+                "start": "parcel index.html", 
+                //⬆️✏️This was added. Used when wanting to start project in Dev🤓 mode
+                "build": "parcel build index.html",
+                //⬆️✏️This was added. Used when wanting to build project in Production👷🏾‍♂️ mode
+
+                "test": "jest"
+            }
+
+Now we can use them every time we want to run our app. This is an industry standard.
+
+
+             🖥️ "npm run start index.html" or "npm start" (is the same thing)
+             //write it in the terminal. 
+
+
+
+🟡---------Start from scratch-----------
+
+After deleting all our code. Let's start with the fundamentals. 
+First of all, revise how we created a REACT⚛️ element using REACT⚛️:
+
+
+           🖥️ //React Element: 
+
+            const heading = React.createElement("h1", {id: "heading"}, "Namaste React 🚀" )
+            //As we know is an object. When is render, then it becomes an HTML element
+            
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(heading);
+
+
+But this is awkward and not developer friendly or very readable.
+ In order to help, some fb developers created a language in order
+to make it easier to use react:
+
+🟡---------What is JSX-----------
+
+Is a convention that merges Javascript And HTML toghether. JSX🦑 is not HTML🏷️, is an HTML-like syntax❗
+This is how you create an HTML🏷️ Element using JSX🦑
+
+            🖥️const jsxHeading = <h1>Namaste Reat using JSX🚀</h1>;
+
+From now on we will be using only JSX🦑, fuck REACT⚛️ LOL that shit is horrible
+
+    🤔Is JSX🦑 Valid Javascript?
+    No, it's not pure Javascript🟨. Javascript🟨 Does not have JSX🦑 Installed in it.
+    JS🟨 Engine can't understand it. It can only understand ES5 (Ecmascript)
+
+    🤔So How is our JSX🦑 code working?
+    Even if our JS🟨 Engine can't understand it, Parcel📦 is interpreting it behind the
+    scenecs. The JSX🦑 Code is being transpiled (interpreted) before it reaches the JS🟨 Engine.
+    Thanks to Parcel📦 and all its Dependencies⛓️, like Babel🦜, that is included inside node_modules🔰
+
+    🤔What is Babel🦜?
+    It is a Javasrcript Library that works as a Compiler. 
+    Babel🦜 is converting our JSX🦑 into a ReactElement, to be understand by REACT⚛️
+
+
+    Behind the scenes:
+
+    JSX🦑  ➡️➡️ React.createElement ➡️➡️ ReactElement (JS🟨 object) ➡️➡️ HTML🏷️Element (rendered)
+
+    //So our JSX element is transpiled to a React element that is transpiled to an HTML element.
+    
+
+
+🟡---------REACT⚛️ Elements in JSX🦑-----------
+
+//Why my extentions brackets, prettier, comments do not work?? 😭
+
+Single Line:
+
+                🖥️const jsxHeading = <h1>Namaste Reat using JSX🚀</h1>;
+                //this is valid JSX🦑
+
+Multi Line:
+
+                🖥️const jsxHeading = (
+                    <h1 className = "head" tabIndex = "5"> 
+                    Namaste Reat using JSX🚀
+                    </h1>;
+                );
+                //We add the () so Babel🦜 can know when does the
+                JSX🦑 Starts and ends.
+
+🟡---------REACT⚛️ Components in JSX🦑-----------
+
+There are 2 types of Components in React:
+
+1. Class Based Components (old way of writing code)
+2. Functional Components (New way of writing code)
+
+For now we'll use Functional Components🧩
+
+    🤔What is a REACT⚛️ Functional Components🧩?
+    It is a Javascript🟨 function that returns a  react element/S or JSX🦑 CODE
+
+                //💻React Functional Component:
+
+                const HeadingComponent = () => {
+                    return ( <h1>Namaste Reat using JSX🚀</h1> );
+                }
+
+                //also valid:
+
+                const HeadingComponent = () =>  ( <h1>Namaste Reat using JSX🚀</h1> );
+
+    🤔How do we render our React Component🧩?
+    Supose that we want to render it in "root"
+
+               💻 root.render(<HeadingComponent/>)
+               //Inside tags: this is the syntax❗
+
+    
+Nesting Functional Components🧩, also known as Component🧩 Composition mainly by assholes
+
+
+                const Title = () =>  ( <h1>Namaste React using JSX🚀</h1>);
+                //⬆️First Component🧩
+                    
+                const HeadingComponent = () => {
+                        return (<div>
+                            <Title />
+                            //⬆️Nesting the First Component🧩 inside 'HeadingComponent'
+                            <Title></Title>
+                            //⬆️Also a valid way to write it, the Component🧩 can be added multiple times
+                            <h2>Did it work?</h2>
+                            {Title()}
+                            //⬆️Also a valid way to write it, since Components🧩 are just JS🟨 FUNCTIONS
+                        </div>  );
+                    }
+
+                root.render(<HeadingComponent/>)
+                    
+                root.render(<HeadingComponent/>)
+
+                
+                    
+🟡---------Writing Javascript🟨 code inside JSX🚀-----------
+
+                💻const HeadingComponent = () => {
+                        return (<div>
+
+                            <Title />
+                           {1 +1} //⬅️YOU CAN WRITE JS code inside brackets
+                            <h2>Did it work?</h2>
+                        </div>  );
+                    }
+
+Puting my REACT⚛️ Element inside our  component:
+
+                💻const title = <h1>Namaste React using JSX🚀</h1>;
+
+                const HeadingComponent = () => {
+                        return (<div>
+                           {title} //⬅️Write is as a JS🟨 variable
+                            <h2>Did it work?</h2>
+                        </div>  );
+                    }
+
+Puting a component inside a ReactElement And rendering it:
+
+                   💻 const elem = <span>React Element</span>
+
+                    const HeadingComponent = () => {
+                        return (<div id ="container">
+                            <h2 className="heading">Namaste React Functional Component</h2>
+                        </div>  );
+                    };
+
+                    const title =  (
+                        <h1 className="head" tabIndex= "5">
+                            {elem}
+                            Namaste React using JSX
+                            <HeadingComponent/>
+                        </h1>
+                    );
+
+                const root = ReactDOM.createRoot(document.getElementById("root"));
+                root.render(title)
+
+
+💡Whatever data is passed though our { } that we use to write JS🟨, Will be sanitized. Including
+any mallicious data coming from an api or an external source, thanks to JSX🦑
+
+            
+

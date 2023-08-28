@@ -1,0 +1,108 @@
+🟡What Is Emmet?
+
+Is a free add-on for your text editor. It allows you to type shortcuts that are then expanded into
+full pieces of code. 
+For example, you can type an abbreviation like "div>ul>li*2"
+and then use the Emmet expansion feature to automatically generate the following code:'
+
+        🖥️<div>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+🟡Difference Between a Library and Framework?
+
+    📔A library is a collection of pre-written functions, classes and 
+    routines that you can use to perform specific tasks, like a tookbox
+    of ready-made tools that you an use when needed. Features:
+
+    - Control: You decide when and how to use the library's component
+      in your app.
+
+    - Flexibility: libraries are generally more flexible. You can choose
+      to use specific parts of a library withoud being bound to it's 
+      structure.
+
+    - Example: jQuery is a Javascript🟨 library that siplifies DOM
+    manipulation and provides utility function for web development.
+
+    🪟A Framework is a more comprehensive package that provides a 
+    structure and set of guidlines for building applications. It 
+    dictates how your application should be organized, how components
+    interact and often enforces specific design patterns
+
+    - Inversion of control: the franework calls your ode, rather than
+    you calling the framework.
+    - Opinionated: Frameworks can be more opinionated, meaning they
+      can prescribe certain practices and patters for consistency 
+      across projects.
+    - Example: Django is a web framework for Python that provides A
+    complee structure for building web application
+
+🟡What is CDN? Why do we use it?
+
+    - A CDN or Content Delivery Network, is a network of server of 
+      servers distributed across various geographical locations that
+      work together to deliver web content to users in a faster and 
+      more efficient manner.
+
+      It is used becouse it improves the speed, availability and 
+      reliability of web content by distributing it across a network
+      of servers. It can be injected directly to our code without 
+      installing dependencies.
+
+🟡Why is REACT⚛️ Known as REACT⚛️?
+
+    - It is known as react because of its core concept and approach
+      to handling user interface updates. The name "REACT⚛️" reflects
+      its central philosophy of efficiently responding to changes in 
+      data and automatically updating the user interface to reflect
+      those changes.
+
+🟡What is cross- origin in the script tag? 
+
+    - The crossorigin attribute in the <script> tag is used to 
+      specify that a script can be loaded from a different domain
+      or origin while addering to security messures. 
+
+      It helps in controlled cross-origin loading of scripts, 
+      allowing web pages to fetch external scripts for 
+      enhanced funtionality without compromising security.
+
+🟡Difference Between REACT⚛️ and ReactDOM📃?
+
+    - REACT⚛️ focuses on creating and managing UI components, handling
+      state, props, and the overall component architecture
+
+    - ReactDOM📃: Focuses on rendering React components into the 
+      browser's DOM and managing updates when data changes
+
+🟡Difference Between react.development.js and react.production.js files
+via CDN?
+
+    - react.development.js 🤓
+      This version of the react library is intended for use during the
+      development phase of your application. It is larger in size compared
+      with the production version 
+
+
+🟡What are async and defer? - check youtube video
+Both are attributes that can be added to the <script> tag when including
+external Javascript🟨 files in an HTML document. They affect how the 
+browser how the browser downloads and executes the script while parsing
+the  HTML
+
+    - async: When you include a script with the async attribute, the 
+    browser will continue parsing the HTML document while the script 
+    is being fetched in the background.
+
+    - defer: When you include a script with the defer attribute, the 
+    script is also fetched asynchronously, but it's executed after
+    the HTML document has been fully passed 
+    
+    I
+
+
+

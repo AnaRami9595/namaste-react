@@ -1,0 +1,11 @@
+{
+  "name": "episode-03",
+  "version": "1.0.0",
+  "description": "\"Second assigment\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Ana",
+  "license": "ISC"
+}

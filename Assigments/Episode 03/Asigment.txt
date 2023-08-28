@@ -1,0 +1,72 @@
+🟣What is JSX🦑
+Is an html-like syntax language developed by Fb ingeneers, made to simplify
+and make it more maintanable to creat UI components, as it closely resembls
+the structure of the UI itself,
+
+
+🟣Superpowers of JSX🦑
+
+    - Declarative Syntax:
+      JSX provvides a Declarative way to define the structure
+      and content of UI components. This makes it easier to 
+      visualize and understand the UI hierarchy.
+    - Familiar Markup-like Syntax resembling HTML and XML
+    - Embedding Expressions: JSX🦑allows embedding Javascript🟨
+      expressions within curly braces `{}`. This enables dynamic
+      rendering of content based on variables or other JS🟨 Elements.
+      Also it sanitizes all the data that is inside the curly braces
+      before being transpiled.
+    - Components: JSX allowss you to define reusable UI 
+      components asfunctions or classes.
+    -Transpilation: JSX code needs to be transpiled into regular
+      JS🟨 code before executed by Browsers🌍, this is typically
+      done using tools like babel
+    -Tree Reconciliation: this is a process that efficiently 
+      updates the actual DOM📃 based on changes in JSX🦑 components.
+    
+
+
+🟣What is the role of the 'type' attribute in the 'script'
+tag and what are the different kind of types?
+
+    -the <script> tag is used to include scripting code, most commonly
+     Javascript🟨, in a web page. The 'type' attribute in the <script>
+     element. However it's important to note that the type attribute
+     has becoe less significant in modern web development practices
+
+    Examples of different 'types'
+
+         ⏹️type="text/javascript"/ The "text" type can specify the
+          language to indicate the scripting language, like 
+          type="text/php" or ype="text/python", they can be ommited
+          as the Default Value Of Text is javascript. 
+
+         ⏹️type="module":  Indicates The File Type Is Module
+
+         ⏹️type="text/ecmascript": Indicates the file is following
+          Ecmascript standards.
+
+        ⏹️type="application/javascript": s used to indicate that 
+          the content within the <script> tag is JavaScript code. 
+          It's important to note that this is a standard MIME type used 
+          to specify JavaScript content.
+
+
+🟣Explain 
+
+            <TitleComponent></TitleComponent>:
+            //The opening and closing tags are created to possibly
+            include child components
+            
+            <TitleComponent/> 
+            //This is a self closing component that is returning 
+            some JSX🦑 code or a React Functional component, which
+            is a JS🟨 Function that returns JSX🦑
+            
+            {TitleComponent}
+            //This is a REACT⚛️ component passed as a dynamic
+            value: JSX asumes it's a variable that returns JSX🦑
+            code. However, since the Functional component is not
+            being called like this '{TitleComponent()}' It won't
+            be rendered in the Browser🌍
+
