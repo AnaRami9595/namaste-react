@@ -197,3 +197,24 @@ any mallicious data coming from an api or an external source, thanks to JSX🦑
 
             
 
+   const elem = <span>React Element</span>
+
+
+
+    const HeadingComponent = () => {
+        return (<div id ="container">
+            <h2 className="heading">Namaste React Functional Component</h2>
+        </div>  );
+    };
+
+    const title =  (
+    <h1 className="head" tabIndex= "5">
+    {elem}
+    Namaste React using JSX
+    <HeadingComponent></HeadingComponent>
+    {HeadingComponent()}
+    </h1>
+    );
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(title)

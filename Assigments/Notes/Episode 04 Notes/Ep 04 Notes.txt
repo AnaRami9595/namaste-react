@@ -1,0 +1,554 @@
+🟡---------Let's Build a Food Ordering App.-----------
+
+🟠First we need to PLAN our App 
+In order to start our building we need an UI design
+(layout, mockup, etc)
+
+- Name: Namaste Food
+- Setch our layout (check image)
+- What Components🧩 will our app have?
+
+    - 🍇Header:
+      - Logo
+      - Nav Items
+
+    - 🍇Body:
+     - Search 
+     - Restaurant container:
+        -Restaurant cards:
+         - image
+         - Name of Restaurant, star rating, etc
+
+    - 🍇Footer
+     - Copyright
+     - Links
+     - Address
+     - Contact
+
+🟡---------Making our Components🧩
+
+Inside our App.js app we will write the Header, Body, 🍇Footer
+Components🧩 of our Food App, along with the sub components that
+need to function andd place them all toghether inside our root 
+component called "AppLayout" that looks like this:
+
+                🖥️const AppLayout = () => {
+                return (  
+                    <div className="app">
+                    <Header/>
+                    <Body/>
+                    </div>
+                );
+            }
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<AppLayout/>)
+
+
+🟡---------Adding Styles🎨
+
+We'll create a CSS file to give them styles
+But we can also add inline css in our jsx code, 
+creating an object like this:
+
+                🖥️const styleCard = {
+                backgroundColor:"#f0f0f0"
+            }
+
+            //✨And then adding it to the div like in html
+                const RestaurantCard = () => {
+                    return ( 
+                    ➡️<div className="res-card" style={styleCard}>
+                            <h5>Meghana Foods</h5>
+                        </div>
+                    );
+                }
+
+            //✨Or you can add the obj it directly in the Components🧩
+                const RestaurantCard = () => {
+                return ( 
+                ➡️<div className="res-card" style={{
+                        backgroundColor: "#f0f0f0"
+                    }}>
+                        <h5>Meghana Foods</h5>
+                    </div>
+                );
+            }
+
+🟡---------REACT⚛️ Props🥠
+
+What is a Prop🥠? At the end of the day, is Javascript🟨
+code.
+
+A "Prop🥠" is a way to pass data from a parent Component🧩 
+to a child Component🧩. Props are a fundamental concept in
+React's component-based architecture and enable Components🧩
+to be reusable dynamic.
+
+Passing a Prop🥠 to a component Is like passing an argument
+to a function. When passed is a Javascript🟨 object.
+
+You can pass any number of Props🥠 to a component and REACT⚛️
+will put them inside an object
+
+
+
+    //Passing props example:
+
+        🖥️const Body = () => {
+            return ( 
+            <div className="body">
+                <div className="search">Search Bar here</div>
+                <div className="res-container">
+                    <RestaurantCard
+                    resName = "Meghana Foods"//🥠Add prop inside component tag
+                    cuisine = "North Indian"
+                    />
+                    <RestaurantCard//Props🥠 for second component
+                    resName = "KFC"
+                    cuisine = "Fast Food"
+                    />
+                </div>
+            </div> 
+            );
+        }
+
+    //Then we pass the props to a child Component🧩:
+
+        🖥️const RestaurantCard = (props) => {
+            console.log(props)
+            // logs 2 objects corresponding to the Props🥠:
+            //inside the Components🧩:
+
+            //{resName: 'Meghana Foods', cuisine: 'North Indian'}
+            //{resName: 'KFC', cuisine: 'Fast Food'}
+         }
+
+    //Now you can use the Props🥠 as values for your components
+    accesing their Javascript🟨 object: Now it will show the 
+    information of the Restaurant!!
+
+    🖥️const RestaurantCard = (props) => {
+            return ( 
+                <div className="res-card" style={{
+                    backgroundColor: "#f0f0f0"
+                }}>
+                    <img className="res-logo" src={require("./..")} />
+                    <strong>{props.resName}</strong>//🥠
+                    <li>{props.cuisine} </li>//🥠
+                </div>
+                );
+        }
+
+    //
+
+
+    //You can always destructure the Props🥠 obj in the fly like this:
+
+      🖥️const RestaurantCard = ({resName, cuisine}) => {
+        return ( 
+            <div className="res-card" style={{
+                backgroundColor: "#f0f0f0"
+            }}>
+                <img className="res-logo" src={require("...")}/>
+                <strong>{resName}</strong>⬅️
+                <li>{cuisine} </li>⬅️
+            </div>
+         );
+    }
+
+    //Or like this:
+    🖥️const RestaurantCard = (props) => {
+        const {resName, cuisine} = props
+        return ( )
+        }
+
+We can pass Data as a prop in order to get results like this.
+
+🟡---------Getting Data 🧾
+
+When getting data in order to fill our App we usually get it in
+a JSON that comes from an API. 
+
+We are going to get data using a Food Delivery website called Swiggy
+
+The Data that is going to give us is personalized according to our
+location, this is because something called "Config Driven UI"
+
+    🤔What does "Config Driven UI" mean?
+    Is where the User Interface (UI) of an application is definedd
+    and configured through a set of configuration settings or data,
+    rather than being hard-coded in the application's codebase. 
+    This approach aims to mae the UI more flexible, dynamic and
+    easily customizable.
+
+    All the UI is driven of a config, that depends on the data
+    that is coming from Backend, the UI is getting changed.
+    This is known as Config driven UI. T
+
+    This allows you to work in different countries, places, etc
+
+
+🍔Our data will be in the form of an array of objects named 'restArr', 
+each of them 
+will have information about a restaurant for our app. It will
+work essentially as a list of restaurants. This is one example of an
+element inside our list:
+
+                🖥️const restArr = [
+                    {type: "restaurant",
+
+                    data: {
+                id : "1", 
+                //⬆️🔑 A unique ID for each item
+
+                name: "Paratha Box",
+
+                avgRating: 4.8,
+
+                cuisines: ["North Indian","Punjabi","Indian",],
+                //⬆️An array of different cousines
+
+                deliveryTime: "Delivered in 30 minutes",
+
+                costForTwo : 2000,
+
+                cloudinaryImageId: "t1ycq1zgn0n0lbb7v4e4",
+                //⬆️🔑 A unique ID for each picture that will help
+                //us to import it from their source
+
+                    }}
+                ...]
+
+🍔Now that we have our data, it's time to pass it as a prop to our
+'Body' Component🧩, so we can pass it after to our 'RestaurantCard'
+component.
+
+                const Body = () => {
+                    return ( 
+                    <div className="body">
+                        <div className="search">Search Bar here</div>
+                        <div className="res-container">
+
+                //⬇️We are going to loop through all the elements
+                of our list using the map() method, so we can:
+                - add 'RestaurantCard' as a Component🧩 inside 'Body'
+                - pass each object of restArr as a Prop🥠 inside 
+                  'RestaurantCard'
+                -And access each restaurant's  individual properties:
+                        {
+                            restArr.map(restaurant => (
+                            <RestaurantCard key={restaurant.data.id}💡
+                            resData = {restaurant}/>
+                            ))}
+                        </div>
+                    </div> 
+                    );
+                }
+
+💡 Always include an individual key🔑 when mapping thru components
+or you will get an error
+
+                
+    🤔Why do we use keys?
+    If you add a new component and there is not an individual key🔑
+    to differentiate when mapping them, then REACT⚛️ WILL re-render
+    all the components again, since doesn't know where to put it,
+    cleans the container and re-render all the components the same.
+    But if we give them a unique ID, REACT⚛️ exactly notes that 
+    the old components were already there, so it will NOT render them,
+    and only render the new Component🧩
+
+    NEVER take the index of the array as a Key❗(only as a last resort)
+    ALWAYS have a unique ID ✅
+
+
+🍔Finally, we'll code our RestaurantCard component so it can
+display the information passed as a Prop🥠
+
+
+        🖥️const RestaurantCard = (props) => {
+        const {resData} = props //⬅️destructuring resData from our props
+
+        //⬇️Destructuring each property from the resData
+        const {cloudinaryImageId, 
+        name, 
+        avgRating,
+        cuisines, 
+        costForTwo,
+        deliveryTime} =resData?.data//⬅️Optional chaining to check if
+                                    //data is there
+
+        return ( 
+            <div className="res-card" style={{
+                backgroundColor: "#f0f0f0"
+            }}>
+
+                <img className="res-logo" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId}/>
+                //⬆️img is imported from a server and we access them 
+                //with the link of the hosting website + the image identifier🔑 
+                //that comes inside the data
+
+                <strong>{name}</strong>
+
+                <li>{cuisines.join(", ")} </li>
+                //⬆️to convert the elements of the 'cuisines' array into a string
+                //with their elements separating by comments.
+
+
+                //⬇️Passing each property as a REACT⚛️ Element
+                <li>{deliveryTime} </li>
+                <li>{costForTwo/10}</li>
+                <li>{avgRating}</li>
+            </div>
+         );
+    }
+
+🟡By the way, we added styles to make it look pretty
+Our code at the end looks like this Inside App.js:
+
+import React from "react";
+import ReactDOM  from "react-dom/client"
+
+
+const Header = () => {
+    return ( 
+        <div className="header">
+            <div>
+                <img className="logo" src={require("./images/Logo.jpg")} alt="Food App logo"/>
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+     );
+}
+
+
+    const RestaurantCard = (props) => {
+        const {resData} = props
+        const {cloudinaryImageId, name, avgRating, cuisines, costForTwo, deliveryTime} =resData?.data
+
+        return ( 
+            <div className="res-card" style={{
+                backgroundColor: "#f0f0f0"
+            }}>
+                <img className="res-logo" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId}/>
+                <strong>{name}</strong>
+                <li>{cuisines.join(", ")} </li>
+                <li>{deliveryTime} </li>
+                <li>{costForTwo/10}</li>
+                <li>{avgRating}</li>
+            </div>
+         );
+    }
+     
+    
+
+const Body = () => {
+    return ( 
+    <div className="body">
+        <div className="search">Search Bar here</div>
+        <div className="res-container">
+           {
+            restArr.map(restaurant => (
+            <RestaurantCard key={restaurant.data.id}
+            resData = {restaurant}/>
+            ))}
+        </div>
+    </div> 
+    );
+}
+ 
+
+ 
+
+const AppLayout = () => {
+    return (  
+        <div className="app">
+           <Header/>
+           <Body/>
+        </div>
+    );
+}
+
+//Let's say that this is what the Api brings us
+const restArr = [
+    {type: "restaurant",
+    data: {
+id : "1",
+name: "Paratha Box",
+avgRating: 4.8,
+cuisines: ["North Indian","Punjabi","Indian",],
+deliveryTime: "Delivered in 30 minutes",
+costForTwo : 2000,
+cloudinaryImageId: "t1ycq1zgn0n0lbb7v4e4",
+    }},
+
+    {type: "restaurant",
+    data: {
+id : "2",
+name: "EatFit",
+avgRating: 4.5,
+cuisines: ["Chinese","Healthy Food","Tandoor",],
+deliveryTime: "Delivered in 31 minutes",
+costForTwo : 5000,
+cloudinaryImageId: "6126c9b45de2cb222405c1af8a321e74",
+    }},
+
+    {type: "restaurant",
+    data: {
+        id : "3",
+name: "NIC Ice Creams",
+avgRating: 4.0,
+cuisines: ["Ice Cream","Desserts",],
+deliveryTime: "Delivered in 30 minutes",
+costForTwo : 12000,
+cloudinaryImageId: "c8b98c4064dc2fd6bdf350212e5f0bd5",
+    }},
+
+    {type: "restaurant",
+    data: {
+        id : "4",
+name: "Bikanervala",
+avgRating: 4.8,
+cuisines: ["North Indian","Snacks","Chaat",],
+deliveryTime: "Delivered in 30 minutes",
+costForTwo : 2000,
+cloudinaryImageId: "bhb6fmjbetmpa2nh3w0t",
+    }},
+
+    {type: "restaurant",
+    data: {
+        id : "5",
+name: "Punjabi Angithi",
+avgRating: 4.8,
+cuisines: [ "North Indian","Chinese",],
+deliveryTime: "Delivered in 10 minutes",
+costForTwo : 7000,
+cloudinaryImageId: "wynnlcwjqfltykkbuudv",
+    }},
+
+    {type: "restaurant",
+    data: {
+ id : "6",
+name: "Burger King",
+avgRating: 3.8,
+cuisines: ["Burgers", "American",],
+deliveryTime: "Delivered in 30 minutes",
+costForTwo : 2000,
+cloudinaryImageId: "e33e1d3ba7d6b2bb0d45e1001b731fcf",
+    }},
+
+    {type: "restaurant",
+    data: {
+id : "7",
+name: "KFC",
+avgRating: 3.8,
+cuisines: ["Chicken", "American",],
+deliveryTime: "Delivered in 20 minutes",
+costForTwo : 7000,
+cloudinaryImageId: "56c9ab92bd79745fd152a30fa2525426",
+    }},
+
+     {type: "restaurant",
+    data: {
+id : "8",
+name: "Pizza Hut",
+avgRating: 3.9,
+cuisines: ["Pizza"],
+deliveryTime: "Delivered in 50 minutes",
+costForTwo : 6000,
+cloudinaryImageId: "2b4f62d606d1b2bfba9ba9e5386fabb7",
+    }},
+    {type: "restaurant",
+    data: {
+id : "9",
+name: "Gianis - Ice Cream, Shakes & Sundaes",
+avgRating: 4.8,
+cuisines: ["Ice Cream","Desserts","Beverages","Bakery"],
+deliveryTime: "Delivered in 40 minutes",
+costForTwo : 5000,
+cloudinaryImageId: "qgn42eb1awwug08cxaup",
+    }},
+    {type: "restaurant",
+    data: {
+id : "10",
+name: "Domino's Pizza",
+avgRating: 3.5,
+cuisines: [ "Pizzas","Italian","Pastas","Desserts"],
+deliveryTime: "Delivered in 35 minutes",
+costForTwo : 8000,
+cloudinaryImageId: "actf0p77lialtw7tsmxs",
+    }},
+     {type: "restaurant",
+    data: {
+id : "11",
+name: "Bakingo",
+avgRating: 3.5,
+cuisines: [ "Bakery","Desserts","Beverages","Snacks"],
+deliveryTime: "Delivered in 30 minutes",
+costForTwo : 2000,
+cloudinaryImageId: "rmnzl74nmlldrsv9bnvk",
+    }},
+    {type: "restaurant",
+    data: {
+id : "12",
+name: "Keventers - Milkshakes & Desserts",
+avgRating: 3.5,
+cuisines: [ "Beverages","Ice Cream","Desserts", "Healthy Food"],
+deliveryTime: "Delivered in 38 minutes",
+costForTwo : 4000,
+cloudinaryImageId: "f0e94c984813053f46c214f18ce73d59",
+    }},
+
+    {type: "restaurant",
+    data: {
+id : "13",
+name: "Oven Story Pizza",
+avgRating: 3.5,
+cuisines: [ "Pizzas", "Pastas","Italian","Desserts", "Beverages"],
+deliveryTime: "Delivered in 28 minutes",
+costForTwo : 4000,
+cloudinaryImageId: "b3bbdfabc4c38d7732cfb29f8fba352e",
+    }},
+
+     {type: "restaurant",
+    data: {
+id : "14",
+name: "McDonald's",
+avgRating: 4,
+cuisines: [ "American"],
+deliveryTime: "Delivered in 28 minutes",
+costForTwo : 4000,
+cloudinaryImageId: "6dc3ed2ca21d71acff7c2a51dfe4c720",
+    }},
+     {type: "restaurant",
+    data: {
+id : "15",
+name: "Nirula's",
+avgRating: 4.5,
+cuisines: [ "Desserts", "Ice Cream","Beverages","Ice Cream Cakes","Juices"],
+deliveryTime: "Delivered in 36 minutes",
+costForTwo : 7000,
+cloudinaryImageId: "ugwu5o4eaawumpjeceds",
+    }},
+    {type: "restaurant",
+    data: {
+id : "16",
+name: "Berco's -If you love Chinese",
+avgRating: 4.5,
+cuisines: [ "Asian","Thai", "Chinese","Seafood", "Desserts","Beverages"],
+deliveryTime: "Delivered in 46 minutes",
+costForTwo : 9000,
+cloudinaryImageId: "tpep2upccqy9nkd4v2gh",
+    }}
+]
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<AppLayout/>)
