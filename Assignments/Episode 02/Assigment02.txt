@@ -1,0 +1,112 @@
+🟣What is NPM🎁?
+    It's a package manager, any package that you want to include in your 
+    package can be managed  by np. Is a Fundamental tool in the Javascript🟨
+    ecosystem, as it simplifies the process of including external code 
+    Dependencies⛓️ 
+
+🟣What is 'Parcel/Webpack'? Why do we need it?
+    Are popu;ar build tools in the Javascript🟨 ecosystem, used to bundle
+    and manage various assets like Javascript files, stylesheets, images
+    and more. 
+
+    We need them for:
+
+    - Module Bundling
+    - Asset Optmization🖼️: these tools optimize assets like images, fonts
+      
+    - Code Splitting: Parccel and webpack allow you to slit your application
+      code into smaller chunks.
+    - Importing Non-JS🟨 assets. 
+    - HMR🔥: Both tools offer features like hot module replacement.
+    - Traspilation
+    - Automation
+
+🟣What is .parcel-cache🕸️
+
+    Is a folder that generates after installing Parcel📦 that makes caching, 
+    so the subsequent changes in the build of the app are processed faster since
+    the code is never build twice.
+
+🟣What is NPX💣?
+    Is a command-line tool that comes with Node.js and npm. It allows you to 
+    run Node.js packages and exxecutables that are not globally installed in your
+    system. It executes or runs packages, fetches the latest version each
+    time you run a command and it has Local and global scope.
+
+🟣What is the difference between Dependencies⛓️ vs devDependencies?
+
+    - 'dependencies' are packages that your project requres to run succesfully
+      in a production enviroment. They are essential for the functionality of
+      your application.
+
+    - 'devDependencies' are packages that are only required during development
+      but aren't necessary for the application to run in its final deployed
+      state.
+
+🟣What is Tree Shaking🎄?
+
+    - Is a term used in JS🟨 development, refers to the process of eliminating
+      unused or dead code from your JS🟨 Bundles📚 during the Optmization🖼️
+      phase of your Build process
+
+🟣What is HMR🔥: 
+
+    - Hot  module replacement is a development feature that allows devs to
+      update a module's code without requiring a full page reload. 
+
+🟣5 favourite super powers of Parcel📦:
+
+    1. Diagnostics/Error Handling ✖️:
+        The design of the errors using parcel is quite pretty and 
+        also very exact describing the problem
+
+    2. Code Splitting: Parcel📦 allows you to have it and optimizes the
+       loading performance of web applications by breaking down the application
+       codebase into smaller, more manageable chunks.
+
+    3. HMR🔥: Hot module replacement is a feature that updates the code
+      live, removing the need of reloading
+
+    4.  Tree Shaking.
+
+    5. cache🕸️
+
+🟣What is the difference between package.json🎊 and package-lock.jason?
+
+    - package.json🎊 Is a configuration file for NPM🎁.
+    Includes the metadata of the project. And the ranging  of versions 
+    of our Dependencies⛓️, meanwhile, 
+
+    - package-lock.json🎊 captures
+    the exact version our project and its dependencies are using in any 
+    current time, It keeps track in all of them, that ensures consistency
+    and predictability.
+
+🟣What should not Modify package-lock.json🎊?
+
+    - Modifying the package-lock.json🎊 file is not recommended as it can 
+    lead to issues with dependency consistency and version conflicts. Changing
+    it manually could lead to discrepancies between different development 
+    enviroments and cause unexpected behavior. It might also result in conflicts
+    between Dependencies⛓️ and their versions, This can lead to issues where
+    certain parts of your application might work fine on one machine but
+    fail on another due to inconsistent dependencies, therefore provoking
+    collaboration issues and build and Deployment problems
+
+🟣What is 'node_modules🔰"? Is it a good Idea to push that on Git🐈‍⬛?
+    - "node_modules🔰" contains the actual DATA of our Dependencies⛓️ Is like a Data base.
+      The file is so huge is kind of a meme
+
+🟣What is the dist📂 folder?
+
+    - The dist📂 folder typically stands for "distribution, and contains the 
+      compiled and optimized version of your application code that is ready to be
+      deployed to a production enviroment. Is not inherently part of REACT⚛️
+      but rather a ommon convention used in many modern web dev projects.
+
+ 
+🟣What is browserslist📂?
+
+    - Is a configuration file and query tool used in modern web development
+      tools to define which browsers and Browsers🌍 versions your project
+      should support. 

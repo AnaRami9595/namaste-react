@@ -1,0 +1,167 @@
+🔴Is JSX mandatory for react?
+-No, it is a way to make writing in react more
+accesible, legible and developer-friendly
+
+🔴Is ES6 mandatory for React?
+It is not, but is highly recommended and widely
+used in the react ecosystem. ES6 introduced several 
+important features and improvements to JavaScript 
+that make development more efficient, organized, 
+and maintainable.
+
+🔴{Titlecomponent} vs {<Titlecomponent/>}
+vs {<Titlecomponent><Titlecomponent/>}
+
+🔴How can I write coments in JSX?
+If you want to comment something in JSX you need 
+to use JavaScript comments inside of Curly braces
+like {/*comment here*/}. 
+
+🔴What is <React.Fragment></React.Fragment>
+and <></>
+In React, both <React.Fragment> and <></> are
+used to wrap multiple elements without introducing
+an additional wrapping DOM element.
+
+        🖥️function MyComponent() {
+            return (
+                <React.Fragment>
+                <h1>Hello</h1>
+                <p>This is a paragraph.</p>
+                </React.Fragment>
+            );
+            }
+    //⬆️This will render the <h1> 
+    and <p> elements without 
+    adding a surrounding DOM element.
+
+The <>...</> syntax, also known as the fragment shorthand
+or JSX fragment, provides a more concise way to achieve
+the result of <React.Fragment>
+
+        🖥️function MyComponent() {
+            return (
+                <>
+                <h1>Hello</h1>
+                <p>This is a paragraph.</p>
+                </>
+            );
+            }
+
+This will also render the <h1> and <p> elements without
+introducing an extra DOM element.
+
+🔴What is Virtual DOM?
+
+The virtual DOM is a concept and technique used in libraries
+and framewors like React to optimize the updating process
+of the actuaal DOM in a web app. The DOM represents the 
+structure of a web page, and any changes made to it can
+be expensive and time-consuming.
+
+The Virtual DOM📄 is an abstraction that sits between your
+application's state and the actual DOM📄in the browser.
+Here's how it works:
+
+    -1️⃣Inital Render: 
+    When you create a component and render it to the screen,
+    REACT⚛️ doesn't immediately manipulate the real DOM.
+    Instead, it creates a lightweiht in-memory representation
+    od the DOM📄, which is referred to as the Virtual DOM📄.
+    This is essentially a tree of JavaScript🟨 objects that 
+    mirrors the structure of the actual DOM📄.
+
+    -2️⃣State Changes: 
+    When the state of your application changes (due to user
+    interactions, data updates, etc.)REACT⚛️ re-renders the 
+    component hierarchy. However instead of immediately
+    updating the actual DOM, React updates the Virtual DOM📄,
+    with the new state and computes the differences (diff☯️)
+    between the previous Virtual DOM📄 and the updated
+    Virtual DOM📄. This process is known as Reconciliation🫂
+
+    -3️⃣Diffing☯️ and Reconciliation🫂
+    The Diffing☯️ algorithm compares the previous Virtual
+    DOM📄 to identify the minimal number of changes needed 
+    to update the real DOM📄 to match the new staate. This
+    optimization is critical because directly manipulating
+    the real DOM can be slow and resource-intesive.
+
+    -4️⃣DOM📄 Update.
+    After computing the differences, REACT⚛️ applies the 
+    necessary changes to the actual DOM📄. However, because
+    REACT⚛️ has a minimized set of changes to apply
+    (thanks to the Virtual Dom's Diffing☯️) the updates are 
+    much faster compared to manually modifying the entire DOM
+
+    💡The Virtual DOM is not exclusive to REACT⚛️
+
+🔴What is Reconciliation in React?
+Refers to the process of comparing the previous and current 
+states of the virtual DOM and determining the minimal set
+of changes required to update the actual DOM to reflect
+the new state.
+
+🔴What is react Fiber?
+React Fiber is an internal reimplementation of the core
+algorithm that powers React's reconciliation and rendering process. 
+It achieves these improvements through... 
+
+    -Incremental rendering➕, which
+    uses "work in progress: units called fibers. 
+    This allows REACT⚛️to brea down the rendering work
+    into smaller chunks and prioritize
+    or pause and resume rendering based 
+    on the app's needs.
+
+    - Concurrency, in React Fiber🫘 refers to the 
+    ability of REACT⚛️ to work on multiple tass concurrently 
+    even on a single thread. This feature prevent the main 
+    thread from getting blocked during rendering.
+
+    - Task prioritization 🔺
+    Assign different levels of priority to various rendering
+    tasks.
+
+All while maintaining the same declarative programming model that 
+React developers are familiar with.
+
+🔴Why we need Keys🔑 in React? When do we need keys🔑
+in React?
+
+In React, keys🔑 are used to help the framework identify 
+and manage individual items in a list of elements, 
+typically when rendering arrays of components or elements. 
+Keys🔑 are crucial for optimizing the rendering and updating
+process, maintaining component state, and avoiding unnecessary
+re-renders. 
+
+We need them for: 
+    - Uniquely Identifying Elements:
+    - Optimizing Reconciliation
+    - Maintaining Component State:
+    - Avoiding Unintended Re-renderings:
+
+🔴Can we use index as keys in🔑 React?
+Yes, but is not recommended. Only as a last resource if the
+items on a list of elements do not have individual ids themselves.
+ 
+
+🔴What are props in React?
+"props" (short for "properties") is a mechanism for passing data 
+from a parent component to a child component. 
+Props are read-only and provide a way to customize and configure 
+child components when they are used within a parent component. 
+They allow you to make components reusable by providing dynamic 
+values or behavior to them.
+
+
+🔴What is Config Driven UI?  
+Config Driven UI (User Interface) refers to an approach in 
+software development where the user interface of an application 
+is primarily defined and controlled through configuration 
+rather than hardcoding. 
+Instead of writing extensive code to describe the layout, 
+behavior, and appearance of the UI elements, developers 
+provide a configuration file or data structure that specifies 
+how the UI should be constructed and behave.
