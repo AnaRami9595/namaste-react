@@ -1,0 +1,25 @@
+{
+  "name": "search-bar",
+  "version": "1.0.0",
+  "description": "Assignment5 code",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "episode",
+    "05",
+    "5",
+    "05"
+  ],
+  "author": "Ana",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

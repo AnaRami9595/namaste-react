@@ -1,0 +1,192 @@
+//Let's get Hooked!
+
+
+Today we will learn react Hooks.
+
+🟢--Organizing our components
+
+But let's clean our code first, in the industry is a 
+good practice to put our main components inside an "src" 
+folder and separate our components and other assets 
+in individual files. This is how is going to look:
+
+
+            📁Src               //⬅️The components will be here
+                📄Body.js
+                📄Header.js
+                📄RestaurantCard.js
+            📁utils            //⬅️The resources will be here 
+                📄constants.js //⬅️liks, CDNs
+                📄mockData.js  //⬅️our hard-coded data
+            📁images
+                🖼️Logo.jpg
+                🖼️sbackground.jpg
+            📄App.js            //⬅️Our app layout
+            📄index.css         //⬅️our app styles
+            📄index.html
+
+
+🟢--Exporting and importing our components
+
+Now that our files will be separated, we'll need to 
+export our components so we can import them and use
+them inside other ones that are depending on them.
+
+We can either export a single one that fills an entire
+file with:
+
+
+                🖥️"export default Body;"
+
+Or we can export individual components that are inside
+a single file like this:
+
+                
+            🖥️export const CDN_URL = "imagelink.com"
+            export const CDN_URL2 = "imagelink.com/2"
+
+
+            //And later importing it like this:
+
+        🖥️import { CDN_URL } from "../../utils/constants"
+
+🟢--Let's make our app more dynamic:
+
+We will create a Button🛑 that shows the user only the 
+top rated restaurants of our list. We'll place it inside
+our 📄Body Component🧩
+
+Inside a button we'll create a click handler with the onClick 
+attribute, this will make it return a JS🟨 function:
+
+            🖥️ <button className="filter-btn"
+            onClick={() => { 
+                console.log("Button clicked") 
+                }}>
+                Top Rated Restaurants
+                </button>
+
+🤔But how do I use this button to filter my list?
+
+We can implement our filter() array method like this:
+
+            🖥️ <button className="filter-btn"
+             onClick={() => {
+             listOfRestaurants = listOfRestaurants.filter(
+            (res) => res.data.avgRating > 4);⬅️
+            console.log(listOfRestaurants)
+            }}> 
+            Top Rated Restaurants
+            </button>
+
+🤔The console is loging the new list of restaurants
+but the UI is not changing 😱, how can I make it change?
+
+🟢--HOOKS 🪝
+
+Right now our data is in a normal JS🟨 Variable, instead
+of this one we can use a superpowerful Variable called
+☁️State Variable
+
+A HOOK🪝 is a JS🟨 Function given to us by react, that
+has extra super powers. It is a normal JS🟨 utility Function.
+
+There are 2 important HOOKS🪝 that are used frequently,
+ 💥useEffect() and ☁️useState().
+       
+    ☁️useState():
+    generates powerful ☁️State Variables
+    to use this HOOK🪝you need to import it from ⚛️REACT
+    like this:
+
+        🖥️import {useState} from "react";
+
+    It is called useState because it mantains the ☁️State
+    of your Component🧩. 
+    1️⃣Let's make a local ☁️State variable inside our 📄Body
+    Component🧩:
+
+        🖥️const { listOfRestaurants } = useState([]);
+        
+        //first we write the name of our variable inside
+        brackets and place the default value as an
+        argument inside the function, in this case it will
+        be an empty array
+
+    2️⃣Instead of this, let's use our array of restaurants as
+    the defult value for our ☁️State variable
+
+        🖥️const [listOfRestaurants ]= useState([
+            {restaurant1},{restaurant2},{restaurant3}
+            ....
+        ]);
+
+        //⬆️Since we are working with an array of objects
+        we will declare the variable inside of brackets.
+
+    3️⃣Now we need a function to modify our default value,
+    that would be the second parameter inside the array of
+    our variable:
+
+        🖥️ const [ listOfRestaurants, 
+        setListOfRestaurants ] = useState( [...])
+
+
+        //⬆️We can write our function however we want but it 
+        is a convention to use the word "set" as a prefix
+
+        
+
+    3️⃣We update the code inside our Component🧩 so we can
+    change the ☁️State of our variable to a filtered list
+    whenever we click our button.
+
+
+        <button className="filter-btn"
+           onClick={() => {
+            const filteredList = listOfRestaurants.filter(
+             (res) => res.data.avgRating > 4
+            );
+            setListOfRestaurants(filteredList)⬅️
+            }} >
+            Top Rated Restaurants
+        </button>
+
+         //⬆️Here we are storing our filtered restaurant1
+         list inside A variable "filteredList". And then  
+         using our function setListOfRestaurants() to change
+         the ☁️State of our listOfRestaurants to the
+         filteredList.
+
+    The UI this time will be changed immediately when pressing
+    the Button🛑!!!  This is called as RENDEDING🖌️
+
+    💡Whenever a ☁️State variable updates, ⚛️REACT re-renders🖌️
+    the Component🧩!!!
+
+    🤔But how does it do that?
+
+            ⚛️REACT has a Reconciliation🫂 Algorithm called
+            React Fiber🫘 (that was launched in react 16),
+             that works like this:
+
+            When you have a certain state of a Component🧩,
+            ⚛️REACT creates a VIRTUAL DOM📃 for it, which is 
+            like a representation of an actual DOM📃. 
+            It is in form of a normal JS🟨 objects, it looks 
+            like a nested object.
+
+            DIFF☯️ Algorithm is used to detect the differences
+            between the previous ☁️State of the VIRTUAL DOM📃
+            and the new 🌧️State of the VIRTUAL DOM📃. And update
+            the DOM📃 In every render🖌️ cycle.
+
+            💡REACT is fast because is making efficient DOM📃
+            Manipulation!!! using a VIRTUAL DOM📃, Which is A
+            Javascript representation of it
+
+
+
+
+
+

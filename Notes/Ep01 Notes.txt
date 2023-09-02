@@ -1,0 +1,122 @@
+------Notes about the lesson✏️----
+
+💡The order of File matters
+
+       <script 
+        crossorigin
+         src="https://unpkg.com/react@18/umd/react.development.js">
+            //This is The core of REACT⚛️ in our project:
+            //📝Homework: what does crossorin does?
+        </script>
+
+        <script
+         crossorigin 
+         src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+        //This is The file we have to change DOM of REACT⚛️ in our project:
+        </script>
+
+        <script src="App.js">//❗this needs to be always after the cdn links</script>
+        
+💡The root needs to be defined. We can use the
+
+ReactDOM.createRoot() method in order to create it
+
+💡A react element is a JAVASCRIPT OBJECT. We create
+a react element using React.createElement() It has three elements:
+    1. Name of the tag
+    2. An object to add attributes inside
+    3. The children, they could be a normal React element. If they 
+    have  multiple children, pass them as an array
+
+💡Whenever we render the root element, the react code we place inside
+it will replace everything that was there previously in the html.
+
+💡React is a LIBRARY and not a Framework, that means that it can be used
+in your  program in small chunks when is convenient, at the end of the day
+it is only Javascript.
+
+//const heading = React.createElement("h1", {id: "heading"}, "Hello World from React");
+//⬆️createElement in react takes 3 arguments: 
+//1. the type, 
+ //2.an object which will help you to give attributes to  your tags
+ //3.and the children
+ //console.log(heading)//returns and object, is a react element
+             
+
+//root.render(heading)
+//⬆️we render the root in the dom, with the heading inside
+//------------------------------------------------
+/*🔴How do we replicate the following HTML in React?
+
+    🖥️<div id = "parent">
+        <div id = "child">
+            <h1>I'm an h1 tag</h1>
+            <h2>I'm an h2 tag</h2>
+        </div>
+        <div id = "child2">
+            <h1>I'm an another h1 tag</h1>
+            <h2>I'm an another h2 tag</h2>
+        </div>
+    </div>
+*/
+const parent = React.createElement(
+    "div", {id: "parent"},
+    
+React.createElement(
+    "div", {id:"child"}, [
+    //sibling elements, we put them inside of an array:
+    React.createElement("h1", {}, "I'm an h1 tag"),
+    React.createElement("h2", {}, "I'm an h2 tag")
+   ]),
+   React.createElement("div", {id:"child2"}, [
+    //sibling elements, we put them inside of an array:
+    React.createElement("h1", {}, "I'm another h1 tag"),
+    React.createElement("h2", {}, "I'm another h2 tag")
+   ])
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//⬆️now our div with an Id of "root" will be the root of our program
+//thanks to the React DOM📃 library
+
+root.render(parent)
+//⬆️⬆will REPLACE (Not append) the content that is already inside the 
+//<div> with id of root. 
+//everything that we are rendering, is being rendered inside of ROOT.
+
+
+📝Homework:
+Cross-Origin Resource sharing, refers to the method that allows you to
+make requests to the server deployed at a different domain. 
+As a reference, if the frontend and backend are 2 different domains,
+we need CORS there.
+----
+create repository
+
+😺commands:
+
+% git init
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/AnaRami9595/namaste-react.git
+git push  origin main
+
+if not working research how to Connecting to GitHub with SSH
+
+
+//In a normal hrml file writing js we will do:
+
+            💻
+        <script>
+            /*
+            This is how we write "Hello World" in the console
+            using Javascript 🏷️:
+
+            const heading = document.createElement("h1");
+            heading.innerHTML = "Hello, World from Javascript";
+
+            const root = document.getElementById("root");
+            root.appendChild(heading)*/
+        </script>

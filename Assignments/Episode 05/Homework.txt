@@ -1,0 +1,138 @@
+🟡Can I use the "export" and "export default"
+at the same file in react?
+Yes but you need to do it under some rules:
+
+    🔸You can only have one export default statement 
+    per module. This is used to export the main 
+    functionality or component from your module.
+
+    🔸You can have multiple named exports using the
+    export keyword. These named exports are used 
+    when you want to export multiple values from 
+    a module.
+
+    🔸It's also possible to combine export and 
+    export default in the same module, 
+    but you should adhere to the rule of 
+    having only one export default. 
+    Here's an example:
+
+     💻class Comp extends React.Component {
+        // ...
+        }
+
+        export function helperFunction() {
+         // ...
+        }   
+
+      export default Comp;    
+
+
+🟡does useState returns an array?
+    No, useState in React does not return an array; 
+    it returns a pair of values in the form of an 
+    array-like object, but it's actually a tuple. 
+    This pair consists of the current state value 
+    and a function to update that state. 
+
+🟡What is the importance of config.js file?
+
+
+🟡What is the difference between Named Export,
+Default export and * as export?
+
+    🔸Named exports allow you to export multiple 
+    values (variables, functions, classes, objects, 
+    etc.) from a module by explicitly giving each 
+    export a name.
+    Syntax (Exporting):
+
+        💻export function myFunction() {
+        // ...
+         }
+
+    When importing Named Exports in another module, 
+    you must use curly braces {} and specify the 
+    exact name of the export.
+    Syntax (Importing):
+
+        💻import { var1, myFunction } from './NamedExportModule';
+
+    🔸Default exports allow you to export a single 
+      value as the default export for a module.
+      Syntax (Exporting):
+
+        💻const mainComponent = { /* ... */ };
+        export default mainComponent;
+
+    When importing a default export in another 
+    module, you can use any name you want for the 
+    imported value. Syntax (Importing):
+
+        💻import MyComponent from 
+        './DefaultExportModule';
+
+    🔸* as Export:
+     is used to export all named exports from a 
+     module as a single object with a specified 
+     name. Syntax (Exporting):
+
+        💻// ExportAllModule.js
+        export const variable2 = 'Value 2';
+        export function anotherFunction() {
+        // ...
+        }⬇️
+        export * as exportedVals from 
+        './ExportAllModule';
+    
+    When importing the * as export in another 
+    module, you access the exported values through 
+    the specified alias.
+
+        💻import { exportedVals } from './ExportAllAsModule';
+        console.log(exportedValues.variable2); 
+        // 'Value 2'
+
+🟡What is the importance of config.js file?
+
+    it's a convention that many developers use to 
+    manage configuration settings and environment 
+    variables in their projects. 
+    Reasons why it can be important:
+
+    🔸Modularity and Maintainability. 
+    🔸Code Reusability.
+    🔸Easy Testing.
+
+    Here's an example of what a config.js file 
+    might look like:
+
+        💻const config = {
+        API_URL: process.env.REACT_APP_API_URL 
+        || 'https://api.example.com',
+        API_KEY: process.env.REACT_APP_API_KEY 
+        || 'your-api-key-here',
+            }
+
+🟡What are ⚛️REACT HOOKS🪝?
+
+    They are like JS🟨 Functions given to us by ⚛️REACT
+    they allow you to "hook into" React state and lifecycle 
+    features from functional components
+
+🟡Why do we need a useState HOOK🪝?
+
+    Is used to add state management to functional components.
+    This is why we use this:
+
+        🔸Functional Components with State:
+          With useState, functional components can now have 
+          local state, making it easier to manage and 
+          manipulate data that changes over time.
+
+        🔸Improved Code Reusability: 
+          With Hooks, you can reuse stateful logic
+          across different components using custom hooks.
+           
+
+
