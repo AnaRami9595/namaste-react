@@ -1,0 +1,218 @@
+🔵What is Microservice🤳
+
+   Is a software architectural style that structures 
+   an application as a collection of loosely coupled, 
+   independently deployable services.
+
+   Each service represents a self-contained module that
+   performs a specific business function or capability. 
+   These services communicate with each other through 
+   well-defined APIs, typically over HTTP or other
+   lightweight protocols. 
+   Microservices architecture is characterized by:
+
+    🔸Decomposition: 
+    Applications are broken down into smaller, manageable 
+    services that focus on specific functionalities. 
+    Each service has a single responsibility.
+
+    🔸ndependence: Microservices are independently deployable 
+    and can be developed, tested, and deployed separately from 
+    one another.
+    ect.
+
+
+🔵What is 🪨Monolith software architecture??
+
+     is a traditional and commonly used architectural style where 
+     an entire application or system is built as a single, 
+     tightly integrated unit. 
+
+     All components and functions of the application are bundled
+     together as a single codebase and run as a single process. 
+
+🔵What is the difference between 🪨Monolith 
+and Microservice🤳
+
+    🔸Scale: Monolithic architectures are often simpler to start with, 
+    making them suitable for small to medium-sized projects.
+    Microservices are better suited for large and complex systems 
+    that require scaling specific components independently.
+
+    🔸Deployment: Microservices allow for more frequent and independent 
+    deployments, reducing the risk associated with updating a monolithic 
+    application.
+
+    🔸Microservices offer more efficient scalability by allowing you 
+    to allocate resources precisely where needed.
+     Monoliths typically require replicating the entire application.
+
+    🔸Development and Testing: Monolithic architectures are simpler 
+    to develop and test initially but can become challenging to manage 
+    as they grow. Microservices encourage better code organization and
+    can lead to more maintainable software over time.
+
+    🔸Isolation: Microservices provide better isolation between 
+    different parts of the application, reducing the risk of changes 
+    in one area affecting others.
+
+🔵Why do we need a useEffect💥 HOOK🪝?
+
+    is a fundamental tool for managing side effects in your functional 
+    components. Side effects are operations that occur in your component
+    other than rendering, such as data fetching, DOM manipulation, 
+    subscriptions, or setting up timers. 
+
+    -Managing Side Effects when RENDERING🖌️ the UI🖌️.
+
+    -Avoiding Infinite Loops: 
+     Functional components in React can re-render frequently 
+     when their state or props change. Without proper management, 
+     this can lead to infinite re-renders. useEffect💥
+     lets you control when and how side effects are executed, 
+     preventing infinite loops.
+
+    -Dealing with Asynchronous Code: useEffect💥 provides a way 
+    to handle asynchronous operations and execute code when they 
+    complete, ensuring your component updates correctly.
+
+🔵What is Optional chaining 🔗 and conditional
+chaining🔗❓?
+
+    🔸Optional Chaining (?.):
+      If any part of the chain is null or undefined, the entire 
+      expression returns undefined instead of throwing an error.
+
+      It is especially useful when dealing with nested objects 
+      or when fetching data from APIs where certain fields might 
+      be missing.
+
+            🖥️const user = {
+                name: 'John',
+                address: {
+                    city: 'New York',
+                },
+            };
+
+            // Without optional chaining👇
+
+            const city = user.address 
+            ? user.address.city 
+            : undefined; // 'New York'
+
+            // With optional chaining👇
+
+            const city = user.address?.city; // 'New York'
+          
+
+🔵What is Shimmer🪄 UI🖌️?
+
+Also known as a skeleton screen or skeleton UI, is a user 
+interface (UI) design pattern used in software and web development
+to indicate that content is loading or to create the illusion of 
+content loading. It is a visual placeholder that appears while 
+the actual content is being fetched or processed in the background. 
+
+    🔸Key characteristics of a shimmer UI include:
+
+        - Grayed-Out Placeholder
+        - Animated Shimmer
+        - Progress Indication
+        - Gradual Replacement: 
+
+🔵What is the difference between JS🟨 expression
+and JS🟨 Statement?
+
+The key difference between expressions and statements in JavaScript 
+is that expressions produce a value, whereas statements perform 
+actions or control the flow of your code but do not produce values
+
+    🔸JavaScript Expression:
+      An expression in JavaScript is a piece of code that produces 
+      a value when executed.
+
+      - Examples of expressions:
+            5 + 3 (evaluates to 8)
+            functionCall() 
+            //(evaluates to the return value of the function call)
+
+    🔸JavaScript Statement:
+       Is a standalone line or block of code that performs
+       a specific action.
+       Statements do not produce a value.
+       Statements are typically used for control flow, 
+       defining functions and variables, loops, and conditional 
+       execution. 
+
+      - Examples of expressions:
+            if (condition) { /* code block */ }
+            for (let i = 0; i < 5; i++) { /* loop code */ }
+            function myFunction() { /* function definition */ }
+            
+🔵What is conditional RENDERING🖌️, explain with a code
+example??
+    Conditional rendering in web development, specifically 
+    in the context of frameworks like React, refers to the 
+    practice of selectively rendering components or UI elements 
+    based on certain conditions
+
+            🖥️ const MyComponent = () => {
+             👉!listOfRestaurants.length ? <Shimmer /> :return (  
+                 <div className="body">
+                 </div>
+             );
+            }
+
+
+🔵What is CORS🚫??
+
+    CORS stands for "Cross-Origin Resource Sharing," and it is a 
+    security feature implemented by web browsers to control and restrict 
+    web page scripts from making requests to domains different from the 
+    one that served the web page. 
+    
+    In simpler terms, CORS is a security mechanism that prevents or 
+    allows web applications running at one origin (domain) from 
+    requesting resources, such as data or assets, from a different origin
+    (domain).
+
+🔵What is async⌛ and await🚏??
+
+    async and await are JavaScript features introduced in ECMAScript 2017 
+    (ES8) to simplify asynchronous code and make it more readable and 
+    maintainable, especially when dealing with promises. 
+    They work together to make asynchronous programming in JavaScript 
+    feel more like synchronous code.
+
+    🔸async Function:
+    - The async keyword is used to declare a function as asynchronous.
+    - async function always returns a promise, implicitly wrapping 
+      its return value in a resolved promise.
+
+               🖥️ async function fetchData() {
+                 // Asynchronous operations here
+                 return 'Data fetched successfully';
+                }
+    
+    🔸await Operator:
+    - The await keyword is used within an async function to pause the 
+      execution of the function until a promise is settled 
+      (either resolved or rejected).
+
+    - When await is used, it allows you to work with the resolved value 
+      of the promise as if it were a synchronous operation
+
+               🖥️ 
+     
+
+🔵What is the use of 
+`const json = await data.json();` in getRestaurants??
+
+it pauses the execution of the function getRestaurants, until a 
+promised is settled, that is until the const json, receives
+the data.json() value.
+It pauses the function until the JSON data is parsed
+
+This sequential flow makes it easier to work with asynchronous 
+operations in a more synchronous-like fashion, improving code 
+readability and maintainability.

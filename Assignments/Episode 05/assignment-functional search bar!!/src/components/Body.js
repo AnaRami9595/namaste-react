@@ -5,11 +5,11 @@ import restList from "../../utils/mockData"
 const Body = () => {
 
     const [listOfRestaurants, setListOfRestaurants] = useState(restList);
-    const [input, setInput] = useState("Find a restaurant...");
+    const [input, setInput] = useState("Find restaurant...");
     const [filteredResults, setFilteredResults] = useState([]); // New state for filtered results
 
 
-    const fetchData = (value) => {
+    const fetchD = (value) => {
         const results = restList.filter((res) => {
             return value && res.data.name && res.data.name.toLocaleLowerCase().includes(value.toLowerCase());
             //⬆️ Filter the results inside resList according to name
@@ -19,7 +19,7 @@ const Body = () => {
     }
 
     const handleSearch = () => {
-        const results = fetchData(input);
+        const results = fetchD(input);
         setFilteredResults(results);
         //⬆️Update filtered results state
         setListOfRestaurants(filteredResults)

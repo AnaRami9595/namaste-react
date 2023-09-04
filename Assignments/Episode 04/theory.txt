@@ -12,7 +12,7 @@ and maintainable.
 🔴{Titlecomponent} vs {<Titlecomponent/>}
 vs {<Titlecomponent><Titlecomponent/>}
 
-🔴How can I write coments in JSX?
+🔴How can I write comments in JSX?
 If you want to comment something in JSX you need 
 to use JavaScript comments inside of Curly braces
 like {/*comment here*/}. 

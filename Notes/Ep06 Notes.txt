@@ -1,0 +1,417 @@
+
+🔴Difference between Software architecctures
+
+🪨What is Monolith Architectures?
+It is an outdated software architecture that is 
+huge, it includes the API, the UI, backend, frontend
+all inside a same server.
+
+And even if we wanted a single change it needed to be
+compilled and re-render entirely, it was very chuncky
+
+
+🔸Microservice Architectures
+
+In this model, we have different services for 
+different jobs, separated. When they are working
+toghether they make a big app. They need to 
+interact with eachother for the App to work.
+
+💡This is known as Separation of Consoles
+And single responsability principles, when every
+service has its own jobs.
+
+In this case our project is an UI service
+
+    🤔How are this services connected
+    All of them run on their un specific ports
+    just like ours is runing inside. They make
+    a call to external URLS🌍
+
+    http://localhost:1234
+    BackEnd can be run in a port 900, 
+    etc
+
+🔴Let's make our own external calls:-----
+
+Using mock data was very useful, but how can we call
+actual external data??
+
+They are 2 aproaches to get DATA from Backend
+
+ - First Approach:
+    🔹Page Loads ➡️ Call to API📱 ➡️ RENDER UI🖌️
+    //As soon as the page loads, our code makes
+    a call to an API and renders the UI
+
+ - Second Approach✅
+    🔹Page Loads ➡️ RENDER UI🖌️ ➡️Call to API📱➡️ RENDER App With new DATA
+
+In REACT⚛️ We will always be using the second Approach
+It is a better UX. Because we won't have to wait until the
+the UI loads copletely to see something in the page.
+
+We are RENDERING🖌️ twice but it doesn't matter Because
+we are rendering very fast.
+
+
+🔴------The useEffect💥 HOOK🪝-----
+
+The Syntax:
+
+                🖥️useEffect(()=>{}, [])
+                //It has 2 arguments: 
+                //a CB function and 
+                //a Dependency⛓️ Array
+
+It will execute when the render cycle is finished, it will call the
+CB function
+
+We import it inside our Body.js Component🧩 like this: 
+
+               🖥️ import { useEffect, useState } from "react";
+
+               useEffect(()=>{
+                console.log("useEffect💥 called")
+               }, [])
+               //as soon as our Body.js Component🧩, it will
+               //print in the console
+
+
+useEffect💥 will be useful when we Fetch🐕 the data using the
+Second Approach✅ described earlier.
+
+🔴------ Fetch🐕 -----
+
+fetch🐕 is a method provided by the Browser's🌍 Javascript engine
+it is a function with super powers that allows us to get external
+Data from APIs📱 In this case we are going to Fetch🐕 our data
+AFTER our Component🧩 renders, so we will call the function inside
+useEffect💥
+
+               🖥️useEffect(()=>{
+                 fetchData()
+                }, [])
+
+And our Fetch data method will look like this. Instead of using
+the .then method, we'll use the `async` keyword.
+
+    🕺🏾TANGENT!!
+        The async⌛ keyword:
+        When using Fetch🐕 you may encounter the async⌛keyword.
+        The async⌛ keyword is used in combination with the 
+        await🚏 keyword to handle asynchronus operations in a
+        more readable and sequential manner
+
+            - async⌛
+              When you declare a function as `async` it means
+              that the function will always return a Promise💍
+              Inside an async⌛ function you can use await🚏
+              to pause the exection of the function, until an 
+              asynchronous operation, like a fetch🐕 request
+              is completed. This allows you to write asynchronous
+              code in a more synchronous style, easier to read.
+
+            - await🚏
+              This keyword it can only be used inside an async⌛
+              funtion. It tells JS🟨 to wait for the Promise💍
+              to resolve and return its result before proceding
+              with execution of the code. 
+              In the context of a fetch🐕 request, using await🚏
+              allows you to wait for the response before handling
+              it.
+
+Inside our code we will use the async⌛keyword like this:
+
+                🖥️const fetchData = async () => {
+                const data = await fetch("swiggy/api-link.com"
+                );
+                const json = await data.json();
+                console.log(json)
+                }
+
+                //However this doesn't work and generates 
+                an Error 😱 because the browser🌍 is blocking
+                us for getting an external API
+
+                //❌Error "Access to fetch has been blocked by 
+                CORS policy"
+
+                Our Browser🌍 chrome is not allowing us to call
+                swiggy's API from our server. If there is an
+                origin mismatch.
+
+  🤔How can we avoid blockers?? In this case we can install
+  a chrome extention to avoid CORS, however since the API seems
+  to be changing all the time, I will be using for this episode
+  a mock json server created by Aditya Shahare 
+  (https://github.com/aditya1819) who will help us to get the data
+  that we need 
+
+
+🔴------ Loading⏳ screen -----
+
+Instead of a "loading" legend, the best practice is to load a 
+Shimmer UI quickly, this
+is a fake UI that works as a place holder for
+the actual data. 
+
+In this case we will present fake cardss to the 
+user. 
+Let's make a new Component🧩 to create this UI.
+Under the fetch data function: 
+
+
+            🖥️if (!listOfRestaurants.length) {
+            return <Shimmer />
+             }
+            //We are doing some conditional RENDERING🖌️
+            that means that we will render the cards Under
+            the condition that the array doesn't have contents
+            to show
+            //<Shimmer /> contains a Component🧩 that is 
+            now inside our src folder full of fake gray
+            cards that will show on the page when is Loading⏳
+        
+
+      💡CONDITIONAL RENDERING🖌️ is a jargon in the industry
+
+
+      You can also use the ternary operator:
+
+            🖥️return !listOfRestaurants.length ? <Shimmer /> : (
+              <div className="body">
+              ...
+            )
+
+
+
+🔴------ REVIEW: useState☁️ and Login Feature-----
+
+Now that we have render a page let's ask ourselves, why do we
+even need the useState☁️ variable? can we do the same thing 
+creating a local JS🟨 variable and a function to change it Under
+certain conditions 🤔 Let's create a new feature to demostrate
+it's usefulness.
+
+  That will be a login/log out button that changes when pressed
+  inside header and try to make it change with normal JS🟨
+
+              🖥️const Header = () => {
+
+              let btnName = "Login"
+              return (
+              <div className="header">
+                ...
+                    <button className="btn-login"
+                     onClick={() => {
+                        btnName = "Log out"//◀️Trying to change name
+                        console.log(btnName)
+                    }}
+                    >{btnName}◀️displaying the name
+                    </button>
+                ...
+                </div>
+              );
+            }
+
+  However this did not work, and instead of changing the UI
+  only logged the new name in the console. Why? 🤔
+
+  This is because the variable got updated, BUT the UI did not❗
+  The button did not have a refresh.
+  this is why JS🟨 Normal variables don't work in JSX, if you
+  want to make your Component🧩 dinamic, we use state☁️ variables.
+
+
+  Now let's implement useState☁️ in our button. First, let's try 
+  to use it like this just to see what happens:
+
+              🖥️const [btnNameReact] = useState("Login")
+              //⬆️at this point, this will work as a normal variable
+
+              🖥️const [btnNameReact, setBtnNameReact] = useState("Login")
+              //But now, with the second argument, we can change the 
+              state☁️ of our button using that function 
+
+              🖥️<button className="btn-login" onClick={() => {
+                        setBtnNameReact("Log out")👈
+                        console.log(btnName)
+                    }}
+                    >{btnNameReact}
+                    </button>
+
+  whenever our state ariable changes, REACT⚛️ refreshes the Component🧩
+  immediately. 
+
+  🤔Is REACT⚛️ refreshing the whole header or only the button?🤔
+  It will re-render the whole header Component🧩 ❗❗❗❗❗❗
+
+  🤔But how can we modify "btnNameReact" if it's declared as a const
+  variable?🤔
+  Whenever it update the value, REACT⚛️ is calling the Header functiona
+  once again and now btnNameReact will be a NEW VARIABLE, with a new
+  value. The Fiber algorithm is finding the diff with the old UI and the
+  new UI🖌️ and finding the only the button needs to change. This is part 
+  of the reconciliation 🫂 process.
+
+  Let's complete the button functionality to change it every time we 
+  click on it:
+
+              🖥️ <button
+                        className="btn-login"
+                        onClick={() => {
+                            btnNameReact === "Login"◀️
+                                ? setBtnNameReact("Logout")◀️
+                                : setBtnNameReact("Login")◀️
+                            console.log(btnName)
+                        }
+                        }
+                    >
+                        {btnNameReact}
+                    </button>
+
+🔴------ Building a search bar 🔎-----
+
+  1️⃣First let's create a state☁️ variable named "searchText"
+  and bind it to our input area on the 🔎search bar.
+
+              🖥️const [searchText, setsearchText] = useState("");
+
+                <div className="search">
+                    <input type="text" placeholder="Type a meal..."
+                        value={searchText}◀️
+                        onChange={() => {
+                        }}
+                    />
+
+
+  2️⃣Now we write some code to the search🔎 button to make a change on
+  our searchText:
+
+              🖥️ <button className="btn"
+                        onClick={() => {
+                            console.log(searchText)
+                        }}
+                  >
+
+              //tis is supposed to log the searchText inside the 
+              console whenever we click it. However, when we try
+              to write something in the input box, we can't!😱
+              🤔Why???
+
+              The input box will not change unless we change the
+              searchText❗❗❗ we can do that with onSearch
+
+
+  3️⃣Let's add an event handler, onSearch with the e object 
+
+                🖥️<input type="text" placeholder="Type a meal..."
+                    value={searchText}
+                    onChange={(e) => {👈
+                        setsearchText(e.target.value)
+                    }}
+                    />
+
+
+                //Now it logs our searchText to the console✅
+                //💡Whenever our state☁️ variable updates, the
+                //WHOLE Component🧩 is getting re-render🖌️❗❗
+
+
+      💡Whenever a state variable updates, the wole Component🧩
+      RE-RENDERS🖌️. In this case, is re-rendering everything BUT
+      ONLY updating the input box, thanks to the diff process❗
+
+      INTERVIEW QUESTION🎙️: Why is React fast?
+      Because it uses React Fiber, which is an algorithm that 
+      that does effective DOM📄 Manipulation that creates a 
+      VIRTUAL DOM📄 and using Diffing☯️ then indentifies
+      the minimal number of changes to match the new state☁️,
+      then it re-renders🖌️ the whole Component🧩 but only
+      updates the necessary changes❗❗❗❗❗
+
+
+  3️⃣Let's now apply the filter logic to our search button 
+
+
+                  🖥️<button className="btn"
+                  onClick={() => {
+
+                      const filteredRestaurants = listOfRestaurants.filter((res) =>
+                          res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                      )
+                      setListOfRestaurants(filteredRestaurants)
+                  }}
+              >
+                  Search!</button>
+    
+                //However we have a bug🐞 here: when we filter our 
+                //list a first time it works, but when we use it again
+                //since our listOfRestaurants has been updated, we 
+                //are only searching among the results that were
+                // previously filtered😱
+                
+          🤔What can we do to reset our listOfRestaurants after we
+          use our search🔎 bar so it's useful again??
+
+
+
+  4️⃣Let's create a separate state☁️ variable to host our filtered 
+  results so we don't modify our original list
+
+
+        🔸New state variable for the filtered array:
+
+                  🖥️const [filteredRestaurants, 
+                  setFilteredRestaurants] = useState([])
+
+        🔸Set it's value as soon as we fetch the data:
+  
+                  🖥️const fetchData = async () => {
+                  const data = await fetch(
+                      "http://localhost:3000/hotels");
+
+                  const json = await data.json();
+
+                  setListOfRestaurants(json);
+                  setFilteredRestaurants(json);👈
+                  };
+
+        🔸And now let's apply the logic for the search🔎 button
+        to  filter the listOfRestaurants array 
+        we will set the new value of filteredRestaurants
+        to the new "filtered" variable
+        This means we can continue using the search button 
+        without changing the original list, since we are not
+        updating the listOfRestaurants, only the filteredResults
+
+                  🖥️ <button className="btn"
+                        onClick={() => {
+                            const filtered = listOfRestaurants.filter(
+                              (res) =>
+                                res.info.name.toLowerCase().includes(
+                                    searchText.toLowerCase())
+                            )
+                            setFilteredRestaurants(filtered)
+                        }}
+                    > Search!</button>
+
+        🔸Don't forget to change the cars container so it only
+        displays the filteredRestaurants.
+
+                  🖥️ <div className="res-container">
+                      {filteredRestaurants.map(restaurant => (
+                        <RestaurantCard key={restaurant.info.id}
+                          resData={restaurant} />
+                       ))}
+                      </div>
+
+        🔸so we essentially created a copy of listOfRestaurants
+        in order to modify it without messing with the original
+        data!!
+
+
+        💡❣️Life lesson: CODE SLOW, question yourself every
+        line, The people that code faster, take a long time
+        to debug. ❣️
