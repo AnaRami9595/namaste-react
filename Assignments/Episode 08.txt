@@ -1,0 +1,270 @@
+🟣What is the "super" keyword and
+what do we always need to use it when passing props
+in react when we use 🎩Class components🧩?
+
+
+✍️Theory
+
+• How do you create Nested Routes with react-router-dom 
+cofiguration?
+
+    We can use createBrowserRouter() like we have done 
+    earlier in our app, but we can also do it organizing
+    our Routes🛤️ in a hierarchical manner. 
+
+    Here are the steps:
+
+        1️⃣Importing the necessary Components🧩 and 
+        Functions
+
+            //🖥️
+            import { BrowserRouter as Router, 
+            Route, Switch, Link } from 'react-router-dom';
+            🖥️
+
+
+        2️⃣Define your route components that you want to nest 
+        within other routes.
+        3️⃣And create your main layout component that will 
+        serve as the container for your nested routes. This
+        component should contain a <Switch> component and
+        The <Route> components that represent your top-level
+        routes:
+
+            //🖥️
+            function MainLayout() {
+            return (
+                <div>
+                <h1>Main Layout</h1>
+                <nav>
+                    <ul>
+                    <li>
+                        <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                    <li>
+                        <Link to="/profile">Profile</Link>
+                    </li>
+                    </ul>
+                </nav>
+
+                {/* Nested routes go here */}👇
+                <Switch>
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/profile" component={Profile} />
+                </Switch>
+                </div>
+            );
+            }🖥️
+
+        4️⃣After you create the nested components🧩, for example
+        Dashboard and Profile, we make their own nested components:
+
+
+            //🖥️
+            function Dashboard() {
+            return (
+                <div>
+                <h2>Dashboard</h2>
+                <nav>
+                    <ul>
+                    <li>
+                        <Link to="/dashboard/messages"
+                        >Messages</Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard/settings"
+                        >Settings</Link>
+                    </li>
+                    </ul>
+                </nav>
+
+                {/* Nested routes within Dashboard */}👇
+
+                <Route path="/dashboard/messages" 
+                component={Messages} />
+
+                <Route path="/dashboard/settings" 
+                component={Settings} />
+                </div>
+            );
+            }
+
+
+• Read about createHashRouter, createMemoryRouter 
+from React Router docs. 
+
+    🔹createHashRouter:
+    Is used to create a router that uses URL hashes to handle client side
+    routing. It's an alternative to the standard "Browser router" and
+    it's useful in situations qhere you don't have server-side
+    configuration for handling client-side routing.
+
+    Instead of using regular URLs🌐 like "example.com/myroute"
+    hash based routes with a hash symbol (#)  as a fragment
+    identifier, like : example.com/#/myroute.
+    The advantage of using hash routing is that it doesn't required
+    server-side configuration since everything after the  `#` is
+    only interpreted on the client side.
+
+
+            //🖥️
+            const HashRouter = createHashRouter();
+
+            const Routes = () => (
+            <HashRouter>
+                <Route path="/" element={<App />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+                </Route>
+            </HashRouter>
+            );
+
+
+    🔹createMemoryRouterÑ
+    Is another routing component provided by the React Router library
+    it is used for in-memory routing and is particularly useful for 
+    scenarios, where you want to perform routing your application
+    without changing the browser;s URL🌐 or using actual browser
+    HISTORY
+
+    Unlike the traditional routers like BrowserRouter our 
+    HashRouter, createMemoryRouter doesn't manipulate the
+    browser's URL🌐, Instead it mantains a routing HISTORY
+    in memory. This could be helpful for scenarios like form 
+    wizards, multi-step processes or any situation wher you need to 
+    manage routing without changing the URL🌐
+
+    It doesn't interact with Browser History 
+
+            //🖥️
+            import { createMemoryRouter, 
+            Route, Link, 
+            Outlet } from 'react-router-dom';
+
+            const App = () => (
+            <div>
+                <nav>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
+                </ul>
+                </nav>
+                <hr />
+                <Outlet /> {/* This is where route components are rendered */}
+            </div>
+            );
+
+            const MemoryRouter = createMemoryRouter();
+
+            const Routes = () => (
+            👉<MemoryRouter>
+                <Route path="/" element={<App />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+                </Route>
+            </MemoryRouter>
+            );
+
+            export default Routes;
+
+• What is the order of life cycle method calls in
+ Class Based Components 
+
+    1. Parent Component🧩 🧑‍🏭Constructor Function
+    2. Parent Component🧩 Render🖌️ Function
+    3. Children Components🧩 🧑‍🏭Constructor Functions
+    4. Children Components🧩 Render🖌️ Functions
+    5. Children Components🧩 componentDidMount🎠method
+    6. Parent Component🧩 componentDidMount🎠method
+
+ 
+ 
+• Why do we use componentDidMount?
+    We use it to make API calls after the 
+    components🧩 renders🖌️ in the page
+
+• Why do we use componentWillUnmount? 
+Show with example
+    It was used in class components to perform cleanup tasks or
+    side effects just before a component was removed from the 
+    DOM📄. It was part of the class component's lifecycle and
+    provided an opportunity to unsuscribe from event listeners
+    clear timeouts or intervals, release resources or perfoorm
+    any other necessary cleanup.
+
+    In the following example, we have a 🎩Class Component
+    that starts an interal when it mounts and clears the
+    interval when it unmounts. The componentWillUnmount
+    method ensures we clean up resources and prevent
+    memory leajs when the component is not longer needed:
+
+            //🖥️
+            import React, { Component } from 'react';
+
+            class ExampleComponent extends Component {
+            constructor() {
+                super();
+                this.state = {
+                someValue: 0,
+                };
+                this.intervalId = null;
+            }
+
+            componentDidMount() {
+                // Start an interval when the component mounts
+                this.intervalId = setInterval(() => {
+                this.setState((prevState) => ({
+                    someValue: prevState.someValue + 1,
+                }));
+                }, 1000);
+            }
+
+            componentWillUnmount() {
+                // Clean up the interval when the component is unmounted
+                clearInterval(this.intervalId);
+            }
+
+            render() {
+                return (
+                <div>
+                    <p>Some value: {this.state.someValue}</p>
+                </div>
+                );
+            }
+            }
+
+            export default ExampleComponent;
+
+    
+
+• (Research) Why do we use super(props) in constructor?
+
+    The super(props) call inside the constructor of a class
+    component is used to call the constructor of the parent 
+    class (i.e., the class that the current class is extending)
+    and pass the Props🥠 object to it. This is necessary when
+    you want to initialize the parent class properties or 
+    perform certain setup tasks that rely on the Props🥠
+    being passed to the component
+
+    It's considered a best practice to call super(props) in 
+    the constructor. This ensures that React can properly 
+    initialize the component and set up its internal state 
+    and behavior
+
+• (Research) Why can't we have the callback 
+function of useEffect async?
+
+    he callback function passed to useEffect cannot be declared 
+    as async because:
+
+    🔹 REACT⚛️ relies on the useEffect💥 callback's return
+    value to perform cleanup when the component unmounts or
+    when the dependencies change. If you declare the callback
+    as asnync, it will implicitly return a Promise💍 which
+    is not what REACT⚛️ spects. 
+    🔹It lieafs to unpredictable behavior.
+    🔹Render delay

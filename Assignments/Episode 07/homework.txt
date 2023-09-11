@@ -1,0 +1,122 @@
+🟢What are various ways to add images to our app? explain with code
+examples?
+
+    There are several ways to add images to a React app,
+
+    🔸Importing Images:
+     You can import images directly into your React components 
+     and use them as variables in your code.
+     First, make sure the images are placed within your project's 
+     source folder (e.g., src/images). Then, you can import 
+     and use them like this:
+
+                🖥️// Import the image
+                import myImage from './images/myImage.jpg';
+
+                // In your component
+                function MyComponent() {
+                return (
+                    <div>
+                    <img src={myImage} alt="My Image" />
+                    </div>
+                );
+                }
+
+    🔸Using Public Folder
+     For bigger pics. Place your images in the public directory 
+     (e.g., public/images). Then, you can reference them in your 
+     components like this
+
+                🖥️function MyComponent() {
+                return (
+                    <div>
+                    <img src="/images/myImage.jpg" 
+                    alt="My Image" />
+                    </div>
+                );
+                }
+
+    🔸Inline Images with Data URIs:
+
+                🖥️// Encode your image to base64
+                const imageDataURI = "data:image/png;base64,..."; 
+                // Replace with your image data
+
+                function MyComponent() {
+                return (
+                    <div>
+                    <img src={imageDataURI} alt="My Image" />
+                    </div>
+                );
+                }
+
+                //Remember to replace "data:image/png;base64,..." 
+                //with the actual base64-encoded image data.
+
+    🔸Css images:
+
+                🖥️.my-component{
+                    background: url("./images/search-background.jpg");
+                }  
+
+                    
+🟢What would happen if we do console.log(useState())?
+
+    It returns an array-like object  in the console that includes:
+    The current state value.
+    The function used to update the state.
+
+                🖥️  (2) [undefined, ƒ]
+                0: undefined
+                1: ƒ ()
+                    name: "bound dispatchSetState"
+                length: 2
+                [[Prototype]]: Array(0)
+
+
+    0 is the initial state value (because we provided 0 as the 
+    initial value).
+    dispatchAction() is the internal function React uses to 
+    update the state when you call the CB function in the args
+
+🟢How will useEffect behave if will don't add a dependency array?
+
+    Using useEffect💥 without a dependency⛓️ array💐 is useful 
+    when you want the effect to run on every render🖌️, regardless 
+    of any  specific dependencies⛓️. 
+
+    If the Dependency⛓️ Array💐 is empty, useEffect💥
+    is called only during the initial render🖌️ and only ONCE.
+
+🟢What is SPA?
+SPA stands for "Single Page Application." It is a web application or
+ website that interacts with the user by dynamically rewriting the 
+current page, rather than loading entire new pages from the server. 
+
+In summary, a Single Page Application (SPA) is a web application 
+that loads and interacts with content on a single HTML page, 
+dynamically updating the page's content without requiring 
+full page reloads. 
+
+Characteristics:
+
+    🔸 Single Page: In a SPA, there is typically only one HTML page
+       that serves as the application's entry point.
+
+    🔸 Client-Side Routing: SPAs often use client-side routing 
+        to simulate multiple pages or views within the single HTML page.
+ 
+    🔸 Dynamic Content Loading: Content updates, such as changing views 
+       or displaying new data, are done via JavaScript without requiring 
+       a full page reload.       
+
+
+🟢What is the difference between Client Side Routing 
+and Serer Side Routing?
+
+he key difference between client-side routing and server-side routing 
+is in how they handle navigation and URL changes. Client-side routing 
+updates content on the client side using JavaScript, providing a faster 
+and more responsive user experience but may have SEO challenges. 
+Server-side routing relies on the server to generate HTML for each page, 
+making it SEO-friendly but potentially slower for page transitions.

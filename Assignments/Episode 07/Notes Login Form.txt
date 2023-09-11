@@ -1,0 +1,20 @@
+🟠Create a Login Form using Library
+
+- First I created a New Login component
+and added a path in the router, linked the
+router to the "Login" button
+
+In the terminal:
+
+  > Install Material UI Library🟦
+    "npm install @mui/material @emotion/react @emotion/styled"
+
+  > Install Icons 
+    "npm install @mui/icons-material"
+
+  > Install Formik
+    "npm install formik --save"
+
+  > Install Yup
+    "npm i yup"
+    

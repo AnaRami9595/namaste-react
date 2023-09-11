@@ -1,0 +1,526 @@
+We will learn about routering today
+
+
+🟠 useEffect💥 HOOK🪝: diving deep
+
+
+        INTERVIEW QUESTION🎙️: When is useEffect💥 called?
+        is called after every time my Component🧩 renders🖌️ 
+
+        However the Dependency⛓️ array changes the behavior
+        of the render.
+        If the Dependency⛓️ Array💐 is empty, useEffect💥
+        is called only during the initial render and only ONCE.
+
+        🤔and if we put something inside the Dependency⛓️ Array💐?
+        Then useEffect💥 is called, everytime the Dependency⛓️
+        is updated
+
+
+🟠 useState☁️ HOOK🪝: diving deep --------------
+
+🔹Best Practices:
+
+Never set your useState☁️ variables outside the Component🧩
+that is using them, be careful❗
+It is used to create local variables inside the components
+
+Always try to call the useState☁️ variables in your top
+
+Never create your useState☁️ HOOK🪝 inside a conditional 
+statements. That could create inconsistencies in the future
+Use REACT⚛️ as it was intended. 
+
+Never create a state☁️ variable inside a for loop ❌Error
+
+The State variables are designed to be declared in their 
+Component🧩and be placed at the top of the page!
+
+🟠 Routes🛤️ --------------
+
+In order to use routes we will need a REACT⚛️ Dependency.
+An NPM design library
+
+
+            🖥️npm install react-router-dom
+
+🔷Let's create an About Page, using router
+
+
+Let's go to our root Component🧩 which will be our
+App.js Here we will create our Routing🛤️ configuration.
+
+        //at App.js
+        🖥️import { createBrowserRouter } from "react-router-dom";
+        //this ☝️ will create a configuration for us
+
+        //creating our router👇
+        const appRouter = createBrowserRouter()
+
+    🤔What is the configuration:
+    is the information that something will happen on
+    a specific route/path.
+
+    createBrowserRouter() takes a list of paths🌌.
+    Path is nothing but an object that contain 2 things,
+    the path and the Component🧩 that will contain.
+    Our configuration will look like this:
+
+            🖥️const appRouter = createBrowserRouter([
+                {
+                    path: "/",
+                    element: <AppLayout />
+                },
+
+                {
+                    path: "/about",
+                    element: <About />
+                }
+
+                ]);
+
+        //so it;s basically an array of objects,
+        each containing  a path and an element.
+
+    
+    🔹Let us now create our About.js component and then  
+    we will need to provide this configuration to 
+    RENDER🖌️. How do we do that? 🤔
+
+    We will need to import another Component🧩 from
+    react-router-dom
+
+            🖥️import { 
+                createBrowserRouter, 
+        👉      RouterProvider } from 
+                "react-router-dom";
+
+
+    🔹Earlier we were rendering our app directly with 
+
+            🖥️const root = ReactDOM.createRoot(
+                document.getElementById("root"))
+
+            root.render(<AppLayout/>)
+
+    🔹Now, instead of this, we will provide it using 
+    our router configuration:
+
+            🖥️const root = ReactDOM.createRoot(
+                document.getElementById("root"))
+
+            root.render(<RouterProvider router={👈
+                appRouter}/>)
+
+    🔹This will make our Router🛤️ work and now we can 
+    go to our About Section with the path 
+    "http://localhost:1234/about"
+
+
+    💡The recommended router for all REACT⚛️ Router web
+    projects is "createBrowserRouter". So please use it
+
+🔷Let's create another Component🧩, a "Contact" page 
+And an ❌Error page in case out user goes to a route
+that doesn't exist:
+
+For that we can add an "errorElement" to our router
+configuration.
+We will also create another Component🧩 inside our
+src📁 folder and import it to App.js to use it 
+like a Component🧩
+
+Our router will look like this:
+
+            🖥️const appRouter = createBrowserRouter([
+                {
+                    path: "/",
+                    element: <AppLayout />,
+                    errorElement: <Error/>👈
+                },
+
+                {
+                    path: "/about",
+                    element: <About />
+                },
+
+                {
+                    path: "/contact",
+                    element: <Contact />
+                },
+
+            ]);
+
+
+    🔹react-router-dom can also give us an additional
+    feature called useRouteError❌, which is a HOOK🪝
+
+    💡Whenever you see a function that starts with 
+    a "use" is a HOOK🪝. This is a convention used in
+    the industry
+
+    Using the useRouteError❌ will give us more 
+    information about the ❌Error and show it to
+    the user. We implement it like this inside 
+    our Component🧩 Error.js: 
+
+            🖥️import { 
+                useRouteError 
+                } from "react-router-dom";
+
+                const Error = () => {
+
+                    const arr = useRouteError();👈
+                    console.log(arr);👈
+                    return (
+                        <div className="error">
+                            <h1>Oops!</h1>
+                            <h2>Something went wrong!!</h2>
+                        </div>
+                    );
+                }
+
+            //this prints in the console"
+            "o routes matched location" when we try to 
+            access a non-existent path. And a RESPONSE🗨️ 
+            
+    We also get an ❌Error RESPONSE🗨️, wich is an object with 
+    information about the error that just happened :
+
+            🖥️ErrorResponse
+                data : "Error: No route matches URL \"/oosifjoiajf\""
+                error : Error: No route matches URL "/oosifjoiajf" 
+                internal : true
+                status : 404
+                statusText : "Not Found"
+                [[Prototype]]: Object
+                etc.
+                
+        //we can access this object properties to display information
+        to our user.⬇️
+        
+            🖥️const Error = () => {
+
+            const arr = useRouteError();
+            console.log(arr);
+            return (
+                <div className="error">
+                    <h3>{arr.status} {arr.statusText}</h3>👈
+                </div>
+                );
+            }                i
+
+        //This will display in the browser "404 Not Found"
+
+
+
+🟠2 Children🚸 Routes🛤️--------------
+
+We have created some Routes🛤️ but when we access them, our
+nav bar disappears, to make our website better it whould be 
+present in all our pages, right? instead of just disappearing
+completely and we needing to write in the direction bar to 
+access another Component🧩,
+
+
+In order to do that, our Components🧩 like Contactc and
+About, need to be placed as Children🚸 of our root🌱
+Component🧩. Once again we will use our Router🛤️
+to do that, using the property "children"🚸 to add the
+children components as a list inside our root🌱 component.
+
+
+                🖥️const appRouter = createBrowserRouter([
+                {
+                    path: "/",
+                    element: <AppLayout />,
+                    children: [👈
+
+                        {
+                            path: "/",
+                            element: <Body /> 👈
+                        },
+
+                        {
+                            path: "/about",
+                            element: <About />
+                        },
+
+                        {
+                            path: "/contact",
+                            element: <Contact />
+                        },
+                    ],
+                    errorElement: <Error />
+                 }
+
+                ]);
+
+            //👉Adding the Body Component🧩 to our children
+            list in order to use it later.
+
+
+    🔹Now we have our Routes🛤️ but how do we display them
+      in our layout? In order to be displayed inside the
+      Body Components🧩 they will need to fulfill certain 
+      conditions: 
+
+                🖥️const AppLayout = () => {
+                    return (
+                        <div className="app">
+                            <Header />
+
+                            {/*  If path === "/about: */}◀️
+                                <About/>👈
+                            {/*  If path === "/contact: */}◀️
+                                <Contact/>👈
+                            {/*  If path === "/": */}◀️
+                            <Body />👈
+                      </div>
+                    );
+                }
+
+    🤔But how do we get this to work?
+
+    🔹We will use another property from react-router-dom, the 
+    Outlet Component🧩. First we'll import it inside App.js
+
+
+                🖥️import { 
+                    createBrowserRouter, 
+                    RouterProvider, 
+                 👉 Outlet 
+                    } from "react-router-dom";
+
+
+    🔹And then we place it inside our AppLayout Component🧩:
+
+                    🖥️const AppLayout = () => {
+                        return (
+                            <div className="app">
+                                <Header />
+                                <Outlet />👈
+                            </div>
+                        );
+                    }
+
+            //💡Whenever there is a change in the path🌌
+            this outlet will be filled with one of the children
+            of `appRouter` according to the path🌌 of the page.
+
+            //The header will remain. REACT⚛️ Will replace
+            the contact in our page with the new jsx Code 
+
+
+    🔹Let's make our "contact", "about", ect buttons functional
+    inside our navbar
+
+    We will NOT be using anchor tags <a>❌❌❌
+    because the whole page will be refreshed.
+    We don't want to refresh, only go to a new path, luckily
+    REACT⚛️ can do that.
+
+
+    🔹"Link" from react-router-dom is a Component🧩 that will allow
+    us to do just that. First we import it:
+
+
+                🖥️import { Link } from "react-router-dom";
+
+
+    🔹And then use them to link to our path, here is
+    the syntax:
+
+               🖥️const Header = () =>{
+                <ul>
+                👉<li><Link to="/">Home</Link></li>
+                👉<li><Link to="/about">About</Link></li>
+                👉<li><Link to="/contact">Contact</Link></li>
+                   <li>Cart</li>
+                </ul>
+               }
+
+🟠 Routing part II 🛤️ --------------
+
+There's 2 types of Routing🛤️in web apps.
+
+    - Client Side Routing🛤️
+        The page renders🖌️ inside user's computer
+        it doesn't do any network calls, only to 
+        get the data from the API.
+        This is the one we are using. 
+
+    - Server Side Routing🛤️
+        The page rendered is coming from server
+
+🟠 Let's make Routing actually work 🛤️ --------------
+
+We will make different pages to different restaurants
+Are you excited???? That would show us how dynamic
+Routing🛤️ works!
+
+    🔹Let's create a Restaurant Menu Component🧩
+
+               🖥️const RestaurantMenu = () => {
+                    <div className="menu">
+                        <h1>Name of the Restaurant</h1>
+                        <h2>Menu</h2>
+                        <ul>
+                            <li>Food1</li>
+                            <li>Food2</li>
+                        </ul>
+                    </div>
+                }
+
+                export default RestaurantMenu;
+
+
+    🔹And now add its respective path to the  children routes:
+
+
+               🖥️const appRouter = createBrowserRouter([
+                {
+                    path: "/",
+                    element: <AppLayout />,
+                    children: [
+                        {
+                            path: "/",
+                            element: <Body />
+                        },
+
+                        {
+                            path: "/about",
+                            element: <About />
+                        },
+
+                        {
+                            path: "/contact",
+                            element: <Contact />
+                        },
+
+                        👉{
+                           path: "/restaurants/:resId",👈This will be dynamic
+                           element: <RestaurantMenu />
+                        },
+                    ],
+                    errorElement: <Error />
+                    }
+
+                ]);
+
+                //we will make a path that changes depending on the ID of 
+                the Restaurant, it will display a menu for each ID
+
+🟠 Creating a dynamic Restaurant Component🧩 --------------
+
+    🔹Inside our Restaurant Menu Component🧩 we are going to use
+     a menu from a restaurant using their ID in order to get the menu
+     Items. 
+
+        1️⃣First we will make a  state☁️ variable that will contain
+        the restaurant information: 
+
+            🖥️const [resInfo, setResInfo] = useState(null);
+
+        2️⃣Then we will use our useEffect💥 HOOK🪝 So we can
+        fetch the data only when the page is rendered for the 1st 
+        time. This will only work during the initial rendering
+        since we didn't add any Dependency⛓️ inside our Dependency⛓️
+        Array💐.
+
+            🖥️useEffect(() => { fetchMenu() }, []);
+
+        3️⃣Let's fetch the data from the restaurant using fetch()🐕
+        and setResInfo to the json RESPONSE🗨️. 
+
+
+            🖥️const fetchMenu = async () => {
+            const data = await fetch("http://localhost:3000/hotel/145611"
+            );
+            const json = await data.json();
+            setResInfo(json)
+            }
+
+        4️⃣Now let's:
+
+            🔹  🖥️if (!resInfo) return <Shimmer />
+
+                //Create a conditional statemment to display
+                //a shimmer in case data doesn't come up
+
+
+            🔹  🖥️ const { name, cuisines,  cost } = resInfo?.info;
+                    const { foodOptions } = resInfo
+
+                //Destructure some variables inside resInfo
+                //for convenience sake
+
+
+        5️⃣Now let's use the Destructured variables to display
+        in our Components🧩, and map the items in the menu
+        in order to show them as elements inside the <ul>
+
+              🖥️return (
+                <div className="menu">
+                    <h1>{name}</h1>👈
+                    <h3>{cuisines.join(", ")} - {cost} </h3>
+                    <h2>Menu</h2>
+                 <ul>{
+                    foodOptions.map((item) => 👈
+                    <li 
+                        key={item.card.info.id}>
+                        {item.card.info.name} - ₹{item.card.info.price}
+                    </li>)
+                    }
+                </ul>
+                </div>)
+
+🟠 useParams🏖️ HOOK🪝 --------------
+
+This is great and all but how we can display our items
+depending on the id of the restaurant?
+
+We will use another super power from REACT⚛️ Router🛤️ CALLED 
+useParams🏖️. First we will import it inside our RestaurantMenu
+Component🧩:
+
+
+              🖥️ import { useParams } from "react-router-dom";
+
+    🔹useParams() is a function that returns an object that includes
+    the parameters that were used in our paths🌌 before. In this case
+    we will use the resId in the createBrowserRouter() function inside
+    our App.js Components🧩
+
+              🖥️    const { resId } = useParams()
+                    console.log(resId)
+                    //logs the resId of the page we have
+
+
+    🔹Instead of hardcoding the link for the API we store it inside
+    a MENU_API variable and concatenate it to the resId variable.
+
+                🖥️  const fetchMenu = async () => {
+                        const data = await fetch(MENU_API + resId);
+                        const json = await data.json();
+                    setResInfo(json)
+                    }
+
+
+    🔹 Now that we are able to see the menu for each resId that is
+    displayed in our browser, let's apply a <Link> Components🧩
+    for each RestaurantCard that is displayed in our Home page.
+
+                🖥️ <div className="res-container">
+                {filteredRestaurants.map(restaurant => (
+                    👉<Link key={restaurant.info.id} to={
+                       👉 "/restaurants/" + restaurant.info.id}>
+                       👉 <RestaurantCard
+                        👉  resData={restaurant} />
+                    </Link>
+                ))}
+                 </div>
+
+              //💡KEY SHOULD BE INSIDE THE PARENT
+              //JSX ELEMENT ALWAYS, so we changed the key attribute
+              //inside the <Link> Element.
