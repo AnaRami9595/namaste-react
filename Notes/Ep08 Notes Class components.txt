@@ -449,3 +449,94 @@ a Dummy state☁️ variable so we can update it later:
     componentDidMount🎠 and useEffect💥 are completely different
     and are making different stuff behind the scenes, is not 
     a substitute
+
+
+ 🟠-----EXTRAS! componentWillUnmount() and setInterval⏲️-------  
+
+When changing pages within our page, we need to clean things out.
+
+For example, in our app, we are logging some things in the console
+inside our About.js🟨 component, but they remain there when I go
+from there to the Home.js🟨 component. 
+
+Let's try a setInterval()⏲️
+
+    🤔What is  setInterval⏲️?
+    Is a JS🟨 function that is used to repeatedly execute a specified
+    function or a block of code at a specified time interval. It allows 
+    you to create periodic, timed tasks or animations within your JS🟨
+    code. setInterval()⏲️ is part of the Web APIs provided by web 
+    browsers and is often used in web development for tasks like 
+    updating a clock, polling a server for data or creating animations
+
+
+
+                //🖥️Basic syntax:
+                setInterval(callback, delay, ...args);
+    
+    Callback: the function that you want to execute repeatedly at the
+    specified time interval. 
+
+    Delay: The time interval (in millisecons) at which the Callback
+    function should be executed
+
+    `...args` (optional): any aditional argument to be passed to the
+    callback function.
+
+
+    
+Inside componentDidMount🎠 od UserClass.js🟨 set this Interval:
+
+                //🖥️
+                setInterval(() => {
+                console.log("Namaste React OP")
+
+                }, 1000)
+
+    //This will start printing "Namaste React OP" in the console
+    at every second. And even if we change to another page, since
+    this is a single page application, it continues to print.
+
+    And if we return to About.JS🟨 the printing DOUBLES!! since
+    getting there automatically starts another interval when is 
+    mounted 😱
+    
+    💡That is a disadvantage of SPA, (Single page applications)
+    When your changing pages it is not reloading the page, it is
+    Just loading the components🧩 BAD THING❌❌❌
+
+    🎙️Interview Question!!
+    Why do we unmount things?? to avoid this. To clear things 
+    so they don't go on forever
+
+    🤔But how do we clear this Interval??
+    Using clearInterval()
+    Inside componentWillUnmount🚳
+
+
+    But how do we reference it if it's outside the scope of
+    componentWillUnmount🚳??
+    Puting the keyword "this" in front of our Interval" and
+    puting inside of a variable
+
+                    //🖥️
+                    this.timer = setInterval(() => {
+                    console.log("Namaste React OP")
+                    }, 1000)
+
+                    //remember that ALL the methods inside
+                    our class component🧩 share the `This`
+
+    Then we just reference our this.timer variable 
+    in clearInterval() inside componentWillUnmount🚳 
+
+                     //🖥️
+                       componentWillUnmount() {
+                        clearInterval(this.timer)
+                        console.log("component will unmount")
+
+                    }
+
+    Whenever we unmount our component, the interval will be cleared.
+    And when you go back to About.js🟨 the interval starts again.
+

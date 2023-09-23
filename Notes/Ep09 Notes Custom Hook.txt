@@ -1,0 +1,435 @@
+Single Responsability Principle 🐪
+
+The Single Responsibility Principle (SRP) is one of 
+the SOLID principles of object-oriented design.
+SRP states that a class or module should have only one
+reason to change, which means that it should have only
+one responsibility or job.
+
+Inside our app we have different components🧩 which ideally
+perform a single task
+
+Modularity means that you break down your code in 
+different chunks🍪 or modules. That makes them 
+more resusable, maintainable and testable.
+
+💡Rule of thumb: keep your components as light as 
+possible
+
+One tool that can help us achieve more modularity are
+Custom Hooks🪝
+a custom hook is a JavaScript function that allows you 
+to encapsulate and reuse logic or side-effects across 
+different components. Custom hooks are a powerful way 
+to share stateful logic without relying on class
+components or duplicating code. 
+
+In this lesson we will make a Custom Hook🪝
+
+🔴------ Making a Custom Hook🪝-----
+
+Our RestaurantMenu.js🟨 Component🧩 has 2 jobs:
+fetching the data from the API and displaying it to 
+the UI🖌️. 
+
+However, this doesn't obey the SRP🐪 very well, also
+how cool would that be if our RestaurantMenu.js🟨
+component would just be responsible of taking
+ ANY kind of restaurant data and displaying it without
+ worrying about fetching🐕 it or manage its own state???
+
+ We can achieve that with a custom HOOK🪝
+
+🔸Let's create our own custom Hook🪝 that will fetch the 
+Data and give it to our RestaurantMenu.js🟨 component
+
+    -Remember that a Hook🪝 is an utility function, that we will 
+    probably reuse, so in this case it will be appropiate to save
+    it inside our utils📁 folder.
+    We will name it using the convention of applying the prefix
+    "use", following the recommended convention. 
+
+    Inside our useRestaurantMenu.js🟨 we will write:
+
+                🖥️
+                import { useEffect, useState } from "react";
+                import { MENU_API } from "./constants";
+
+                const useRestaurantMenu = (resId) => {
+                
+                    const [resInfo, setResInfo] = useState(null)
+
+                     //fetchdata🐕:
+                    useEffect(() => {
+                        fetchData()
+                    }, [])
+
+                    const fetchData = async () => {
+                        const data = await fetch(MENU_API + resId);
+                        const json = await data.json()
+                        setResInfo(json)
+                    };
+
+                    return (resInfo);
+                }
+
+                export default useRestaurantMenu;
+                🖥️
+
+                //As you can see, inside this Hook🪝we fetch
+                //the required data to create the restaurant menu
+                //and store it inside a useState☁️ Variable to set
+                //it's value to our json data. We also export✈️ it
+                //so we can use it inside of our RestaurantMenu 
+                //Component🧩
+
+
+🔸Inside our RestaurantMenu Component🧩 we will import our 
+useRestaurantMenu Hook🪝in order to display the menu items to each
+of the restaurants
+
+                🖥️import Shimmer from "./Shimmer";
+                import { useParams 
+                } from "react-router-dom";
+                import useRestaurantMenu from "utils/useRestaurantMenu";
+
+                const RestaurantMenu = () => {
+
+                    const { resId } = useParams()
+
+                    const resInfo = useRestaurantMenu(resId)
+
+                    if (resInfo === null) return <Shimmer />
+
+                    const { name, cuisines, cost } = resInfo?.info;
+
+                    const { foodOptions } = resInfo
+
+
+                    return (
+                        <div className="menu">
+                            <h1>{name}</h1>
+                            <h3>{cuisines.join(", ")} - {cost} </h3>
+                            <h2>Menu</h2>
+                            <ul>
+                                {foodOptions.map((item) => <li key={
+                                    item.card.info.id}>
+                                    {item.card.info.name} - ₹{
+                                        item.card.info.price}</li>)}
+
+                            </ul>
+                        </div>)
+                }
+
+                export default RestaurantMenu;
+                🖥️
+
+                //Now this Component🧩 is only receiving the 
+                //resInfo thanks to the useRestaurantMenu Hook🪝
+                //and passing the value given by useParams
+                //in order to display the menu items depending on
+                //the restaurant.
+
+🔴------ Making a Second Custom Hook🪝-----
+
+In order to tighten our knowledge, let's create another custom hook 
+that will show our online/offline status depending if our internet
+is working 
+
+        💡Tips for writing a good custom Hook🪝
+
+         • First thing you should do is FINALIZE
+           the contract📜. That means specifying 
+           what is the input of the hook🪝 and what
+           is the Output of the Hook🪝
+
+
+🔸Our custom hook🪝 will be called useOnlineStatus📶 that will be 
+once again, inside our utils folder📁.
+
+In our contract📜we will be not requiring any parameters, that means
+that we will not ask to the component🧩 (or the caller☎️) for any data. 
+However, we will be returning the online status, that will be a boolean 
+value, returning a truthy value if the answer is online, and a falsy 
+if they don't have internet connection. And then export it
+
+
+                🖥️
+                const useOnlineStatus = () => {
+                //check if online, 
+                //return a boolean
+
+                return useOnlineStatus
+                }
+
+                export default useOnlineStatus;
+
+                🖥️
+                //this is like a sketch of our hook🪝
+                //what's missing is the logic to
+                //check if the user👤 is online or not
+
+
+🔸 In order to check if the user👤 is online or not, first we will
+create a state☁️ variable called "Online Status" so we can store
+the value and change it later
+
+For that we will be using an Event Listener👂 called online event. 
+That the browser🌍 has givento us already.
+
+We only want to apply this Event Listener👂 once, so in order to 
+achieve that we will import useEffect💥 with an empty Dependency⛓️
+array so we can apply it only after the first render🖌️
+
+Inside the useEffect💥 we will check the useOnlineStatus📶, 
+
+
+            🖥️import { useEffect, useState } from "react";
+
+            const useOnlineStatus = () => {
+
+                //save our online status inside a state variable
+                //with default value as "true"
+                //so we can change it's state and return it later👇
+
+                const [onlineStatus, setOnlineStatus] = useState(true)
+
+                useEffect(() => {
+                    //After our first render, if we are offline, we'll
+                    //change it's status to "false"👇
+                    window.addEventListener("offline", () => {
+                        setOnlineStatus(false)
+                    })
+
+                    //After our first render, if we are online, we'll
+                    //change it's status to "true"👇
+                    window.addEventListener("online", () => {
+                        setOnlineStatus(true)
+                    })
+
+                }, []);
+
+                //We return our state☁️ variable
+                return onlineStatus;
+            }
+
+            export default useOnlineStatus;
+
+
+🔸 Now let's put our hook🪝 to use and display a message to the 
+user👤 inside our Body.js🟨 component🧩. First we importe it. 
+Before the return keyword we'll add a conditional statement, if our
+online status is false, then we will return a message to the user 
+in the UI🖌️
+
+            🖥️//Inside Body.js🟨:
+            import useOnlineStatus from "../../utils/useOnlineStatus"
+            ...
+            const Body = () => {
+                ...
+                //save the returning value from the hook🪝
+                //inside a variable: 👇
+                const onlineStatus = useOnlineStatus()
+
+                //checking the value of our variable👇
+                if (!onlineStatus) {
+                    return (
+                        <h1>Looks like you're offline 😬</h1>
+                    )
+                }
+
+                //rest of the previous code🔽
+                return !listOfRestaurants.length ?
+                <Shimmer /> : (
+                    ...
+                )
+                        }🖥️
+                
+                //Now when the user👤is offline, our message
+                //will be displayed!!
+
+
+🔸In order to show the reusability of custom Hooks🪝, let's use the
+same logic of our useOnlineStatus📶 in order to add an "online"
+symbol in our navbar to check or network status at all times.
+
+Inside our Header.js🟨 component🧩 we'll create another <li>
+that will display our online status 
+
+            🖥️//Inside Header.js🟨:
+            ...
+            import useOnlineStatus from "../../utils/useOnlineStatus";
+            ...
+            //save the returning value from the hook🪝
+            //inside a variable: 👇
+            const onlineStatus = useOnlineStatus()
+
+            const Header = () => {
+                return (
+                    ...
+                    <div className="nav-items">
+                        <ul>
+                            <li>
+
+                            {//checking the val of our variable👇
+
+                            onlineStatus ? "🟢online" : "🔴offline"
+                            }
+                            </li>
+                    ...
+                    </div>
+                    ...
+                )
+            }
+
+
+🔴------Optimizing our app MORE-----
+
+        💡TANGENT!! Revision about Bundling📚
+        The problem with developing a big scale app is Compressing🗃️ all the files
+        into one. This is thankfully made with a Bundler📚, in this case, as we've 
+        seen, we are using Parcel📦.
+
+        Since we're using developer node, we have a main js🟨 file inside our dist📂
+        but when it's a Production👷🏻‍♀️ build, then the code looks all compressed and 
+        minified. Bundling📚 all the files in a single one.
+
+        🤔What is the problem with this?
+        Is it wrong to have a single Javascript🟨 File for everything?
+        Not really but as your app becomes more complex and detailed, The
+        size of that file increases and makes it heavy, therefore slow and
+        it would take a long time to load
+
+        So there's a time when having a single js🟨 file for the whole app becomes
+        contraproductive.
+
+        In this case we can use a process called Chunnking or 
+        Code Splitting
+
+🔴------Optimizing our app MORE-----
+
+What is chunking🍪 or code Splitting?
+
+Code Splitting, also known as chunking🍪, is a technique used in web development
+to optimize the loading performance of web applications. It involves
+breaking down a large js🟨 Bundle📚 (the compiled and minifiedd Javascript🟨
+code that contains all the application's code) into smaller, more 
+manageable pieces of code.
+
+You have too do bundling in a dynamic way
+
+Is like Uber that has cabs, food delivery and also grocery delivery, 
+inside the app you can find a link for the other cab app Component🧩
+and supermarket component🧩.
+
+Let's make a simulation of this inside our app, to learn more
+
+we'll call it Grocery.js🟨
+We'll create a new path for our component🧩 and assign a 
+link for it inside our Header.js🟨 component🧩
+
+How would we configure it so Grocey.js and all its components
+come from a different Bundle📚??
+
+Using lazy() loading😪
+
+
+🔴------Lazy loading😪-----
+
+Also known as 
+
+Chunking🍪
+Code Splitting
+Dynamic Bundling📚
+Dynamic import
+Lazy😪 loading
+On demand Loading
+
+
+This works like this, when our main component🧩
+loads, it will be not loading the actual code from
+our Grocery🛍️ Bundle📚.
+
+ONLY when I go to my Grocery🛍️ component, the code
+will actually work. That is known as Lazy loading😪
+or On-demand Loading.
+
+How would we do that. For starters, we will NOT 
+import our code like this:
+
+            🖥️//❌
+            import Grocery from "./components/Grocery";
+
+🔹Instead, we will use the 😪lazy() method that is given to us 
+by react. First we will import the Lazy😪 method it from React⚛️ 
+
+            🖥️//✅
+            import React, {lazy} from "react";
+
+            //And then, we import our component🧩.
+            //Lazy()😪 takes a callback function, 
+            //in this case it will be an ✈️import()
+            //method that takes the path of the 
+            //components🧩
+
+            🖥️//
+            const Grocery = lazy(() => import(
+                "./components/Grocery"))
+
+
+🔹And then we'll use it normally in our createBrowserRouter()
+as a path.
+
+            🖥️//
+            const appRouter = createBrowserRouter([
+            {
+            path: "/",
+            element: <AppLayout />,
+            children: [
+                ...
+                {
+                    path: "/groceries",
+                    element: <Grocery />
+                },
+                ....
+            ]}
+            ...
+                ])
+
+
+🔹Those are 2 line of code that are very powerful behind the scenes.
+
+Now on our main page when displayed, does not load our Grocery.js
+code until we visit it. and inside our dist📂 folder, we have a file
+with the code for Grocery🛍️ that is not in our components.
+
+Also, in the console of the browser🌍, it shows as a different js🟨
+file. 
+
+However, since takes a little to load, our html does not display
+and ends up showing our ❌Error component🧩, because React⚛️ is 
+impatient.
+
+    In order to tell it to Wait, we can use the Suspense👻 component🧩
+    that is already given to us, like React⚛️. First we import it,
+    just like we did with the Lazy😪 method: 
+
+            🖥️
+            import React, { lazy, Suspense } from "react";
+
+    Then we surround our Grocery🛍️ component🧩 Inside our Router🛣️
+    And as a fallback, we display for the user some JSX to indicate
+    to the user👤 that the component🧩 is loading.
+
+            🖥️
+            const appRouter = createBrowserRouter([
+                ...,
+            {
+                path: "/groceries",
+            👉 element: <Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>
+            }
+            ],
+            ...
+            )
+
+            

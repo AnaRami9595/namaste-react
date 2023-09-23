@@ -20,8 +20,8 @@ class About extends Component {
         return (<div className="about">
             <h1>About</h1>
             <h2>This is Namaste React series</h2>
-            <UserClass name={"First"}
-                location={"Dehradun (class)"} />
+            <User name={"First"} location=
+                {"Dehradun (functional)"}></User>
         </div>)
     }
 }
