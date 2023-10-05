@@ -38,16 +38,28 @@ const Body = () => {
 
     return !listOfRestaurants.length ? <Shimmer /> : (
         <div className="body">
-            <div className="banner">
-                <h2>What are you craving?</h2>
+            <div className="banner 
+            flex flex-col flex-wrap
+            justify-center 
+            items-center
+            bg-[url('./images/search-background.jpg')] 
+            bg-center bg-cover
+            z-10 h-80
+            my-2">
+                <h2 className="text-white text-4xl font-semibold
+                my-8
+                [text-shadow:_0_2.5px_0_rgb(0_0_0_/_50%)]">What are you craving?</h2>
                 <div className="search">
-                    <input type="text" placeholder="Type a meal..."
+                    <input className="rounded-sm p-1 w-60"
+                        type="text" placeholder="Type a meal..."
                         value={searchText}
                         onChange={(e) => {
                             setsearchText(e.target.value)
                         }}
                     />
-                    <button className="btn"
+                    <button className="btn
+                    text-white bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2
+                    mx-2"
                         onClick={() => {
                             const filtered = listOfRestaurants.filter((res) =>
                                 res.info.name.toLowerCase().includes(
@@ -60,7 +72,8 @@ const Body = () => {
                 </div>
                 <div className="filter-button">
                     <button
-                        className="filter-btn"
+                        className="filter-btn
+                        text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         onClick={() => {
                             const filteredList = listOfRestaurants.filter(
                                 (res) => res.info.avgRating > 4
@@ -73,7 +86,9 @@ const Body = () => {
                 </div>
             </div>
 
-            <div className="res-container">
+            <div className="res-container
+            flex  flex-wrap justify-center
+            ">
                 {filteredRestaurants.map(restaurant => (
                     <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
                         <RestaurantCard

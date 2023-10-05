@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;600;700;900&display=swap');
+
+* {
+    box-sizing: content-box;
+    font-family: "Mulish";
+    color: #141414;
+}
+
+/*Header, Logo, nav Elements */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid white;
+}
+
+.logo-text {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text>p {
+    padding-left: 5px;
+    font-weight: 900;
+}
+
+.logo {
+    width: 55px;
+}
+
+.nav-items {
+    padding-right: 5%;
+}
+
+.nav-items>ul {
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-items>ul>li {
+    padding: 10px;
+    font-family: "Mulish";
+}
+
+.btn-login {
+    background-color: transparent;
+    border: 2px solid #fb8823;
+    border-radius: 5px;
+    color: #fb8823;
+    font-weight: 800;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #fb9323;
+    color: white;
+}
+
+.body {
+    background-color: white;
+}
+
+.btn-login:active {
+    border: none;
+    background-color: #fbc123;
+    box-shadow: 2px 2px 3px #141414;
+}
+
+/*Banner, Search Bar, Search and filter Buttons */
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 300px;
+    margin-bottom: 10px;
+    background: url("./images/search-background.jpg")no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.banner>h2 {
+    color: white;
+    text-shadow: #141414 2px 3px;
+}
+
+
+input {
+    border: none;
+    border-radius: 4px;
+    height: 60%;
+    width: 22em;
+}
+
+input:placeholder-shown {
+    font-size: 10px;
+    font-style: italic;
+    opacity: 0.9;
+    color: grey;
+}
+
+.btn {
+    width: 7em;
+    background-color: #fb8823;
+    color: white;
+    opacity: 0.95;
+    font-family: "Mulish";
+    font-weight: 700;
+    border: none;
+    border-radius: 5%;
+    padding-top: 2px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    margin: 5px;
+    cursor: pointer;
+
+}
+
+.btn:hover {
+    background-color: #fb9323;
+}
+
+.btn:active {
+    background-color: #fbc123;
+    box-shadow: 2px 2px 3px black;
+}
+
+.filter-btn {
+    color: white;
+    background-color: #cb3c34;
+    opacity: 0.95;
+    font-weight: 900;
+    font-size: 11px;
+    margin-top: 5px;
+    cursor: pointer;
+
+    font-weight: 400;
+    border: none;
+    border-radius: 10%;
+    padding: 3px 16px;
+}
+
+.filter-btn:hover {
+    background-color: #ff3131;
+}
+
+/*Cards container and individual cards*/
+
+.res-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.res-card {
+    padding: 5px;
+    margin: 5px;
+    width: 160px;
+    border-radius: 5%;
+
+}
+
+.res-card:hover {
+    box-shadow: -1px 1px 16px 2px rgba(114, 134, 151, 0.98);
+    -webkit-box-shadow: -1px 1px 16px 2px rgba(114, 134, 151, 0.98);
+    -moz-box-shadow: -1px 1px 16px 2px rgba(114, 134, 151, 0.98);
+}
+
+.res-logo {
+    width: 100%;
+    border-radius: 10%;
+}
+
+.res-card>li {
+    font-size: 12px;
+    list-style-type: none;
+    justify-content: space-between;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.shimmer-card {
+    width: 150px;
+    height: 150px;
+    background-color: lightgrey;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+
+/*Login Form*/
+
+.login {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    border-radius: 10px;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+}
+
+.form input {
+    outline: 0;
+    background: #f2f2f2;
+    border: 0;
+    border-radius: 5px;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form input:focus {
+    background: #dbdbdb;
+}
+
+.form button {
+    font-weight: 800;
+    text-transform: uppercase;
+    outline: 0;
+    background: #fb9323;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form button:active {
+    background: #fb9323;
+}
+
+.form span {
+    font-size: 40px;
+    font-weight: 700;
+    color: #fb9323;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.form p.error {
+    margin: 0 0 10px 10px;
+    text-align: left;
+    font-size: 10px;
+    color: red;
+}
+
+/*user cards*/
+
+.user-card {
+    padding: 10px;
+    border: 1px solid black;
+
+}

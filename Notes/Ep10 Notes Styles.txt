@@ -1,0 +1,136 @@
+different ways to style an app 
+
+🟣-----CSS libraries 🍉------
+Is a preprocessor scripting language that is interpreted
+or compiled into CSS, SassScript is the scripting language 
+itself. Sass consist of two syntaxes, the original syntax
+called "the indented syntax" uses a syntax uses to Haml.
+
+Sass givw
+According to Akshay, puting all the css in a single file
+is not a good way to write a big, production-ready 
+application.
+
+    🤔 And what is a good way used by developers?
+    several files with css using Syled components or
+    different libraries like:
+
+        - Ant design
+        - Syled components
+        - Bootstrap
+        - Material UI
+        - Bootstrap
+        - Chakra UI
+
+For this course we will be using Tailwind
+
+🟣-----Tailwind CSS 🎨------🟣
+
+1. Installing Tailwind🎨:
+
+            //💻In the terminal:
+            >npm install -D tailwindcss postcss
+            >npx tailwindcss init
+
+With this commands we will be installing postcss
+and tailwind css
+
+    🤔 Why does postcss mean?
+    PostCSS is a tool for transforming Css 
+    with Javascript Tailwind will transform it to
+    css behind the scenes.
+
+    🤔What does npx `tailwindcss init` mean?
+    it is executing the file for us. When we do that,
+    tailwind creates a `tailwind.config.js` file for us
+
+2. Configure PostCSS:
+
+In your project root section (at the same level 
+of index.html), let's create a file called 
+`.postcssrc`
+
+
+            //💻
+            {
+            "plugins": {
+                "tailwindcss": {}
+            }
+            }
+
+
+3. Configure your template paths
+
+According with the documentation we'll need to make
+a modification inside our `tailwind.config.js` file.
+Addong the paths to our content. 
+
+            //💻
+            module.exports = {
+            content: [
+            👉   "./src/**/*.{html,js,ts,jsx,tsx}",
+            ],
+            ...
+                        }
+
+    🤔What did we just add?
+    our "content" attribute🍈 takes an array that lists 
+    all the type of files in which I can use my 
+    Tailwind🎨, all the files with the extensions listed
+    will be affected by Tailwind🎨
+
+4. Add the Tailwind directives to your CSS
+
+I created a second css file that I will be using instead of my
+previous index.css file, I'll call it "indexTailwind.css"
+Inside it, followind the Tailwind🎨 documentation and the 
+class, we'll write 3 direcctives
+
+            //💻Inside indexTailwind.css:
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;.
+
+From now on, we won't be using our css file anymore, and 
+this is the only thing we will write inside our 
+indexTailwind.css file.
+
+🟣-----How Tailwind🎨 works------🟣
+
+Tailwind CSS is a utility-first CSS framework that allows
+you to rapidly build user interfacesdirectly in your HTML
+or JSX code. In 
+
+Now that we don't have any CSS connected to our app, we need to start
+adding styles to our code!
+
+To start, we need the header elements to be in a row. For that
+we can apply display flex with the class "flex" that will add 
+to our div. Also we need to separate the components🧩 with 
+space in between. For that we can use the class "justify-between"
+And we can also add a background color with the class "bg"
+In order to make the process more intuitive, I installed the 
+extension "tailwind IntelliSense" so I don't have to search for
+the appropiate classes in the website 
+
+
+
+            //💻Inside the Header.js component:
+            return (
+            <div className=flex justify-between bg-pink-200" >
+            ...
+            </div>
+                )
+
+🟣-----Pros and cons of Tailwind🎨------🟣
+
+    🔹Pros
+        • Don't have to move between css and component🧩 files
+        • After the initial learning courve, is quite useful
+        • Akshay likes it
+        • Light weight
+
+    🔹Cons
+        • Code looks messy and ugly
+        • syntax not quite as readable
+

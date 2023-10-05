@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet, Link } from "react-router-
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import RestaurantMenu from "../src/components/RestaurantMenu";
+import RestaurantMenu from "./components/RestaurantMenu";
 import Login from "./components/Login";
 import Shimmer from "./components/Shimmer";
 //import Grocery from "./components/Grocery";

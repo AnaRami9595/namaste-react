@@ -1,0 +1,182 @@
+---✍🏼Theory:---
+
+🔸Explore all the ways of writing css.
+
+    • Inline CSS 🏷️(using the <style> attribute🍈)
+
+    • Internal CSS 📩: 
+        Placed within the <style> element in the
+        HTML document's <head> section. It applies styles
+        to the elements on that specific page.
+
+    • External CSS📤
+        Is stored in separate ".css" files and linked to
+        HTML Docs using the <link> element. This is the 
+        most common way to write it
+
+                🖥️//Inside the <head> section:
+                <link rel="stylesheet" type="text/css" 
+                href="styles.css">
+
+    • CSS preprocessors🧮:
+        CSS preprocessors like SASS, LESS and Stylus extend
+        the capabilities of CSS by introducing variables,
+        functions, nesting and other features. 
+        Preprocessors are then compiled into standard CSS
+        before being used in web projects.
+
+            - Sass
+            - Less 
+
+    • Styled-components🧩
+        This library allow you to define CSS styles within your
+        JS🟨 Code. 
+        
+    • Frameworks and UI libraries📖:
+        Some web frameworks and UI libraries come with their own 
+        CSS styles and classes. Examples include Bootstrap, 
+        Material-UI, and Fundation.
+
+        You can customize the styles by adding classes and 
+        modifying the provided CWSS
+
+            - Bootstrap
+            - Material-UI
+            - Foundation
+            - Ant design
+            - Bootstrap
+            - Chakra UI
+
+
+🔸 How do we configure tailwind?
+
+    1. Installing Tailwind
+        >npm install -D tailwindcss postcss
+        >npx tailwindcss init
+
+    2. Configure your template paths
+    Inside of the `tailwind.config.js` file add the
+    paths and the type of files in which Tailwind🎨
+    can be applied
+
+        🖥️/** @type {import('tailwindcss').Config} */
+            module.exports = {
+            👉content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
+            theme: {
+                extend: {},
+            },
+            plugins: [],
+            }
+
+    3. Add the `@tailwind` directives dor each of 
+    Tailwind's🎨 layers to your main CSS file:
+
+        🖥️//
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+
+🔸 In tailwind.config.js, what does all the keys mean (content, theme, extend, plugins)?
+
+    • `content`:
+        The `content` key is used to specify which files should be 
+        scanned for classes by Tailwind CSS🎨 to generate the 
+        CSS for your project. By default Tailwind CSS🎨 scans
+        your HTML and JS🟨 Files but you can use this key to 
+        specify additional files or patterns
+
+            🖥️//Example:    
+
+            module.exports = {
+                content: [
+                    './src/**/*.html',
+                    './src/**/*.vue',
+                    './src/**/*.jsx',
+                ],
+                }
+
+    • `theme`:
+        The `theme` key is where you can customize aspects of your
+        project design system, such as colors, typography, spacing and more.
+        You can override default values and add your own custom values.
+
+            🖥️//Example: 
+            module.exports = {
+                theme: {
+                    extend: {
+                    colors: {
+                        primary: '#3490dc',
+                    },
+                    fontFamily: {
+                        custom: ['CustomFont', 'sans'],
+                    },
+                    },
+                },
+                }
+
+    • `extend`:
+        The extend key allows you to extend or add new utility classes
+        to Tailwind🎨. You can define additional CSS classes, pseudo
+        -classes or responsive variants.
+
+            🖥️//Example: 
+            module.exports = {
+                extend: {
+                    boxShadow: {
+                    'custom': '0 0 10px rgba(0, 0, 0, 0.2)',
+                    },
+                    screens: {
+                    'xl': '1280px',
+                    },
+                },
+                }
+
+    • `plugins`:
+        The `plugins` key is used to enable and configure third-party
+        plugins or custom plugins for Tailwind🎨. Plugins can add new
+        features, components or utilities to your project.
+
+            🖥️//Example: 
+
+            const plugin = require('tailwindcss/plugin');
+            module.exports = {
+            plugins: [
+                plugin(function ({ addUtilities }) {
+                const newUtilities = {
+                    '.rotate-90': {
+                    transform: 'rotate(90deg)',
+                    },
+                };
+                addUtilities(newUtilities, ['responsive', 'hover']);
+                }),
+            ],
+            }
+
+🔸Why do we have .postcssrc file?
+
+PostCSS Is a tool that can help us transforming CSS with JS🟨
+Here's why you might have a .postcssrc file when configuring
+Tailwind CSS:
+
+    • PostCSS Integration:
+        PostCSS is a CSS post-processor that allows you to use 
+        plugins to transform and optimize your CSS. Tailwind🎨
+        uses PostCSS as a part of its build process to 
+        generate the final CSS file.
+
+    • Tailwind CSS Plugins:
+        Many Tailwind🎨 projects use additional PostCSS
+        plugins to extend or modify the behavior of Tailwind🎨
+
+    • Configuration overrides:
+        While Tailwind🎨 Itself is configured in the 
+        tailwind.config.js file, some PostCSS-related Configuration
+        options such as which plugins to use or specidic transformations
+        are defined in the .postcssrc file.
+
+        
+
+
+---👩🏽‍💻Coding:---
+•
+Configure Tailwind and try to build your whole app using tailwind.
