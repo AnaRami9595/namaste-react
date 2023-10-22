@@ -1,10 +1,12 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
-import MenuItemCard from "./MenuItemCard";
+import RestaurantCategory from "./RestaurantCategory"
+import { useState } from "react";
 
 
 const RestaurantMenu = () => {
+    const [showIndex, setShowIndex] = useState(0);
 
     const { resId } = useParams()
 
@@ -12,10 +14,48 @@ const RestaurantMenu = () => {
 
     if (resInfo === null) return <Shimmer />
 
-    const { name, cuisines, cost, avgRating, sla } = resInfo?.info;
+    const { name, cuisines, avgRating, sla } = resInfo?.info;
 
     const { foodOptions } = resInfo
     const { deliveryTime } = sla
+
+    const mappedOptions = {}
+
+    foodOptions.forEach((o) => {
+
+        const cat = o.category;
+
+        if (mappedOptions[cat]) {
+            mappedOptions[cat].push(o);
+        }
+        else {
+            mappedOptions[cat] = [o];
+        }
+    })
+
+    /*  const categoriesList = [];
+    
+    for (const [key, value] of Object.entries(mappedOptions)) {
+         categoriesList.push(
+             <RestaurantCategory
+                 key={key}
+                 data={key}
+                 foodOptions={value}
+                 showItems={showIndex === 0} // Only the first category will have showItems as true
+             />
+         );
+     } */
+
+    const categoriesList = Object.entries(mappedOptions).map(([
+        key, value], index) => (
+        <RestaurantCategory
+            key={key}
+            data={key}
+            foodOptions={value}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
+        />
+    ));
 
 
     return (
@@ -42,16 +82,12 @@ const RestaurantMenu = () => {
 
 
             <hr></hr>
-            <div className="menuContainer flex  
-            flex-col
-            mx-28 
-            justify-center"
+            <div className=""
             >
                 {
-                    foodOptions.map(item => (
-                        <MenuItemCard key={item.card.info.id}
-                            menuItem={item} />
-                    ))}
+                    categoriesList
+                }
+
             </div>
 
         </div>

@@ -1,0 +1,51 @@
+
+Assignment 11 - Data is the new Oil
+🔹Theory
+
+• What is Prop Drilling🏗️?
+Prop drilling is a problem that originates
+when you pass props from parent to child component🧩
+ad infinitum. Also known  as prop passing or component
+chaining. This happens when you have a REACT⚛️
+hierarchy of REACT⚛️ components. This happens when
+you have a hierarchyof React components and data needs
+to be passed to a component🧩 that is deeply nested
+in the hierarchy 
+
+🔸 What is lifting the state up🔝?
+It is a way of resolving the Prop Drilling🏗️ problem, instead of 
+mantaining this shared state separately in each of the child
+components that need it, you moe the state managment to a common
+ancestor component🧩 that is above these child components🧩 in 
+the component tree.
+
+🔸 What are Context Provider and Context Consumer?
+Are key components🧩 of the Context API in React, which provides
+a way to pass datta, such as global state, down the component tree
+whitout hainf explicitly pass props through every intermediate
+component. These components🧩 are used for creating and consuming 
+context within you REACT⚛️ application.
+
+    •The Context Provider:
+    Is responsible for creeating a context and providing the
+    data (context value) to the child components🧩.
+
+    •The Context Consumer:
+    Context.Consumer is a component🧩 used within child
+    components to access the data provided by the Context Provider
+    It allows you to suscribe to the context and access the context
+    value that the provider supplies
+
+🔸 If you don't pass a value to the provider does it take the default value?
+Yes? yes,
+when you create a Context Provider🧧 using React.createContext and
+you don't specfy a value, the Provider🧧 will use the default value
+you provided when creating the context using createContext
+
+---Coding---
+• Practice React Context with code examples
+• Try out Nested Contexts
+References
+•
+Lifting State Up
+• React Context

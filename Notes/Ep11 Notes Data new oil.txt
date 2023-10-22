@@ -1,0 +1,770 @@
+🔴-----Data inside a REACT⚛️ app------
+
+It is important that we learn the concept of  
+higher order components🧩
+
+🔴-----Higher order components🧩------
+It is a Function that takes a component🧩 
+and returns a component🧩.
+At the end of the day is a normal JS🟨 function.
+
+It takes a component🧩 as an input, and then 
+modifies it with the function, enhancing it,
+tweaks it a little and then retuns it back as a 
+new component🧩
+
+🔴-----Creating a Higher order component🧩------
+We are going to use Higher order components🧩 to tweak
+a little our restaurantcards. We will use the property
+"is promoted" inside each restaurant data to put a banner
+on every restaurant with a "promoted status"
+
+                //🖥️Inside our Body.js
+                ...
+                return(
+                    <div className="res-container
+                flex  flex-wrap justify-center
+                ">
+                    {filteredRestaurants.map(restaurant => (
+                        <Link
+                            key={restaurant.info.id}
+                            to={"/restaurants/" + restaurant.info.id}>
+
+                logic here 👉{/*If the restaurant is promoted, then add a promoted
+                            label to it */}
+
+                            <RestaurantCard resData={restaurant} />
+                        </Link>
+                    ))}
+                
+                    </div>
+                 );
+
+🤔But how do we make a Higher order component🧩?
+
+🔹We will start inside our RestaurantCard.js🟨 component, adding
+  a High order function that will receive the function 
+  RestaurantCard as an input and return a new component that is the
+  exact same as RestaurantCard but with a label on top of it:
+
+                //🖥️Inside our RestaurantCard.js:
+                const RestaurantCard = (props) => {...
+                }
+
+                //Higher order component here:
+                //input: RestaurantCard.js
+                //output: a new component RestaurantCardPromoted:
+
+                👉const withPromotedLabel = (RestaurantCard) => {
+                return () => {
+                    return (
+                            <div>
+                                <label>Promoted </label>
+                                <RestaurantCard/>
+                            </div>
+                        )
+                    }
+                }
+
+                export default RestaurantCard;
+
+
+🔹Now let's go to our Body.js🟨 component🧩 and import the function
+  and create a variable with our function inside it
+
+                  //🖥️Inside our Body.js
+                ...
+                import RestaurantCard, { withPromotedLabel 
+                } from "./RestaurantCard";
+                ... 
+                const Body = () => {
+                    ...
+                      const RestaurantCardPromoted = withPromotedLabel(
+                        RestaurantCard)
+                    ...
+                }
+
+🔹Now let's write the logic that will make our RestaurantCard
+  components🧩 appear with a label or not depending if the 
+  property "promoted" is falsy or truthy. 
+  And don't forget to pass the props in any of the 2 cases so our
+  components🧩 can use the data we are fetching🐕!
+
+                  //🖥️Inside our Body.js
+                ... 
+                const Body = () => {
+                    ...
+                <div className="res-container
+                    flex  flex-wrap justify-center
+                    ">
+                    {filteredRestaurants.map(restaurant => (
+                        <Link
+                            key={restaurant.info.id}
+                            to={"/restaurants/" + restaurant.info.id}
+                        >
+                        👉{restaurant.info.promoted ? (
+                                <RestaurantCardPromoted resData={restaurant} />
+                            ) : (
+                                <RestaurantCard resData={restaurant} />
+                            )}
+                        </Link>
+                    ))}
+                </div>
+                }
+
+
+🔹And back to our RestaurantCard.js🟨, the props that we just passed
+to our RestaurantCardPromoted can be accesed inside the new component
+that our function withPromotedLabel() is returning!!
+
+Just as we passed props to our RestaurantCard component🧩 inside 
+Body.js🟨, we will pass the appropiate props inside the component🧩
+that withPromotedLabel() is returning, we are using it the same
+way as Body.js is now, with the same data passed as props.
+
+                  //🖥️Inside our RestaurantCard.js
+                  ...
+                  const withPromotedLabel = (RestaurantCard) => {
+                    👉return (props) => {
+                        return (
+                            <div>
+                                <label>Promoted </label>
+                              👉<RestaurantCard {...props}/>
+                            </div>
+                        )
+                    }
+                }
+
+🔴-----Controled👮 and uncontroled🦹 components🧩------
+All the react applications have 2 layers 
+
+    - the UI🖼️ layer:
+        - Powered by data layer
+        - It mainly consist on the JSX Code: the local vars,
+        the thigs that you use to modify your data using
+        JSX Is UI🖼️ layer
+
+    - the Data🧮 layer
+        - consist of the states, props, local variables,
+
+If you know how to manage the Data🧮 Correctly in your applications,
+they will be super fast.
+
+
+🔴-----Creating categories------
+Let's createe new features for our app, inside our
+data we can see different categories for our Menu Items,
+perhaps we can separate all the items per category.
+
+Essentially we will make an acordion🪗 type UI🖼️ 
+What Akshay did:
+
+    🔹Frst, inside RestaurantMenu he filtered all the cards
+    that contain the property `@type`. In our case, we are using
+    a server, so I think all the food options have a category.
+
+    🔹Insiide our RestaurantMenu component🧩 we will write the logicf
+    for our accordions, to do that, for each category we will need
+    to build an accordion. Time to create an Accordion🪗 component🧩.
+    First here's the logic for a SINGLE Accordion🪗 without 
+    looping all the data:
+
+                Let's start by making our component🧩:
+
+                🖥️//
+                const RestaurantCategory = (props) => {
+                    return(
+                        <div>
+                            {/*Header here*/}
+                            res category
+                            {/*Body here*/}
+                        </div>
+
+                    )
+                }
+
+                    export default RestaurantCategory
+
+
+    🔹Now let's import it to RestaurantMenu.js🟨 so we can make appear
+    a RestaurantCategory components🧩 for each category
+
+    🔹What I did is, inside RestaurantMenu, created an array of all the 
+    categories of a restaurant menu,
+    then, in order to avoid repetitions, I made a set of that array and 
+    pass i as props🥠 along with the entire foodOptions Array so I 
+    can use the data later, here's the code:
+
+                🖥️//Inside RestaurantMenu.js🟨
+                const RestaurantMenu = () => {
+                    ...
+                    const categories = foodOptions.map((item) => item.category)
+                    const setOfCategories = [...new Set(categories)]
+
+                    return (
+                        ...
+                          <hr></hr>
+                        <div className=""
+                        >
+                        👉{
+                            setOfCategories.map(category => (
+                                <RestaurantCategory key={s
+                                etOfCategories.indexOf(category)}
+                                    data={category}
+                                    foodOptions={foodOptions}
+                                />
+                            ))}
+                        
+                    </div>
+                    )
+                    }
+
+    🔹And Inside RestaurantCategory.js🟨 I imported the props
+    and display the names of the categories along with the number 
+    of Items that it has on the menu, I did this by looping through
+    foodOptions and comparing each category with each of the elements
+    of the set.
+
+                🖥️//Inside RestaurantCategory.js:
+                const RestaurantCategory = (props) => {
+
+                const { data, foodOptions } = props
+
+
+                const itemsPerCategory = (data) => {
+                    let sum = 0;
+                    foodOptions.forEach(element => {
+                        if (element.category === data) {
+                            sum += 1
+                        }
+                    })
+                    return sum
+                }
+
+                return (
+                    <div>
+                        {/*Header here*/}
+                        <div className="w-6/12 
+                        my-4 mx-auto
+                        bg-slate-200 p-4
+                        shadow-sm
+                        flex
+                        justify-between
+                        font-bold text-base ">
+                            <span>{data} ({itemsPerCategory(data)})</span>
+                            <span>🔽</span>
+
+                        </div>
+                        {/*Accordion Body missing here*/}
+
+                    </div>
+                    )
+                }
+
+    🔹❗❗❗F helped me correct the code for RestaurantMenu.js🟨
+    we created an empty object and mapped foodOptions to 
+    mappedOptions:
+    This code maps the array of objects into an object named
+    mappedOptions where keys are category names and values
+    are arrays of menu items for each category. This is done
+    to group menu items by their categories for rendering
+
+                🖥️//Inside RestaurantMenu.js🟨
+                const RestaurantMenu = () => {
+                    ...
+                    👉const mappedOptions = {}
+
+                    👉foodOptions.forEach((o) => {
+
+                        const cat = o.category;
+
+                        if (mappedOptions[cat]) {
+                            mappedOptions[cat].push(o);
+                        }
+                        else {
+                            mappedOptions[cat] = [o];
+                        }
+                    })
+                    ...
+                }
+
+    🔹❗❗❗Then we loop to Create `categoriesList`: A `categoriesList`
+    array is created by looping through the `mappedOptions` object
+    using `Object.entries`. For each category, it creates
+    a RestaurantCategory component🧩, passing the category name as 
+    (`key`) and the array of food options for that category as `data`
+
+                🖥️//Inside RestaurantMenu.js🟨
+                const RestaurantMenu = () => {
+                    ...
+                    foodOptions.forEach((o) => {
+
+                    const cat = o.category;
+
+                    if (mappedOptions[cat]) {
+                        mappedOptions[cat].push(o);
+                    }
+                    else {
+                        mappedOptions[cat] = [o];
+                    }
+                 })
+
+
+                👉categoriesList = [];
+
+                👉for (const [key, value] of Object.entries(
+                    mappedOptions)) {
+                categoriesList.push(<RestaurantCategory key={key}
+                        data={key}
+                        foodOptions={value}
+                    />)
+                }
+
+                }
+
+    🔹We need to display an item list for each category, so using
+    the props inside our RestaurantCategory.js🟨 component🧩 we
+    map our foodOptions array and pass the items as props
+
+                🖥️//inside RestaurantCategory.js🟨
+                const RestaurantCategory = (props) => {
+
+                const { data, foodOptions } = props
+                ...
+                👉const options = foodOptions
+                .map((option, index) => (
+                    <ItemList key={index} items={option} />
+                ));
+
+                }
+
+    🔹Now we can use the list of Items inside our ItemList component🧩
+
+
+🔴-----Making the Accordion🪗------
+
+We're still missing the Accordion🪗 body,
+Let's add the functionality of expanding and minimizing the 
+acordion🪗:
+
+    🔹For that we're going to add a handleClick function that 
+    is called when the category is clicked.
+    Inside our RestaurantCategory component🧩 let's add an
+    onClick🖱️attribute that is going to show or hide our
+    accordion's🪗 body
+
+                🖥️//inside RestaurantCategory.js🟨
+                 return (
+                    ...
+                    <div className="
+                    cursor-pointer"
+                 👉onClick={handleClick}>
+                    <span>{data} ({itemsPerCategory(data)})</span>
+                    <span>🔽</span>
+                </div>
+                 )
+
+    🔹Next, we create a state variable that will show or
+    hide the items, the default state will be "false" so
+    the items will be hidden 
+
+                🖥️//inside RestaurantCategory.js🟨
+                const RestaurantCategory = (props) => {
+                ...
+                👉const [showItems, setShowItems] = useState(false)
+                ...
+                }
+
+    🔹 we write the function's logic, basically it will change
+    to the oposite value of the state variable whenever the 
+    <div> is clicked (if the items are not showing, it will show, 
+    and if they're showing, they will hide):
+
+                🖥️//inside RestaurantCategory.js🟨
+                const RestaurantCategory = (props) => {
+                ...
+                const [showItems, setShowItems] = useState(false)
+                ...
+                👉const handleClick = () => {
+                 setShowItems(!setShowItems)
+                }
+                }
+
+🔴-----Collapsing the Accordion🪗------
+
+Let's create  a new feature that will colapse the other accordion 
+when one is opened. For this we are going to learn an important
+concept in REACT⚛️:
+
+        💡Interview question:💡
+        Controled👮 AND Uncontroled🦹 components.
+        An uncontroled🦹 component manages itself, 
+        a Controled👮 component, depends on their parent to function
+
+In this case, our RestaurantCategory component🧩 was regulating itself since
+it had it's own showItems state☁️. In order to create the feature we want, we need
+to give the control to the parent component🧩 RestaurantMenu.js🟨 so it can decide
+which Accordion🪗 need to open or close. That way, our RestaurantCategory.js🟨
+will become a Controled👮 component. 
+
+    🔹In order to do that, inside our RestaurantMenu components🧩, let's pass the 
+    variable "showItems" as one of the props🥠. Now we will get this property inside
+    our RestaurantCategory component🧩 directly from our parent: 
+
+
+                🖥️//inside RestaurantMenu.js🟨
+
+                const RestaurantMenu = () => {
+                    ...
+                    categoriesList = [];
+
+                    for (const [key, value] of Object.entries(mappedOptions)) {
+                        categoriesList.push(<RestaurantCategory key={key}
+                            data={key}
+                            foodOptions={value}
+                        👉showItems={true}
+                        />)
+                    }
+                    ...
+                    return(...)
+                }
+
+    🔹Now we can use that value to show or hide our items. Since we passed the value 
+    as true, all our Accordions🪗 will be open. Make sure to delete the previous
+    state☁️ variable and handleClick
+
+                🖥️//inside RestaurantCategory.js🟨
+
+                const RestaurantCategory = (props) => {
+
+                const { data, foodOptions, showItems } = props
+                }
+
+
+    🔹But we don't want, that! we would like to open 1 Accordions🪗 at a time. 
+    Let's say
+    we only want to show the first category items, we can do it like this: 
+
+
+                🖥️//inside  RestaurantMenu.js🟨
+                const RestaurantMenu = () => {
+                ...
+                👉const [showIndex, setShowIndex] = useState(0);
+                /*this ⬆️ variable will be used to keep track of 
+                the index of the Category to display with showItems
+                set to true*/
+
+                 👉const categoriesList = Object.entries(
+                    mappedOptions).map(([
+                    key, value], index) => (
+                    <RestaurantCategory
+                        key={key}
+                        data={key}
+                        foodOptions={value}
+                        showItems={index === showIndex ? true : false}
+                    />
+                ));
+                return(...)
+
+                }
+
+                /*The categoriesList variable creates an array
+                by mapping over the entries of `mappedOptions ` object
+                using the Object.entries method. The map function 
+                iterates through each key (category name) and value
+                (array of objects that are the menu items) for each
+                entry. Additionally, it provides an index parameter
+                which represents the index of the current iteration.
+            
+
+    🔹Now we will like to control the setShowIndex function in
+    order to open each RestaurantCategory by clicking them and
+    activating our handleClick funtion. We can pass the function
+    as a prop like this: 
+
+                🖥️//inside RestaurantMenu.js🟨
+                   const categoriesList = Object.entries(
+                    mappedOptions).map(([
+                    key, value], index) => (
+                    <RestaurantCategory
+                        key={key}
+                        data={key}
+                        foodOptions={value}
+                        showItems={index === showIndex ? true : false}
+                     👉setShowIndex={() => setShowIndex(index)}
+                        />
+                    ))
+                    
+                    /*This will allow to apply the function 
+                    setShowIndex to each category, passing their
+                    particular index as an argument, so when clicked,
+                    the function will be called with its index, effectively
+                    showing itself or remaining hidden when other 
+                    category is clicked: */
+
+    🔹Finally, we import the prop inside RestaurantCategory so we can
+    get this behavior.
+
+                🖥️//inside RestaurantCategory.js🟨
+                    const { data, foodOptions, 
+                    showItems, setShowIndex } = props
+
+                    const handleClick = () => {
+                        setShowIndex();
+                    }
+                    return (
+                        ...
+                        <div 
+                            onClick={handleClick}
+                        >
+                            <span>{data} ({itemsPerCategory(data)}
+                            )</span>
+                            <span>🔽</span>
+                        </div>
+                    )
+
+
+        💡Interview question:💡
+        Lifting state up 🔝
+        This is when you want to coordinate two components so you
+        move their state to their common parent, then pass the 
+        information down through props from their common parent.
+        Finally, pass the event handlers doen so that the children
+        can change the parent's state. It's useful to consider
+        components as "controlled" (driven by props) or uncontrolled
+        (driven by state)
+
+
+🔴-----Creating a context📖 ------
+
+Props Drilling🏗️:
+Also known as prop chaining or prop threading, is a process of
+passing data from a top-level component🧩 to a deeply nested 
+child component🧩 by passing data by props. This is a problem
+and is inneficient 
+
+React Context 📖
+This is a way to solve the props🥠 Drilling🏗️ problem, by Creating
+a global context that we can invoke anywhere inside the app without
+needing to pass Data🧮 by props repeatedly.
+
+Let's create a REACT⚛️ Context📖 that can contain information
+useful throughout the app. A perfect example for this could be user
+info. 
+
+
+    🔹Let's create a Context📖 inside our utils📁 folder named
+    UserContext.js🟨.Now inside it, we can use an important 
+    REACT⚛️ superpower that is a variable named createContext
+    That we have access through the react library. It is like a 
+    central global object. Inside we will include information
+    about an hipotetical user:
+
+
+                🖥️//inside userContext.js🟨
+                import { createContext } from "react";
+
+                const UserContext = createContext({
+                    loggedInUser: "Default User",
+                });
+
+                export default UserContext;
+
+
+    🔹Now let's use display the user's name inside our Header
+    component🧩 by using the hook🪝 useContext📖:
+
+                🖥️//inside Header.js🟨
+                ...
+                import { useState, useContext } from "react";
+                import UserContext from "../../utils/UserContext";
+                
+                Header = ()=> {
+                return(
+                    ....
+                    <li className="px-3">{loggedInUser}</li>
+                    ...
+                )
+                }
+
+    
+    🔹But how do you do it inside a class-based components🧩?
+    let's do one inside our About.js🟨 component🧩, this time
+    we will not be able to use a hook. Instead we will use a 
+    propety called Consumer
+
+
+                🖥️//inside About.js🟨
+                ...
+                import UserContext from "../../utils/UserContext"
+                ...
+                class About extends Component {
+                    ...
+             
+                render() {
+                    ...
+                    return (
+                        <div className="about">
+                        <h1>About</h1>
+                        👉<UserContext.Consumer
+                        >{(data) => {
+                            console.log(data)
+                        }}</UserContext.Consumer>
+                        
+                        </div>)
+                        }
+                    }
+
+
+
+    🔹You can also destructure the loggedInUser property from the data like:
+                    
+                    🖥️//inside About.js🟨
+                    👉<UserContext.Consumer
+                        >{({loggedInUser}) => {
+                            console.log(loggedInUser)
+                        }}</UserContext.Consumer>
+
+
+Let say that we need to retrieve some Login information for the user in order to use it
+in all the site, how would we do that?🤔
+
+
+    🔹We will need to fetch some data a single time when the user Logins in the app
+    so for that we will need useEffect💥
+
+                    🖥️//inside App.js🟨
+                    //this will manage the user data: ⬇️
+                    const [userName, setUserName] = useState()
+
+                    useEffect(() => {
+                    //make an Api call and send username and password here
+                    const data = {
+                        name: "Akshay Saini"
+                    };
+                    //the data we get we'll save it to userInfo⬇️
+                    setUserName(data.name)
+                }, []);
+
+
+    🔹But we are still getting the default user information inside
+    the app, how can we apply userInfo to show in the UI instead of 
+    `default user`??🤔
+    To pass this new information to our context, we can use the 
+    ✨Context.Provider 🧧✨ and surround our app with the value
+    inside, that would be our userName:
+
+                    🖥️//inside App.js🟨
+                    👉import UserContext from "../utils/UserContext.js";
+                    
+                    const AppLayout = () => {
+                    const [userName, setUserName] = useState()
+
+                    useEffect(() => {
+                         const data = {
+                            name: "Akshay Saini"
+                        };
+                        setUserName(data.name)
+                    }, []);
+
+                    return (
+                    👉<UserContext.Provider value={{
+                         loggedInUser: userName }}>
+                            <div className="app">
+                                <Header />
+                                <Outlet />
+                            </div>
+                        </UserContext.Provider>
+                    );
+                }
+
+    🔹We can also nest context.providers🧧 if we wanted
+    to:
+
+                    🖥️//inside App.js🟨
+                    ...
+                    const AppLayout = () => {
+                        ...
+                        return (
+                    //Default User in the global context
+                        👉<UserContext.Provider value={{
+                             loggedInUser: userName }}>
+                            <div className="app">
+                             👉<UserContext.Provider value={{
+                                 loggedInUser: "Elon Musk }}>
+                                <Header />
+                                </UserContext.Provider>
+                            <Outlet />
+                        </div>
+                        </UserContext.Provider>
+                        )
+                    }
+
+    🔹Now the loggedInUser will be "Akshay Saini" in all the 
+    app except inside the Header and outside of the app layout
+
+
+🔴-----Updating a context📖 ------
+
+Let's add a new feature that will update our loggedInUser👤 according
+with what we write inside an input box, in order to see how we can 
+update a REACT⚛️ context📖
+
+    🔹First we'll create an input box inside our Body component🧩
+
+                    🖥️//inside Body.js🟨
+                    ...
+                    const Body = () => {
+                        ...
+                        return (
+                            ...
+                    <div>
+                    <label>Username: </label>
+                    <input type="text" />
+                </div>
+                        )
+                    }
+
+
+    🔹And then we need to give it the hability to change our
+    loggedInUser👤by passing the function we created inside
+    App.js🟨 as a prop:
+
+                    🖥️//inside App.js🟨
+                    ...
+                    const AppLayout = () => {
+                        ...
+                        return (
+                     <UserContext.Provider value={{
+                        👉loggedInUser: userName, setUserName }}>
+                    <div className="app">
+                            <Header />
+                        <Outlet />
+                    </div>
+                    </UserContext.Provider>
+                        )
+
+                    }
+
+    🔹Now we can use it inside our input box, to change our loggedInUser👤
+    With an OnChange
+
+                        🖥️//inside Body.js🟨
+                    ...
+                    const Body = () => {
+                        ...
+                        return (
+                            ...
+                    <div>
+                    <label>Username: </label>
+                    <input type="text" 
+                    value={loggedInUser}
+                    OnChange={(e)=> setUserName(e.target.value)}/>
+                </div>
+                        )
+                    }
+
+
+REACT⚛️ Context📖 is a powerful tool to store information,
+another way we have to store it is using Redux. which is used more
+in large size apps. Red
