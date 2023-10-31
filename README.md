@@ -14,3 +14,12 @@ has a File wathing Algorithm that is written in C++, that keeps track of all our
 -Image Optmization🖼️
 -Minification of our file
 -File Compressing🗃️
+
+# Installing Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store🏪
+- Connect our store🏪 to our app
+- Slice🍕 (cartSlice)🛒
+- dispatch (action)🎬
+- Selector🎯

@@ -1,0 +1,486 @@
+🟡-----REACT⚛️ Redux🤏------
+
+It is an open source JS🟨 library for managind and
+centralizing application state.
+It is not mandatory to use Redux🤏, local
+states☁️ are perfectly fine, however it can be used
+for large applications in order to make them behave
+consistently despite being larga. 
+You can also use other libraries such as zustand.
+
+In this time we will be using the library
+Redux🤏 toolkit🔨
+which is the standard way of using redux currently
+
+
+🟡-----Theory📕 Redux🤏------
+Redux🤏 store🏪 is like a central global object 
+with a lot of data inside it, it's kept in a global
+central place.
+
+Redux store🏪 has internal sections called slices🍕
+that are useful to keep data separate in logical
+partitions.
+
+So if we wanted to add cart🛒 data inside our Redux🤏
+store🏪, we will have to create a cart🛒 slice🍕
+
+But how can we add data to our cart🛒 slice from
+our menu using the add➕ button?
+
+When you click the add➕ button it should ✨dispatch
+an action🎬✨
+after ✨dispatching the action🎬✨, it calls a 
+function📽️, and the function📽️ modifies the cart🛒
+But what is the funtion📽️ exactly?
+it is called a reducer✂️ function 
+
+If we want to keep loggedInUser👤 inside our Redux🤏
+store, we will have to create a user slice
+
+
+🔸So to summarize, This is how you write✍️ Data🧮
+when you click the add➕ button 
+it disptches an action🎬
+which calls the reducer✂️ function
+which updates the slice🍕 
+of our Redux store🏪
+(see folder for drawing)
+
+🔸This is how you read✍️ Data🧮
+In order to get our cart🛒 component🧩 to read the
+data inside our cart🛒 slice🍕 and display it 
+in the UI🖼️, 
+
+For that we use a selector🎯
+it will read our info from our store🏪 
+and modify our REACT⚛️ cart🛒 component🧩
+giving them Data🧮.
+That process is known as ✨suscribing✨ to the store🏪
+So the header component🧩 will be suscribed to our store
+
+meaning it is in sync wit the store. Redux🤏
+wil automatically update the data inside our component🧩
+
+
+
+🟡-----Building Redux🤏 store🏪------
+Let's create a cart🛒 flow (addint things to
+our cart and then visualize them inside cart🛒
+component🧩)
+
+For that we will need to get our REACT⚛️ toolkit🔨
+ready, here's a roadmap of what we will do:
+
+    🔸Building our Redux🤏 feature, roadmap:
+
+    - Install @reduxjs/toolkit and react-redux
+    - Build our store🏪
+    - Connect our store🏪 to our app
+    - Slice🍕 (cartSlice)🛒
+    - dispatch (action)🎬
+    - Selector🎯
+
+    🔸Installing Redux Toolkit:
+
+            //💻In the terminal:
+            >npm i @reduxjs/toolkit
+            >npm i react-redux
+
+    🔸Building our store🏪:
+    -Inside our utils:
+    Let's create a store🏪 inside our utils, we
+    will call it 'appStore', in it, we will use
+    the function configureStore() that we will import
+    from "@reduxjs/toolkit"
+
+            //💻Inside appStore.js🟨
+            import { configureStore } from "@reduxjs/toolkit";
+            const appStore = configureStore({
+            // Here we will add the slices🍕
+            });
+            export default appStore;
+
+    🔸Let's PROVIDE the store🏪 to our application:
+    -Inside of App.js🟨 we will locate the root of our
+    application. in order to do that we will need a 
+    Provider component🧩, once again imported from
+    Redux🤏, but this time from the "react-redux"
+    library
+
+    🤔Why do we do import it from a different library?
+    In this case, "react-redux" is functioning like a 
+    bridge between Redux🤏 and REACT⚛️ so we can apply
+    Redux🤏functionalities to our app. 
+
+            //💻Inside App.js🟨
+            import { Provider } from "react-redux";
+
+    Now that we have imported it, let's wrap our app's 
+    root inside the Redux🤏 provider and pass the store
+    as a prop, the store will take our appStore util that
+    we just created:
+
+          //💻Inside App.js🟨
+          ...
+          const AppLayout = () => {
+        ...
+        return(
+           👉 <Provider store={appStore}>
+        <UserContext.Provider value={{
+            loggedInUser: userName,
+            setUserName
+        }}>
+            <div className="app">
+                <UserContext.Provider value={{ loggedInUser: 
+                "La Pollohontas" }}>
+                    <Header />
+                </UserContext.Provider>
+
+                <Outlet />
+            </div>
+        </UserContext.Provider>
+        👉</Provider>
+        )
+          }
+
+
+    🔸Let's create our cart🛒 slice🍕!
+    we will need another utils file. This time I created a "redux"📁 folder
+    inside our utils to keep Redux🤏 components🧩 separate.
+    Inside we'll create another file called "cartSlice.js🟨". In order to
+    create a Redux🤏 slice🍕 we will use the function createSlice():
+
+
+        //💻Inside cartSlice.js🟨
+          import { createSlice } from "@reduxjs/toolkit";
+
+            const cartSlice = createSlice({
+            name: 'cart',
+            initialState: {
+                items: []//⬅️the initial state will be an empty array
+            },
+            reducers: {//actions here ⬇️, they can take 2 args, state and action:
+                addItem: (state, action) => {
+                    //our reducer function⬆️, modifies data inside the slice
+                    ////and mutates the state☁️
+
+                    state.items.push(action.payload);
+                    //⬆️when dispatching on add button we'll get the payload
+                },
+                removeItem: (state) => {
+                    state.items.pop()
+                    /*⬆️Another action that will remove an item from the end
+                    of the item's array. This time we will do it like this
+                    for simplicity but we can also add the logic to 
+                    deleting an item depending on the selected index */
+                },
+                clearCart: (state) => {
+                    state.items.length = 0;
+                }
+            }
+            })
+
+            /*Now we'll export actions and the reducer, with a syntax given ⬇️
+            by react*/
+            export const { addItem, removeItem, clearCart } = cartSlice.actions;
+            export default cartSlice.reducer;
+
+    🤔But what will happen behind the scenes?
+    this createSlice() function will return an object like this:
+
+                {
+                    ations:{
+                        addItem()=>{...},
+                        removeItem()=>{...},
+                        clearCart()=>{...}
+                    }
+                    reducer:...
+                }
+
+
+    🔸Let's add this slice🍕 to the store🏪, we will make
+    an arg called 'reducer'✂️ that will contain the
+    reducers of all our slices🍕. In this case, we only
+    have a cart🛒 slice🍕, we will import it as 
+    `cartReducer`
+
+        //💻Inside appStore.js🟨:
+            ...
+            import cartReducer from "../redux/cartSlice"
+
+            const appStore = configureStore({
+
+                reducer:{//here the reducers for all the slices🍕
+                    cart: cartReducer,
+                    //user: userReducer,👤
+                    //location: locationReducer📍
+                }
+
+            });
+
+            export default appStore;
+
+
+    🔸In order to make the cart🛒 work, now we need to suscribe 
+    it to the store🏪 using a selector🎯
+    Let's start with the UI. Our cart icon is inside the Header.js🟨
+    component🧩. Right now it looks something like this:
+          
+          //💻Inside Header.js🟨
+            const Header = () => {
+                return(
+                    ...
+                    <div>
+                        <ul>
+                        ...
+                        👉<li>🛒 <span>(0 items)</span></li>
+                        ...
+                        </ul>
+                    </div>
+                    ...
+                )
+            }
+
+    //🤔But how will we modify the number of items according
+    of what we add inside the cart?
+
+
+    🔸Using a selector🎯 of course, which is nothing but
+    a hook🪝 inside REACT⚛️, and what is a hook🪝?
+    at the end of the day is a normal utility function!
+    Let's import it from the react-redux library and use
+    the hook to get the amount of items inside our cart🛒:
+
+        //💻Inside Header.js🟨
+            ...
+            import { useSelector } from "react-redux"
+
+                //Suscribing to the store🏪 using a Selector⬇️:
+                👉const cartItems = useSelector(store => store.cart.items)
+                //now the cart🛒 will get the data of the items
+
+                        const Header = () => {
+                            return(
+                                ...
+                                <div>
+                                    <ul>
+                                    ...
+                                    👉<li>🛒 <span>(cartItems.length)</span></li>
+                                    //will show the number of Items now⬆️
+                                    ...
+                                    </ul>
+                                </div>
+                                ...
+                            )
+                        }
+
+  🔸Now let's write the code to add items to our cart🛒 so our UI🖼️ can work
+    properly while pressing the add➕ button that is besides every Item of our
+    menu: 
+        1. First import the useDispatch() hook🪝from react-redux in order
+        to perform an action🎬.
+        2. then import our action🎬, addItem, that we created in our cartSlice
+        3. Next, create a handleAddItem function📽️ to add to our button later.
+           this will call our useDispatch hook🪝that will give us access to our
+           addItem() action. As args for addItem, we will use the Items pass inside
+           our ItemList component🧩,
+        4. Add an onClick attribute in our button that will callback our handleAddItem
+           function📽️.
+
+        //💻Inside ItemList.js🟨
+
+            1️⃣import { useDispatch } from "react-redux";
+            2️⃣import { addItem } from "../../utils/redux/cartSlice";
+
+            ...
+            3️⃣const dispatch = useDispatch()
+            const handleAddItem = (item) => {
+                //dispath an action
+                👉dispatch(addItem(item));
+                //whatever is the argument of our action addItem, will be our PAYLOAD,
+                //This will create an obj for the action, with the property payload
+                //wich value will be the arg.
+                //this arg will be accesed inside our cart slice
+            }
+
+            const ItemList = (props) => {
+                ...
+                return (
+                    ...
+                    <div>
+                    ...
+                    4️⃣<button onClick={()=>handleAddItem(items)}> Add + </button>
+                    
+                    ...
+                    </div>
+                )
+            }
+
+  🔸Now let's make our Items appear inside a Cart🛒 component🧩.
+  Since every item added will be an array of objects, I created a new component🧩
+  to display a card for each item called "CartItemsList"
+  this is how it works:
+
+
+        //💻Inside CartItemList.js🟨
+            import { useDispatch } from "react-redux";
+            import { CDN_URL } from "../utils/constants";
+            import { addItem } from "../utils/redux/cartSlice";
+
+            const CartItemsList = ({ items }) => {
+
+                const dispatch = useDispatch();
+                const handleAddItem = (item) => {
+                    // Dispatch an action
+                    dispatch(addItem(item));
+                };
+                return (
+                    <div>
+                        {items.map((item) => (
+                            <div
+                                data-testid="foodItems"
+                                key={item.card.info.id}
+                                >
+                                <div>
+                                    <div>
+                                        <span>{item.card.info.name}</span>
+                                        <span>
+                                            - ₹
+                                            {item.card.info.price}
+                                        </span>
+                                    </div>
+                                    <p>{item.card.info.description}</p>
+                                </div>
+                                <div>
+                                    <div>
+                                        <button onClick={() => handleAddItem(item)}
+                                        >
+                                            Add +
+                                        </button>
+                                    </div>
+                                    <img src={CDN_URL + item.card.info.imageId} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                );
+            }
+
+            export default CartItemsList;
+
+  🔸Every time we add an item to our Cart, it will look like a cart!
+  To finish our feature, let's add a "Clear cart" button in our
+  Cart🛒 component🧩:
+
+        //💻Inside CartItemList.js🟨
+            import { useSelector } from "react-redux";
+            import CartItemsList from "../CartItemsList.js";
+            import { useDispatch } from "react-redux";
+            import { clearCart } from "../../utils/redux/cartSlice";
+            ...
+            const Cart = () => {
+
+            const dispatch = useDispatch();
+            👉const handleClearCart = () => {
+                dispatch(clearCart())
+            }
+
+            const cartItems = useSelector((store) => store.cart.items)
+            return (
+                <div>
+                    <h1>Cart</h1>
+                    <div>
+                        👉<button
+                            onClick={handleClearCart}>Clear Cart</button>
+                        {cartItems.length === 0 && <h1>Cart is empty</h1>}
+                        <CartItemsList items={cartItems} />
+                    </div>
+
+                </div>
+            );
+        }
+
+
+🟡-----Theory📕 Redux🤏- Good Practices ✅------
+
+    🔹💡Interview question💡
+    ❗Whenever you're doing a selector, make sure to suscribe
+    to the right portion of the store🏪, if you don't, it will
+    be a big performance store.
+    What do we mean? let's use an example of code already written
+    and compare it to the wrong way to do things::
+
+        //💻Inside CartItemList.js🟨
+            ...
+            const Cart = () => {
+                👉const cartItems = useSelector((store) => store.cart.items)
+                ...
+            }
+            //Here we are suscribing directly to items✅
+        
+        🆚:
+
+         //💻Inside CartItemList.js🟨
+                const Cart = () => {
+                👉const store = useSelector((store) => store)
+                const cartItems = store.cart.items
+                ...
+            }
+            //Here we are NOT suscribing directly to items❌
+            //But we are suscribing to the whole store🏪
+        
+
+        The last Example will work as well but is much less efficient.
+        Because the component🧩 will get updated after ANY update in
+        the store🏪, regardless if it is relevant to our component🧩
+        or not😱
+
+
+    🔹What you need to know about Reducers✂️:
+    There's a lot of confusion between reducer✂️, reducer functions📽️,
+    etc. 
+    When you are creating a. appStore like this:
+
+         //💻Inside utils/appStore.js🟨
+            const appStore = configureStore({
+
+                👉reducer: {
+                    cart: cartReducer,
+                }
+
+            });
+
+    the keyword "reducer" refers to a BIG Reducer✂️
+    and this Big Reducer✂️ can have multiple small
+    reducers✂️ inside.
+
+    But when we are creating a slice🍕 like this:
+
+         //💻Inside utils/cartSlice.js🟨
+         ...
+            const cartSlice = createSlice({
+                name: 'cart',
+                initialState: {
+                    items: []
+                },
+                👉reducers: {
+                    addItem: (state, action) => {
+                        state.items.push(action.payload);
+                    },
+                    removeItem: (state) => {
+                        state.items.pop()
+                    },
+                    clearCart: (state) => {
+                        state.items.length = 0;//[]
+                    }
+                }
+            })
+            export const { addItem, removeItem, 
+            clearCart } = cartSlice.actions;
+            👉export default cartSlice.reducer;
+    
+    We create multiple reducers✂️, and then we export it as 
+    a single reducer✂️, a combination of small
+    reducer functions📽️

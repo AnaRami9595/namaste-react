@@ -46,6 +46,5 @@ you provided when creating the context using createContext
 • Practice React Context with code examples
 • Try out Nested Contexts
 References
-•
-Lifting State Up
+•Lifting State Up
 • React Context

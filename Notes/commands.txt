@@ -49,3 +49,9 @@ Tailwind's🎨 layers to your main CSS file:
         @tailwind components;
         @tailwind utilities;
 
+
+🔸Installing Redux Toolkit:
+
+>npm i @reduxjs/toolkit
+npm i react-redux
+

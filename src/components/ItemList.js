@@ -1,14 +1,28 @@
 import { CDN_URL } from "../../utils/constants"
 import noImageThumb from "../../images/noimagethumb.jpg";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../utils/redux/cartSlice";
 
 const ItemList = (props) => {
 
     const { items } = props
+    console.log('items', items)
+
 
     const { imageId, name, description, price, ratings } = items?.card?.info
     const { rating, ratingCountV2 } = ratings?.aggregatedRating
 
     const image = CDN_URL + imageId
+
+    const dispatch = useDispatch()
+    const handleAddItem = (item) => {
+        //dispath an action'
+        dispatch(addItem(item));
+        //whatever is the argument of our action addItem, will be our PAYLOAD,
+        //This will create an obj for the action, with the property payload
+        //wich value will be the arg.
+        //this arg will be accesed inside our cart slice
+    }
 
     return (
         <div
@@ -26,7 +40,7 @@ const ItemList = (props) => {
                  shadow-lg
                 m-auto
                 rounded-lg
-                "> Add +
+                " onClick={() => handleAddItem(items)}> Add +
                     </button>
                 </div>
 
