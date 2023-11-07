@@ -55,3 +55,43 @@ Tailwind's🎨 layers to your main CSS file:
 >npm i @reduxjs/toolkit
 npm i react-redux
 
+
+🔸Installing React testing library📚
+
+> npm install --save-dev @testing-library/react
+
+
+🔸Installing Jest🃏:
+
+> npm install --save-dev jest
+
+    · To use Babel🦜 we will need 
+    to install additional Dependencies⛓️:
+
+    > npm install --save-dev babel-jest
+    @babel/core @babel/preset-env
+
+    ·Configuring Babel🦜
+
+🔸Running test cases💼:
+
+>npm run test 
+
+//to configure Jest🃏:
+> npx jest --init
+-We will not be using Typescript for the configuration🏗️ file
+- we will be using jsdom for the Testing🧪 enviroment
+
+🔸install our jsdom📑 library📚
+    //🖥️inside the terminal:
+     > npm install --save-dev jest-environment-jsdom
+
+
+🔸Enabling JSX🦐 in Jest🃏 for Testing🧪:
+to make jsx work in test cases.
+
+> npm i -D @babel/preset-react
+
+🔸 Install @testing-library/jest-dom
+
+> npm i -D @testing-library/jest-dom

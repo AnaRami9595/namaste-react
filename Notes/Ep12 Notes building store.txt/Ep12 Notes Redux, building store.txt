@@ -370,7 +370,7 @@ ready, here's a roadmap of what we will do:
 
             export default CartItemsList;
 
-  🔸Every time we add an item to our Cart, it will look like a cart!
+  🔸Every time we add an item to our Cart, it will look like a card!
   To finish our feature, let's add a "Clear cart" button in our
   Cart🛒 component🧩:
 
@@ -408,7 +408,7 @@ ready, here's a roadmap of what we will do:
     🔹💡Interview question💡
     ❗Whenever you're doing a selector, make sure to suscribe
     to the right portion of the store🏪, if you don't, it will
-    be a big performance store.
+    be a big performance problem.
     What do we mean? let's use an example of code already written
     and compare it to the wrong way to do things::
 
@@ -484,3 +484,17 @@ ready, here's a roadmap of what we will do:
     We create multiple reducers✂️, and then we export it as 
     a single reducer✂️, a combination of small
     reducer functions📽️
+
+
+    tips:
+
+    read about inmutable state in redux
+    read about immer 
+
+
+🟡-----Theory📕 Redux🤏- Redux Dev Tools🔨 ------
+
+    🔹A chrome extention that can help us  debbug our redux application
+
+    homework: go to toolkit reduz website and read about
+    RTK query

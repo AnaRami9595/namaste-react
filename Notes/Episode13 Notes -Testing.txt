@@ -1,0 +1,698 @@
+🟢-----Developer Testing🧪-----•·
+
+Here we are going to talk about different ways
+to test our application. 
+
+    • Manual testing👌🏽:
+        the practice of checking if your code 
+        works and the features are functional.
+        this is not very efficient, because if\
+        you change the code a little you will 
+        need to get back and chec if works.
+
+        Whenever we add a line ri our code, 
+        that can introduce bugs in our app
+        ANYWHERE. This is specially complicated
+        if your'e building a large scale app.
+
+        That's why Testing🧪 is very important
+
+    •  Test Code⌨️
+        Writing test cases💼 to prove our app
+        works. It will test our application
+        automatically, this is what we are 
+        going to do today.
+
+            Types of DEV🤓 case💼 Testing🧪:
+
+                · Unit ⏺️Testing🧪
+                · Integration🚸 Testing🧪
+                · End to End🔚 testing (e2e)
+
+    
+🟢-----TYPES of DEV🤓 Testing🧪-----•·
+
+    • Unit ⏺️Testing🧪
+      You test your REACT⚛️ components in 
+      isolation. If you want to test the 
+      header component🧩, you will try To
+      render your header component🧩 in
+      isolation to the rest of the app.
+      
+    • Integration🚸 Testing🧪
+      Testing🧪 the Integration🚸 between
+      the components🧩, all of them are 
+      colaborating to make a feature, 
+      you will develop a flow of their 
+      colaboration, how are they talking to 
+      each other  
+
+    • End to End🔚 testing (e2e)
+      It means testing a REACT⚛️ app as 
+      soon as the user enters the react
+      application until he leaves it,
+      checking all the flows. Starts
+      on the landing and how the user
+      will flow across the app. 
+    
+    End🔚 to End🔚 testing requires
+    different kind of Tools🔨, so will be
+    only concerned with the first two. 
+
+
+
+    🔹💡Interview question💡
+        Testing🧪 is now considered as part of 
+        the developer job. Testing is part of 
+        writing code. Make this a habit.
+
+    
+🟢-----REACT TESTING LIBRARY🧪📚-----•·  
+
+        • is the most common way of testing
+        REACT⚛️ code. It is build on top of
+        "DOM TESTING LIBRARY" which has a lot
+        of other testing Libraries📚 for other
+        frameworks like angular, Vue, etc.
+
+        ❗If you are using create-react-app
+        this library📚 is already integrated,
+        but since we are created our app from 
+        scratch using parcel📦, we'll need 
+        to integrate it ourselves.
+
+        ❗React Testing Library uses Jest🃏
+        which is a JS🟨 TESTING framework
+        Jest🃏 Is a standard to write test
+        cases💼.
+
+        🔸Process we will complete:
+            1. Install REACT TESTING LIBRARY🧪📚-
+            2. Install Jest🃏
+            3. Install Babel🦜 Dependencies⛓️
+               to work with Jest🃏
+            4. Configure Babel🦜 .config file
+               to run with Jest🃏
+            5. Configure Parcel📦 config file
+               to disable default Babel🦜
+               transpilation. 
+            6. Jest🃏 configuration🏗️
+            7. Install jsdom📑 library📚
+            6. Install @babel/preset-react to
+                make JSX🦐  work in test cases
+            7. Include @babel/preset-react inside
+            my Babel🦜 config🏗️
+            8. Install @testing-library/jest-dom
+            so we can use functions
+
+    
+            · Let's install REACT testing Library:
+
+                //🖥️inside the terminal:
+                > npm install --save-dev @testing-library/react
+
+            · Now let's install Jest🃏. According with the
+            documentation, to use Babel🦜 we will need 
+            to install additional Dependencies⛓️:
+
+                //🖥️inside the terminal:
+                //For instaling Jest🃏 ⬇️
+                > npm install --save-dev @testing-library/react
+
+                //Babel🦜 Dependencies⛓️⬇️
+                > npm install --save-dev babel-jest
+                 @babel/core @babel/preset-env
+
+
+            · We will also need to configure🏗️ Babel🦜 to 
+            target your current version of node by 
+            creating a babel.config.js file in the root 
+            level of your Project let's create a new file
+            named babel.config.js
+
+                //🖥️inside babel.config.js
+                module.exports = {
+                presets: [['@babel/preset-env', {
+                    targets: {node: 'current'}}]],
+                };
+
+        ❗Remember that Parcel📦 has already
+        Babel🦜 built in, so these Dependencies⛓️
+        we just installed will interfere with 
+        parcel's📦 so we are trying to configure🏗️
+        Babel🦜 according to us.
+
+        It will be a conflict between the 2 
+        configurations🏗️ so the one we just did 
+        will try to override the existing Babel🦜
+        configurations🏗️ parcel📦 had set for us. 
+
+        So we will need to change Parcel's 📦
+        behavior to acommodate and use Babel🦜
+        along with Jest🃏.
+
+        🤔But what are those changes? 
+        According to Parcel's📦 documentation,
+        you can make parcel📦 ignore your Babel config.
+        To disable Babel transpilation in
+        Parcel, override the default parcel config
+        for Javascript to exclude 
+        `@parcel/transformer-babel.` inside 
+        a `.parcelrc` file
+
+        This will allow other tools to continue using
+        your babel config, but disable Babel🦜 transpilation
+        in parcel📦. For this you need to create a new file
+        called .parcelrc
+
+                //🖥️inside .parcelrc
+                    {
+                    "extends": "@parcel/config-default",
+                    "transformers": {
+                        "*.{js,mjs,jsx,cjs,ts,tsx}": [
+                        "@parcel/transformer-js",
+                        "@parcel/transformer-react-refresh-wrap"
+                        ]
+                    }
+                    }
+        Now the Babel.js will not conflict with
+        our previous config, the one we just wrote 
+        will be the config🏗️ will be using!!!!!!
+
+        We now have configured our Project to write
+        test-cases💼.
+
+        ·But before we can write test-cases, we need to 
+        write the Jest🃏 configuration🏗️
+        
+
+
+🟢-----Running Jest🃏-----•·  
+
+🤔How do we run test🧪 cases💼?
+Similar with how we run our application with npm
+start, we will run our tests with a command 
+inside our pakage.json🎊 file called "test".
+
+            //🖥️inside pur terminal:
+            > npm run test
+
+        Since we haven't written ANY
+        test🧪 cases💼, it will say 
+        `No tests found,` but that means
+        we have succesfully configured
+        our 
+            -React Testing🧪Library,
+            -Jest🃏, 
+            -Babel🦜, 
+            -Parcel📦
+
+        Yaaay😊
+    But before we can start writing test cases💼
+    we'll need to configure🏗️ Jest🃏
+
+                //🖥️inside the terminal:
+                > npx jest --init
+
+                //It will give us some questions to 
+                create a suitable config for our project:
+
+                -We will not be using Typescript for the 
+                 configuration🏗️ file✖️
+                - we will be using jsdom📑 for the 
+                 Testing🧪 enviroment☑️
+
+                    ·jsdom📑:
+                     WHEN YOU WRITE CASES There's node
+                     server, no browser, so we need an
+                     enviroment🌱 for our project.
+                     To create an enviroment🌱 we'll use
+                     jsdom📑.
+                     jsdom📑 is a library which parses 
+                     and interacts with assembled 
+                     HTML just like a browser.
+
+                - we will choose for Jest🃏 to add 
+                  coverage reports☑️
+                -The provider for coverage will be 
+                Babel🦜☑️
+                -We will automattically clear mock calls
+                , instances, contexts and results before
+                every test ☑️
+
+    Now we have created our jest.config.js file according
+    with the options we chose for our configuration🏗️.
+
+    Next, let's install our jsdom📑 library📚. According
+    with the documentation of Testing🧪Library, if we
+    are using Jest🃏 28 or later, `jest-enviroment-jsdom`
+    package now must be installed separatedly.
+
+                //🖥️inside the terminal:
+                > npm install --save-dev jest-environment-jsdom
+
+    We will need to install more Libraries📚 in the future.
+
+🟢-----Writing test🧪 cases💼-----•·
+
+Let's write simple w test, some Javascript🟨 test.
+For that, let's create a new component🧩, that will help us
+to understand tesing. we will call it sum.js
+
+                //🖥️inside sum.js
+                export const sum = (a, b) =>{
+                    return a + b
+                }
+
+    🤔But how do we write test🧪 cases💼 for
+    this component?
+    If we write `npm run test` in the terminal,
+    it says `No tests found`, Jest🃏 was looking
+    in all our files for test🧪 cases💼 and
+    did not find any. But where is it searching?
+    in the terminal you will find the answer in:
+
+            //🖥️terminal returned:
+             `testMatch: 👉**/__tests__/**/*.[jt]s?(x), **/?(
+              *.)+(spec|test).[tj]s?(x) - 0 matches`
+
+    Jest🃏 was looking for that⬆️ folder.
+    These files are present in a folder 
+    that needs to be called `__test__`.
+
+    Now, whatever files are present inside the our
+    folder named __test__📁, it will track them.
+    Now, like we saw, our testMatch has a configuration🏗️
+    for file extensions of .jt, jsx, or js. 
+
+            //🖥️terminal returned:
+                testMatch: **/__tests__/**/👉*.[jt]s?(x), **/?(
+                *.)+(spec|test).[tj]s?(x) - 0 matches`
+
+    So any file you create, anywhere inside the folder
+    structure, if is .js or jsx, it will be 
+    considered a test🧪 file
+
+    otherwhise, if you can create a test🧪 folder called
+    .test.js or .test.ts, etc
+    For example you can create Header.test.js as a test 
+    file or you can also use
+
+        · Headers.test.ts
+        · Headers.spec.js
+        · Headers.spect.js
+
+    All those files will be considered testing files
+
+        🤔But what is that `__` business?
+        that is syntax for dunder method of
+        python, and we use it as a keyword,
+        it's a convrnyion. for tests🧪, a
+        reserved word for tracking testing files.
+
+🟢-----creating our first Javascript🟨 test🧪 file-----•·
+
+    Let's create our first test🧪 file inside our __test__📁
+    folder to test our sum.js component🧩. called sum.test.js
+
+    🤔How are we going to test our sum function?
+
+        •FIRST of all, we use a function📽️ `test`
+        that takes 2 arguments, a string and a callback
+        function. The string will describe the purpose of
+        the function we are testing, and inside the brackets 
+        of the function it will be the test. This is the rest
+
+                //🖥️inside sum.test.js
+                import { sum } from "../sum"
+
+                    👉test("sum function should sum of two numbers", ()=>{
+
+                        //first we will call the function we want to test:
+                        👉const result = sum(3,4)//using some parameters
+
+                        //this line is known as ASSERTION🫡:
+                        👉expect(result).toBe(7)
+                        
+                        //the result has to be the same as the toBe method
+                    })
+
+
+        now we can run the test using `npm run test` in the terminal 
+        and it will tell us that our test passed!
+
+                //🖥️terminal returned:
+                    ...
+                    Test Suites: 1 passed, 1 total
+                    Tests:       1 passed, 1 total
+                    ...
+
+        ❗Most of the time, you will
+        always have ASSERTIONs🫡 in your test, if you don't write
+        an ASSERTION🫡, it will always pass no matter what.
+
+
+    🟢-----creating our first REACT⚛️ test🧪 file-----•·
+
+    We will be writing unit testing.
+    First of all, let's run our app in a different terminal than our Testing🧪
+    one. using `npm run start`.
+    Let's create a basic test🧪 to see if our component🧩 is loaded or not. 
+
+    We'll be using our Contact.js component🧩
+    we'll try to render it, and see if it loads or not.
+    But first let's fill a little bit our component🧩, since 
+    it's looking quite empty.
+
+                    //🖥️inside .parcelrc
+                    const Contact = () => {
+                        return (
+                            <div>
+                                <h1>Contact us page</h1>
+                                <form>
+                                <input type="text"
+                                placeholder="name" />
+
+                                <input type="text"
+                                placeholder="message" />
+
+                                <button>Submit</button>
+                                </form>
+                            </div>
+                        );
+                    }
+                    export default Contact;
+
+
+        • Now is time to write the test, inside a new
+        component🧩 inside our __test__📁 folder we
+        will call `Contact.test.js`:
+
+                    //🖥️inside .parcelrc
+
+                    import { render, screen } from "@testing-library/react"
+                        import Contact from "../Contact"
+
+                        test(
+                            "should load contact.js component", () => {
+
+                            👉render(<Contact />)//this wil render it to 
+                            the js DOM
+
+                            /*Now we will test it if it was successfully 
+                            rendered:
+                            For that we will use the screen() method
+                            screen is an obj that comes from the 
+                            testing library
+                            that give us access to the component elements*/
+
+                            /*Thanks to the screen obj, we can use the 
+                            getbyRole
+                            method to find all the elements with a 
+                            given role value: */
+
+                            👉const heading = screen.getByRole("heading")
+
+                            /*Now that we got our element, we can expect some results
+                            by manipulating it */
+
+                            👉expect(heading).toBeInTheDocument()
+                        })
+
+        🤔However, this test has failed, but why?
+        in the terminal it shows `Support for the experimental syntax '
+        jsx' isn't currently enabled`
+
+        so JSX🦐 is not enabled for our app!
+
+        🤔How can we enable JSX🦐??
+        in the terminal it shows ` Add @babel/preset-react `, So Jest🃏
+        is helping us to solve this issue
+
+                    //🖥️inside the terminal:
+                    //For enabling JSX🦐 ⬇️
+
+                    >npm i -d @babel/preset-react
+
+        And we will need to Include @babel/preset-react 
+        inside  my Babel🦜 config🏗️:
+
+                    //🖥️inside babel.config.js :
+                    module.exports = {
+                    presets: [['@babel/preset-env', {
+                        targets: { node: 'current' } }]
+                        
+                        /*it will automatically pick the runtime,
+                            If we don't add the runtime thing, wit will
+                            pick an error: ⬇️*/
+
+                            👉["@babel/preset-react", { 
+                                runtime: "automatic" }]
+                        
+                        ],
+                    };
+
+        🤔Why do we need this preset??
+        basically, Babel🦜 is a transpiler. Right 
+        now this Babel preset in react is helping
+        the Testing🧪Library📚 to convert the JSX🦐
+        code to XTML/html so it can read it properly
+
+        But it continues to fail 😭, why????
+        in the terminal says `TypeError: expect(...
+        ).toBeInTheDocument is not a function`
+
+        This is because we haven't installed the 
+        library📚 for toBeInTheDocument().
+        This library📚 is jest-dom
+
+
+                    //🖥️inside the terminal:
+                    npm i -D @testing-library/jest-dom
+
+        when is fixed, we can import the library to our test🧪
+        file:
+                    //🖥️inside Contact.test.js:
+                    import "@testing-library/jest-dom";
+
+        Once the library📚 is included, as soon as you
+        write anu ASSERTION🫡, (an expect statement)
+        vscode suggest you a lit of methods that we can
+        use to test🧪 our selected element.
+
+        This time the test🧪 passed✅
+
+        • Let's make a render test🧪 for our Submit button🔘.
+
+                    //🖥️inside Contact.test.js:
+                    test("should load button inside contact.js component", () => {
+
+                    render(<Contact />)//this wil render it to the js DOM
+
+                    const button = screen.getByRole("button")
+
+                        expect(button).toBeInTheDocument();
+                    })
+
+        · So with this line:
+        `const heading = screen.getByRole("heading")`
+        the getByRole method can help you with every kind of role in the html
+        this roles are defined by Jest🃏 inside the Testing🧪Library📚
+        there's more ways to access our button, we can also use
+
+            - screen.getByText("Submit")
+                this will look for matches of text in our screen 
+                object and find our `Submit` button🔘
+
+        If you try to find a non-existent eleement, the test🧪 wil fail
+
+        The beauty of Jest🃏 is that, whenever it fails, the test, it 
+        will show you what was rendered so you can see it for reference
+
+        • Let's make a render test🧪 for our placeholder text inside our
+        input attribute:
+
+                    //🖥️inside Contact.test.js:
+                    test("should load the name input inside contact.js component", () => {
+
+                        render(<Contact />)//this wil render it to the js DOM
+
+                        const input = screen.getByPlaceholderText("name")
+
+                        expect(input).toBeInTheDocument();
+                    })
+
+        • What we would do if we wanted to get Multiple the input attributes:
+
+                    //🖥️inside Contact.test.js:
+                    test("should load 2 input boxes inside contact.js component", () => {
+
+                        render(<Contact />)
+
+                        //there's not role named "input", the appropiate term is "textbox:"
+                    👉 const inputBoxes = screen.getByRole("textbox")
+
+
+                        expect(inputBoxes).toBeInTheDocument();
+                    })
+        
+                ❗However, this will throw an error saying there are multiple elements 
+                with the role "textbox" 😱 why??
+                because the appropiate method to check ALL the elements with the same 
+                role is getAllByRole().
+                Let's use it and log into the console what do we get using this method:
+
+                    //🖥️inside Contact.test.js:
+                    test("should load 2 input boxes inside contact.js component", () => {
+
+                        render(<Contact />)
+
+                        //This is known as querying🙋‍♀️ the getByAll()
+                        const inputBoxes = screen.getAllByRole("textbox")
+
+                        //intputBoxes will be an array of objects
+                        //here we log the first element of the array:
+                        console.log(inputBoxes[0])
+                    })
+
+                We get a react element with all its properties. Remember that at the
+                end of the day JSX🦐 is a way to write REACT⚛️ elements and 
+                REACT⚛️ elements are OBJECTS!
+
+                If we are querying🙋‍♀️ we do something like screen. and add a get
+                method and make things return to us!
+
+                Now let's check with our ASSERTION🫡 if we actually have 2 input
+                boxes:
+
+                    //🖥️inside Contact.test.js:
+                    test("should load 2 input boxes inside contact.js component", () => {
+
+                    render(<Contact />)
+
+                    const inputBoxes = screen.getAllByRole("textbox")
+
+                    //since our inputBoxes is an array of objects:
+                    👉expect(inputBoxes.length).toBe(2)
+                })
+
+                · We can also check a FALSE amount using the `not` keyword:
+                - expect(inputBoxes.length).not.toBe(3)
+        
+    These were only the basics of Testing🧪, some important things:
+
+    🚨Remember: when Testing🧪 you will allways need to
+
+        1️⃣ RENDER🖌️ something
+        2️⃣ QUERY🙋‍♀️ something
+        3️⃣ ASSERT🫡 something
+
+    🚨Remember that `test()` is the name of the function, you can 
+    also use `it` like this: 
+
+                //🖥️inside Contact.test.js:
+                    👉it("should load 2 input boxes inside contact.js component", () => {
+                    ...
+                })
+
+        There's no Difference!!!!!! it() is just an alias of test()
+
+    🚨Remember to hover over the methods in VSCODE if you don't understand any,
+    it will typically provide explanations on how the code works
+
+🟢-----Managing Multiple test🧪 cases💼 USING describe🖋️-----•·
+
+    We have now written several test🧪 cases💼
+    Sometimes the number of tests🧪 becomes unmanageable,
+    in that circumstance, we can put them in group, 
+    that means, puting all the test🧪 cases💼 inside
+    a block code  named describe🖋️.
+
+    Let's use describe🖋️ to contain all our Contact.js
+    test🧪 cases:
+
+                //🖥️inside Contact.test.js:
+                describe("Contact us Page test cases", () => {
+
+                test("should load contact.js component", () => {...})
+
+                test("should load the name input inside contact.js component", () => {...})
+
+                test("should load 2 input boxes inside contact.js component", () => {...})
+
+                });
+
+
+        🚨Everything works the same, this is just for grouping tests🧪
+
+        ❕you can also nest🪺 one describe🖋️ in another describe🖋️
+        ❕You can have multiple describe🖋️ in a single file
+        ❕
+
+
+
+🟢-----Coverage📁-----•·
+
+As we can see inside our projects,t there are many more files
+than before. This is because our Coverage📁 and the new files
+it contains, it was added with Jest🃏 in order to have the 
+capacity to cover all our files in our Testing🧪
+
+This file is inside our Dependencies⛓️ so is not necessesary
+to push it to our Git🐈‍⬛ repository, so we can put it inside
+our `.gitignore` file:
+
+
+                //🖥️inside Contact.test.js:
+                /node_modules/
+                /dist/
+                /.parcel-cache/
+                👉/coverage/
+
+
+🟢-----Testing🧪 our Header component🧩-----•·
+
+    🚨Remember that we are making Unit Testing🧪, now we are going to test
+    our header component🧩 to see if:
+
+        - It loads the Login🔐 button🔘
+        - our Cart🛒 element starts with 0 elements inside
+
+    so to start, we create a new testing file called Header.test.js
+
+                //🖥️inside Header.test.js:
+                describe("Contact us Page test cases", () => {
+    
+                    it("Should load Header Component with a 
+                    login button", ()=>{
+                        render(
+                            <Header/>
+                        )
+                    })
+                })
+
+    ❗However, this throws an ERROR, that is because our Cart🛒
+    functions with Redux, so we will have to provide Redux to our
+    component🧩 using <Provider> and provide our appStore
+    so it has access to our Redux code
+
+                //🖥️inside Header.test.js:
+                describe("Contact us Page test cases", () => {
+    
+                    it("Should load Header Component with a 
+                    login button", ()=>{
+                        render(
+                            <Provider store={appStore}>
+                            <Header />
+                            </Provider>
+                        )
+                    })
+                })
+
+
+    ❗However, this throws an ERROR, because Header element
+    
+
+
+
+      

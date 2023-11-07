@@ -4,6 +4,7 @@ import useOnlineStatus from "../../utils/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
 import { useSelector } from "react-redux";
 
+
 const Header = () => {
 
     const [btnNameReact, setBtnNameReact] = useState("Login")
@@ -15,13 +16,12 @@ const Header = () => {
     //Suscribing to the sotore using a Selector:
     const cartItems = useSelector(store => store.cart.items)
     //now this cart will get the data of the items
-    console.log(cartItems)
+    //console.log(cartItems)
 
     return (
         <div className="header flex justify-between px-2">
-            <div className="logo-text  flex">
-                <img className="logo h-24  m-2"
-                    src={require("../../images/Logo.jpg")} alt="Food App logo" />
+            <div className="logo-text  flex"><img className="logo h-24  m-2"
+                src={""} alt="Food App logo" />
                 <p className="name-app py-4 my-4
                 px-3 font-extrabold text-xl">My Food App</p>
             </div>

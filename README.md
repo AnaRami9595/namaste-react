@@ -23,3 +23,29 @@ has a File wathing Algorithm that is written in C++, that keeps track of all our
 - Slice🍕 (cartSlice)🛒
 - dispatch (action)🎬
 - Selector🎯
+
+
+# Setting up Testing in our app
+
+- Install REACT TESTING LIBRARY🧪📚
+
+- Install Jest🃏
+
+- Install Babel🦜 Dependencies⛓️
+to work with Jest🃏
+
+- Configure Babel🦜 .config file
+to run with Jest🃏
+
+- Configure Parcel📦 config file
+to disable default Babel🦜transpilation. 
+
+- Jest🃏 configuration🏗️
+
+- Install jsdom📑 library📚
+
+- Install @babel/preset-react to make JSX🦐  work in test cases
+
+- Include @babel/preset-react inside  my Babel🦜 config🏗️
+
+- Install @testing-library/jest-dom
