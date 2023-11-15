@@ -1,16 +1,19 @@
 import { CDN_URL } from "../../utils/constants"
-import noImageThumb from "../../images/noimagethumb.jpg";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../utils/redux/cartSlice";
 
 const ItemList = (props) => {
 
     const { items } = props
-    console.log('items', items)
+
+    if (!items || !items.card || !items.card.info) {
+        console.error("Invalid data for ItemList:", items);
+        return <div>Error: Invalid data for this item</div>;
+    }
 
 
-    const { imageId, name, description, price, ratings } = items?.card?.info
-    const { rating, ratingCountV2 } = ratings?.aggregatedRating
+    const { imageId, name, description, price, ratings } = items.card.info
+    const { rating, ratingCountV2 } = ratings.aggregatedRating
 
     const image = CDN_URL + imageId
 
@@ -26,6 +29,7 @@ const ItemList = (props) => {
 
     return (
         <div
+            data-testid = "foodItems"
             className="p-2 m-2 
              bg-slate-50 rounded-lg 
             border-b-2 
@@ -45,7 +49,7 @@ const ItemList = (props) => {
                 </div>
 
                 <img
-                    src={image || noImageThumb}
+                    src={image}
                     alt="Photo of the Item"
                 />
 

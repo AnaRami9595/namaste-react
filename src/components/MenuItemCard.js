@@ -1,5 +1,5 @@
 import { CDN_URL } from "../../utils/constants"
-import noImageThumb from "../../images/noimagethumb.jpg";
+
 
 const MenuItemCard = (props) => {
     const { menuItem } = props
@@ -10,12 +10,11 @@ const MenuItemCard = (props) => {
     const image = CDN_URL + imageId
 
     return (
-
         <div className="flex  p-4 m-4 bg-slate-50 rounded-lg
         h-44">
             <img
                 className="rounded-lg w-44"
-                src={image || noImageThumb}
+                src={image}
                 alt="Photo of the Item"
             />
             <ul className="px-4 mx-4">
@@ -27,12 +26,7 @@ const MenuItemCard = (props) => {
 
             </ul>
 
-
-
         </div>
-
-
-
     );
 }
 

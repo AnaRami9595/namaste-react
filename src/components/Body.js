@@ -52,8 +52,11 @@ const Body = () => {
                 my-8
                 [text-shadow:_0_2.5px_0_rgb(0_0_0_/_50%)]">What are you craving?</h2>
                 <div className="search">
-                    <input className="rounded-sm p-1 w-60"
-                        type="text" placeholder="Type a meal..."
+                    <input 
+                    className="rounded-sm p-1 w-60"
+                        type="text" 
+                        data-testid = "searchInput"
+                        placeholder="Type a meal..."
                         value={searchText}
                         onChange={(e) => {
                             setsearchText(e.target.value)
@@ -69,7 +72,7 @@ const Body = () => {
                             )
                             setFilteredRestaurants(filtered)
                         }}
-                    > Search!</button>
+                    >Search</button>
 
                 </div>
                 <div className="filter-button">

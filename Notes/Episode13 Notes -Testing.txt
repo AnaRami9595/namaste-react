@@ -253,6 +253,9 @@ inside our pakage.json🎊 file called "test".
 
     We will need to install more Libraries📚 in the future.
 
+
+⭐-------------------------------- Unit ⏺️ Testing🧪--------------------------------⭐
+
 🟢-----Writing test🧪 cases💼-----•·
 
 Let's write simple w test, some Javascript🟨 test.
@@ -690,9 +693,729 @@ our `.gitignore` file:
                 })
 
 
-    ❗However, this throws an ERROR, because Header element
+    ❗This throws an ERROR, because the Link element is not
+    supported by Jest🃏, since we got it from ROUTER🛣️ we will need to wrap
+    our test🧪 inside that feature:
+
+
+                //🖥️inside Header.test.js:
+                    import { render } from "@testing-library/react";
+                    import { Provider } from "react-redux";
+                    import appStore from "../../../utils/redux/appStore.js";
+                    import Header from "../Header";
+                    import { BrowserRouter } from "react-router-dom";
+
+                    it("Should load Header Component with a login button", () => {
+                        render(
+                            <BrowserRouter>
+                                <Provider store={appStore}>
+                                    <Header />
+                                </Provider>
+                            </BrowserRouter>
+                        );
+                    });
+                        
+
+    Now that we can RENDER🖌️ Properly, is time to QUERY🙋‍♀️ and ASSERT🫡:
+
+
+                      //🖥️inside Header.test.js:
+                   ...
+                    it("Should load Header Component with a login button", () => {
+                        render(
+                            <BrowserRouter>
+                                <Provider store={appStore}>
+                                    <Header />
+                                </Provider>
+                            </BrowserRouter>
+                        );
+                        👉const  login = screen.getByRole("button")
+                        //const loginButton = screen.getByText("Login") ⬅️is also correct
+                        //but you should use Role
+
+                        👉expect(login).toBeInTheDocument();
+                    });
+    
+    If there are multiple buttons and you only need the Login🔐 one, this is a
+    way to single it out:
+
+                          //🖥️inside Header.test.js:
+                            ...
+                            it("Should load Header Component with a login button", () => {
+                                render(
+                                ...
+                                );
+                                👉const  login = screen.getByRole("button", {name: "Login"})
+
+                                expect(login).toBeInTheDocument();
+                            });
+
+
+    • Cart🛒 Test🧪 case💼:
+
+    Let us find out if the Cart🛒 component🧩 start empty: 
     
 
+                              //🖥️inside Header.test.js:
+                            ...
+                            it("Should load Header Component with no cart items", () => {
+                            render(
+                                <BrowserRouter>
+                                    <Provider store={appStore}>
+                                        <Header />
+                                    </Provider>
+                                </BrowserRouter>
+                            );
+
+                            👉const  cartItems = screen.getByText("🛒 (0 items)")
+
+                            👉expect(cartItems).toBeInTheDocument();
+                        });
+
+    - But what if we want to check if there's a Cart🛒 component🧩? in that case we can use
+    a regex to match part of the text without exactly getting it, like this
+
+                                  //🖥️inside Header.test.js:
+                            ...
+                            it("Should load Cart Component inside Header", () => {
+                            render(
+                                <BrowserRouter>
+                                    <Provider store={appStore}>
+                                        <Header />
+                                    </Provider>
+                                </BrowserRouter>
+                            );
+
+                            👉const  cart = screen.getByText(/🛒/)
+
+                            expect(cart).toBeInTheDocument();
+                        });
+
+    • Login🔐 text change Test🧪 case💼:
+
+        Our app changes the Login text everytime we click, on it, let's test🧪 this feature:
+
+                             //🖥️inside Header.test.js:
+                                  ...
+                                    it("Should change Login button to Logout on Click", () => {
+                                render(...);
+                                    //Getting the Login🔐 button
+                                👉const loginButton = screen.getByRole("button", {name: "Login"});
+
+                                    //we can use fireEvent this to check on Events
+                                    //first we need to import it from "@testing-library/react"
+                                    //syntax: fireEvent.eventThatWillFire(place where my event should fire):
+                                👉fireEvent.click(loginButton)
+
+                                    //Now let's access the logout button that we changed to:
+
+                                    👉const logoutButton = screen.getByRole("button", {name: "Logout"});
+
+                                    /*If the event was fired succesfully, we will expect the  Logout
+                                    Button to be in the document:*/
+                                    
+                                👉expect(logoutButton).toBeInTheDocument();
+                            });
+
+🟢-----Testing🧪 our Restaurant Card component🧩 -----•·
+
+    Let's check if we can test our RestaurantCard component🧩 considering that
+    props are being passed inside:
+
+    for that we will create MockData🎭 to pass it like props, and see if it's working
+
+    that MockData🎭 will be in a separate folder called mocks📁
+    inside we will make a file to test our RestaurantCard component🧩, "resCardMock.json"
+    that will contain an object similar to the ones that are inside of the array of
+    the restaurant menu array:
 
 
-      
+
+                             //🖥️inside Header.test.js:
+                                {
+                                    "id": "71579",
+                                    "name": "Hotel Inayat Cafe",
+                                    "avgRating": 4.2,
+                                    "cuisines": [
+                                    "North Indian",
+                                    "Biryani",
+                                    "Chinese"
+                                    ],
+                                    "promoted": true,
+                                    "sla": {
+                                    "deliveryTime": 25,
+                                    "lastMileTravel": 2.3,
+                                    "serviceability": "SERVICEABLE",
+                                    "slaString": "25 mins",
+                                    "lastMileTravelString": "2.3 km",
+                                    "iconType": "ICON_TYPE_EMPTY"
+                                    },
+                                    "cloudinaryImageId": "jvuhbo6nvyt8tsiwkll6"
+                                }
+
+    We will RENDER🖌️ our Header component🧩  inside our test, and pass the MockData🎭
+    as a prop. Later, we will get one of the text elements inside it to see if it was
+    passed succesfully.
+
+
+                             //🖥️inside Header.test.js:
+                                it("Should render RestaurantCard Component with props Data", () => {
+
+                                    render(<RestaurantCard resData={MOCK_DATA} />);
+
+                                    console.log(screen)
+
+                                    //checking if we can find the name property:
+
+                                    const name =  screen.getByText("Hotel Inayat Cafe")
+                                    
+
+                                    expect(name).toBeInTheDocument(); 
+                                });
+
+
+    Now 
+
+
+
+⭐--------------------------------Integration🚸 Testing🧪--------------------------------⭐
+
+🟢-----Writing test🧪 cases💼 for Integration🚸 testing on the Body component🧩-----•·
+
+let's test🧪 our Search🔎 feature that is inside our body component
+For that we will create a test🧪 file inside our __test__📁 folder
+Inside our search let's first render the whole Body.js component🧩
+
+An important part of our Body component is making an API call.
+we will later write test🧪 cases💼 for that scenario
+
+    But firslt, let's render the whole body component🧩 and checking if my
+    Search🔎 button is there, we will write the Integration🚸 test later:
+
+                             //🖥️inside Search.test.js:
+                            it(
+                            "Should render RestaurantCard Component with props Data", (
+
+                            ) => {
+                            render(<Body/>)
+                            })
+
+    ❗However, this returns an ERROR❌, it fails beause "ReferenceError: fetch is not defined"
+    🤔Why? when you test🧪 the Body components🧩, is not rendering it on the Browser🌐, 
+    it is rendering in the Jest🃏 jsdom📑 which is obly Browser🌐-like, meaning it doesn'takes
+    have ALL the browser's super powers, Fetch🐕 is a superpower in the browser, is not a native
+    function of Javascript🟨, is kinda like an API inside Javascript🟨 but not native! Jest🃏
+    does not understand fetch. 
+
+    So we will need to use a mock function📽️ for our test,
+    This is how we write it 
+
+                             //🖥️inside Search.test.js:
+
+                                /*global object that will replace the fetch function,
+                                we are defining it inside a global object
+                                And we will define our data as a jest function: ⬇️ */
+                                    global.fetch = jest.fn(() =>{
+                                        //our jest function takes a callback function:
+                                        //Here we will mock how our fetch function works inside Body.js
+                                        /*Our fetch function returns a promise, so we will need to 
+                                        /return a promise function: */
+                                        return Promise.resolve({
+                                            // now it resolves the promise
+                                            //and is resolved thru a json:
+                                            //and json is a function that returns  another promise:
+                                            json: ()=>{
+                                                //this json returns also a promise that needs resolve:
+                                                //and this promise actually has data that will be 
+                                                //...mock data:
+                                                ➡️return Promise.resolve(MOCK_DATA)
+                                            }
+                                        })
+                                    })
+
+    For this to work we will need to create more MockData🎭 inside a file that we will call
+    mockResListData.json and import it as `MOCK_DATA`. This is how our file looks now:
+
+                             //🖥️inside Search.test.js:
+                                import { render, screen} from "@testing-library/react"
+                                import MOCK_DATA from "../../mocks/mockResListData.json"
+                                
+                                    global.fetch = jest.fn(() =>{
+                                        return Promise.resolve({
+                                            json: ()=>{
+                                            return Promise.resolve(MOCK_DATA)
+                                            }
+                                        })
+                                    })
+                                it("Should render Body component, () => {
+                                    render(<Body/>)
+                                    })`
+
+        And the test passed✅ but with a warning⚠️, which tell us that every time 
+        we make an async operation or doing a state☁️ we need to write our RENDER🖌️
+        method wrapped in an act function.
+        This is the warning⚠️:
+
+             `Warning: An update to Body inside a test was not wrapped in act(...).
+                When testing, code that causes React state updates should be wrapped into act(...):
+                act(() => {
+                    /* fire events that update state */
+                });`
+
+        🚨 This act()👩🏻‍🎤 function is coming from `react-dom/test-utils`, and we need to 
+        import it from there.
+
+                             //🖥️inside Search.test.js:
+                                ...
+                                import { act } from "react-dom/test-utils"
+                                
+                                    global.fetch = jest.fn(() =>{
+                                        ...
+                                    })
+                                it("Should render RestaurantCard Component with props Data", async () => {
+                                //we need to render our react elements inside an act() function,
+                                //the act() function will return a promise:
+                                //Since we return a promise, we'll need to use await.
+                                //since we use await, we need to use async
+
+                                👉await act( async ()=> { render(<Body/>)});
+
+                                // an act function returns a callback that is also async⬆️
+                                //and will render our component.
+                            })
+
+                However, this will throw an ERROR❌: 
+                `The above error occurred in the <Link> component:`
+                we already know how to solve this issue, we just wrap our component🧩
+                inside our BrowserRouter
+
+                             //🖥️inside Search.test.js:
+                                ...
+                                import { BrowserRouter } from "react-router-dom";
+                                
+                                    global.fetch = jest.fn(() =>{...})
+                                it("Should render Body component, () => {
+                                    await act( async ()=> { render(
+                                        <BrowserRouter>
+                                        <Body/>
+                                        </BrowserRouter>
+                                    )});
+                                    })`
+
+
+                Now our test🧪 passed✅, We have rendered our component🧩 succesfully, it's
+                time to QUERY🙋‍♀️ and  ASSERT🫡 our Search🔎 button:
+
+                             //🖥️inside Search.test.js:
+                                ...
+                                it("Should render search button", async(
+
+                                ) => {
+                                    await act( async ()=> { render(
+                                        <BrowserRouter>
+                                        <Body/>
+                                        </BrowserRouter>
+                                    )});
+
+                                    const searchBtn =  screen.getByRole("button", {name: "Search"})
+
+                                    expect(searchBtn).toBeInTheDocument();
+                                })
+
+        • Tip: 
+        💡To avoid runing the tests🧪 again and again using "npm run test"
+        we can add a new script to our package.json🎊 file called
+        "watch-test" so every time we save our project, it tests it 
+        automatically:
+
+                             //🖥️inside package.json🎊
+                             {
+                                ...
+                                "scripts": {
+                                    "start": "parcel index.html",
+                                    "build": "parcel build index.html",
+                                    "test": "jest",
+                                    ➡️"watch-test": "jest --watch"
+                                }
+                                }
+
+                -and then writing on terminal: `npm run watch-test`
+                Watch Usage
+                › Press a to run all tests.
+                › Press f to run only failed tests.
+                › Press p to filter by a filename regex pattern.
+                › Press t to filter by a test name regex pattern.
+                › Press q to quit watch mode.
+                › Press Enter to trigger a test run.
+
+
+        • Now let's make a test🧪 by writing something inside the input 
+        area of the search button, using a new method called getByTestId.
+        We will add a new attribute called "data-testId" which value will
+        be the ID we want to give to that input element:
+
+                             //🖥️inside Body.js
+                             ...
+                             <div className="search">
+                            <input 
+                            className="rounded-sm p-1 w-60"
+                                type="text" 
+                                👉data-testid = "searchInput"
+                                placeholder="Type a meal..."
+                                value={searchText}
+                                onChange={(e) => {
+                                    setsearchText(e.target.value)
+                                }}
+                            />
+                             ...
+
+        Now we access the input element through our data-testid
+
+                             //🖥️inside Search.test.js:
+                             it("Should render input box text", async () => {
+                                await act( async ()=> { render(
+                                    <BrowserRouter>
+                                    <Body/>
+                                    </BrowserRouter>
+                                )});
+
+                                const searchInput =  screen.getByTestId(searchInput)
+                            });
+
+
+        It's time to type something in our test🧪 to see if it works, but 🤔How
+        can we do that? we will need to trigger an event using fireEvent(), and
+        inside, simulate changing the value inside the input box like we made
+        inside our Body component🧩 using e.target.value
+
+                             //🖥️inside Search.test.js:
+
+                             it("Should search Res list for pizza using text imput", async () => {
+                                await act( async ()=> { render(
+                                    ...
+                                )});
+
+                                const searchInput =  screen.getByTestId("searchInput")
+
+                                //fireEvent will recieve our searchInput
+                                //and pass an object that will simulate what we get 
+                                //inside the event.
+                                👉fireEvent.change(searchInput, {target: {value: "pizza"}});
+                            });
+
+        Now let's simulate clicking the Search🔎 button to actually test🧪 our 
+        functionality. For that we will need to use fireEvent() and get our button
+        clicked. After that, according to our data, we can expect 2 cards to
+        appear inside our body component🧩.
+
+        🤔How can we check on that? well, at the end of the day, each Card is
+        a <div> element.
+        🤔How can we access it inside my test?
+        We can use testId in order to count them.
+
+
+                            //🖥️inside RestaurantCard.JS🟨
+                                ...
+                                const RestaurantCard = (props) => {
+                                ...
+                                    
+                                    return (
+                                        <div 
+                                        👉data-testid = "resCard"
+                                        ...
+                                        </div>
+                                    );
+                                }
+
+        Now, with getAllByTestId() we can get all the cards on the screen📺, 
+        using the TestId attribute. since we have only 2 "pizza" related cards, 
+        The length of the array returned by getAllByTestId()  should equal 2
+
+
+                            //🖥️inside Search.test.js
+                            it("Should search Res list for pizza using text imput", async () => {
+                            await act( async ()=> { render(
+                                ...
+                            )});
+
+                            const searchBtn =  screen.getByRole("button", {name: "Search"})
+                            const searchInput =  screen.getByTestId("searchInput")
+
+                            fireEvent.change(searchInput, {target: {value: "pizza"}});
+                            fireEvent.click(searchBtn)
+
+                            //ASSERT: Screen should load 2 cards: 
+                            👉const cards  =  screen.getAllByTestId("resCard")
+
+                            👉expect(cards.length).toBe(2)
+                        });
+
+
+            It passed✅!
+
+        Just to have our test🧪 more rounded, let's check if it's delivering the 
+        correct amount of cards that we want to display inside our Body component🧩.
+        In this case, they are 20 in total. So before our click event we add:
+
+                        //🖥️inside Search.test.js
+                            it("Should search Res list for pizza using text imput", async () => {
+                            await act( async ()=> { render(
+                                ...
+                            )});
+
+                            const searchBtn =  screen.getByRole("button", {name: "Search"})
+                            const searchInput =  screen.getByTestId("searchInput")
+
+                            👉const cardsBeforeSearch = screen.getAllByTestId("resCard")
+                            👉expect(cardsBeforeSearch.length).toBe(20)
+
+                            fireEvent.change(searchInput, {target: {value: "pizza"}});
+                            fireEvent.click(searchBtn)
+
+                            const cardsAfterSearch   =  screen.getAllByTestId("resCard")
+
+                            expect(cardsAfterSearch.length).toBe(2)
+                        });
+
+            Once again, our tests passed✅!
+
+        • Let's test one last feature, our Top Restaurants button, to see if it filters
+        the top restaurants:
+
+                        //🖥️inside Search.test.js
+                            it("Should filter the top rated restaurants", async()=>{
+                            await act(async ()=>{
+                            render(
+                                <BrowserRouter>
+                                <Body/>
+                                </BrowserRouter>
+                            )});
+
+                            //let's check our  number of cards before filtering⬇️:
+                            const cardsBeforeFilter = screen.getAllByTestId("resCard")
+                            expect(cardsBeforeFilter.length).toBe(20)
+
+                            //finding the button and clicking it⬇️:
+                            const topRatedBtn = screen.getByRole("button", {name: "Top Rated Restaurants"})
+                            fireEvent.click(topRatedBtn)
+
+                            const cardsAfterFilter = screen.getAllByTestId("resCard")
+
+                            //getting the filtered cards⬇️:
+                            expect(cardsAfterFilter.length).toBe(10)
+                    })
+
+            Once again, our tests passed✅!
+
+
+🟢-----beforeAll(), beforeEach(), afterAll(), afterEach()-----•·
+
+    Helper functions📽️ that can help us to manage tests🧪: 
+
+    · beforeAll(). Suppose that you have a describe(...) block of tests,
+    and you will like to perform some action ONCE, before all of them start
+    to execute. You can use the beforeAll() function inside the block
+    and on the top of all tests🧪.
+    It takes a callback function, and whatever you want to pass inside
+    the callback it will execute.
+
+    · beforeEach() works the same, except it will execute before EACH test,
+    one time for each of the tests. So it's very helpful if we have to 
+    do some cleanup task
+
+    · afterAll() : similarly to beforeAll(), this function📽️ executes 
+    once after ALL the test have been executed 
+
+    · afterEach() like beforeEach() it executes one time for each test
+    after it has been executed 
+
+
+                //🖥️inside Contact.test.js:
+                describe("Contact us Page test cases", () => {
+
+                    //Will run the function Before ALL the tests🧪
+                    👉beforeAll(()=>{
+                        console.log("Before All")
+                    });
+
+                    👉beforeEach(()=>{
+                        console.log("Before each")
+                    })
+
+
+                test("should load contact.js component", () => {...})
+
+                test("should load the name input inside contact.js component", () => {...})
+
+                test("should load 2 input boxes inside contact.js component", () => {...})
+
+                });
+🟢-----Writing test🧪 cases💼 for Integration🚸, Cart🛒 component🧩-----•·
+
+    Let's test a very important functionality inside our app, our Cart🛒 component🧩.
+    And if we are able to add things to our Cart🛒.
+
+    We'll start by creating a new test🧪 file called `Cart.test.js`
+    then we'll create mock data for a restaurant in a file called `resCardMock.json"
+
+    and Fetch🐕 The MockData🎭 using the act() function📽️, rendering wraping our
+    component🧩 inside our BrowserRouter.
+
+    Inside this test file, we will mock rendering a Restaurant Menu, clicking 
+    an item inside one of the menu sections, and adding it to the cart, let's
+    start by just RENDER🖌️ the Restaurant Menu using a mock data file that
+    we will call `mockResMenu.js`, we will import it using a fetch function of
+    our own, like we did before with Search🔎
+
+
+                //🖥️inside Cart.test.js:
+
+                    import MOCK_DATA_MENU from "../../mocks/mockResMenu.json";
+
+                    global.fetch = jest.fn(()=>
+                    Promise.resolve({
+                        json: () => Promise.resolve(MOCK_DATA_MENU)
+                    })
+                    );
+
+            Now is time to RENDER🖌️ our RestaurantMenu component🧩.
+            Just like before, we will need to wrap it inside an 
+            act() function that will be async.
+            Inside it we will need to Provide the Redux appstore that
+            makes our cart work, otherwise it will throw an ERROR❌
+            and also, we need to wrap it inside our BrowserRouter for our
+            Links to work:
+
+
+                //🖥️inside Cart.test.js:
+                 ...
+                    it("should Load Restaurant Menu Component", 
+                    async () => {
+                        await act(async () =>
+                        render(
+                            <BrowserRouter>
+                            <Provider store={appStore}>
+                                <RestaurantMenu />
+                            </Provider>
+                            </BrowserRouter>
+                        )
+                        );
+
+                    });
+
+            Let's do a couple of things:
+            1️⃣ simulate that we are clicking the "Extras"
+            category inside our accordion that is inside
+            our Menu
+            2️⃣Clicking our accordion header to open it
+
+                //🖥️inside Cart.test.js:
+                 ...
+                    it("should Load Restaurant Menu Component", 
+                    async()=>{
+                    await act(...)
+                        //querying🙋‍♀️ the menu:
+                    1️⃣const accordionHeader = screen.getByText(
+                        "Extras (4)")
+                    2️⃣fireEvent.click(accordionHeader);
+                    });
+
+        Now we want to get ALL the items that are inside our
+        `Extras` we can get them all assigning TestId for
+        each item of our list, inside of our ItemList component.
+        our TestId will be "foodItems". For this category, we 
+        should have an array of 4 foodItems
+
+                        //🖥️inside Cart.test.js:
+                 ...
+                    it("should Load Restaurant Menu Component", 
+                    async()=>{
+                    await act(...)
+                    ...
+                    const foodItems = screen.getAllByTestId(
+                        "foodItems")
+                    expect(foodItems.length).toBe(4)
+                    });
+
+        The next thing we will need to do is to simulate clicking
+        the first add➕ button of our food items
+        and check if our Cart🛒 component🧩 inside our Header, 
+        component🧩,
+        where it counts the items that have been added to our Cart,
+        has updated
+
+         //🖥️inside Cart.test.js:
+                 ...
+                   it("should Load Restaurant Menu Component", async () => {
+                    await act(async () =>
+                    //Importing our header:
+                    render(
+                        <BrowserRouter>
+                        <Provider store={appStore}>
+                            <RestaurantMenu />
+                           👉 <Header/>
+                        </Provider>
+                        </BrowserRouter>
+                    )
+                    );
+                    ...
+                    //Getting the add➕ buttons:
+                    👉const addBtns =  screen.getAllByRole("button", {name: "Add +"})
+
+                    //Clicking the first add➕ button of our array:
+                   👉 fireEvent.click(addBtns[0])
+
+                   //Checking if the Header has been updated:
+                    👉expect(screen.getByText("🛒 (1 items)")).toBeInTheDocument()
+                });
+
+        Tip🚨
+        💡Always create separate tests, instead of puting them all inside
+        a single one like we did here💡
+
+
+                //🖥️inside Cart.test.js:
+                    it("should render Cart component with 2 items", async () => {
+                    await act(async () =>
+                    render(
+                        <BrowserRouter>
+                        <Provider store={appStore}>
+                            👉<Cart/>
+                            <RestaurantMenu />
+                            <Header/>
+                        </Provider>
+                        </BrowserRouter>
+                    )
+                    );
+
+                    const accordionHeader = screen.getByText("Extras (4)")
+
+                    fireEvent.click(accordionHeader)
+
+                    const addBtns =  screen.getAllByRole("button", {name: "Add +"})
+
+                    fireEvent.click(addBtns[0])
+
+                    fireEvent.click(addBtns[1])
+
+                    /* Counting our foodItems including the ones in the 
+                    Restaurant Menu(4), 
+                    header(2)
+                    and the cart component(2)*/
+                    👉expect(screen.getAllByTestId("foodItems").length).toBe(8);
+
+                    //checking our "Clear Cart button"
+                    👉fireEvent.click(screen.getByRole("button", {name : "Clear Cart"}))
+                    //Now only RestaurantMenu is rendering the 4 foodItems insde `Extras`
+                    👉expect(screen.getAllByTestId("foodItems").length).toBe(4);
+                    //checking if cart component is empty:
+                    👉expect(screen.getByText("Cart is empty")).toBeInTheDocument()
+
+                    })
+
+🟢-----Checking our Coverage📁
+
+Inside our terminal we can see that our tests have a coverage
+of 94% inside our app, to check where some coverage is missing,
+we can look at the Coverage📁 folder, then go to 
+Icov-report > index.html and open with

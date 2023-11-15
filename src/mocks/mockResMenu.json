@@ -1,0 +1,2093 @@
+{
+    "info": {
+    "id": "71579",
+    "name": "Hotel Inayat Cafe",
+    "city": "Nashik",
+    "cloudinaryImageId": "jvuhbo6nvyt8tsiwkll6",
+    "areaName": "Indira Nagar",
+    "cost": "₹400 for two",
+    "cuisines": [
+    "North Indian",
+    "Biryani"
+    ],
+    "avgRating": 4.2,
+    "sla": {
+    "deliveryTime": 19
+    }
+    },
+    "foodOptions": [
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676994",
+    "name": "Butter Chicken Full Handi (boneless)",
+    "category": "Main Course",
+    "description": "Serves 1 | A delightfully hearty chicken handi with a flavor-packed butter and creamy served full portion",
+    "imageId": "xbdeyipwohpjzcryqnqm",
+    "inStock": 1,
+    "price": 83000,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.4",
+    "ratingCount": "112 ratings",
+    "ratingCountV2": "112"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676996",
+    "name": "Butter Chicken Plate (boneless)",
+    "category": "Main Course",
+    "description": "Serves 1 | The all time favorite creamy butter chicken cooked to serve the best in your plate .",
+    "imageId": "bayu5nqri4lv4by8kdjw",
+    "inStock": 1,
+    "price": 29000,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.4",
+    "ratingCount": "1304 ratings",
+    "ratingCountV2": "1304"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676985",
+    "name": "Chicken Handi Full",
+    "category": "Main Course",
+    "description": "A flavor-packed combo of scrumptious chicken handi served with onions.",
+    "imageId": "lcr2xfhwqwfzcz95plt9",
+    "inStock": 1,
+    "price": 80000,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.4",
+    "ratingCount": "79 ratings",
+    "ratingCountV2": "79"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "23429954",
+    "name": "Chicken Handi Half",
+    "category": "Main Course",
+    "description": "Serves 1 | A delightfully hearty chicken handi with a flavor-packed creamy served in half portion",
+    "imageId": "i1d5cnvc8lf4z8xrpug7",
+    "inStock": 1,
+    "price": 43500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.1",
+    "ratingCount": "617 ratings",
+    "ratingCountV2": "617"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676992",
+    "name": "Chicken Maratha Plate",
+    "category": "Main Course",
+    "description": "A spicy and delicious cutlets made from boneless chicken, dipped in spicy gravy.",
+    "imageId": "tvygcmc29jdx0pv6eggz",
+    "inStock": 1,
+    "price": 28500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.0",
+    "ratingCount": "348 ratings",
+    "ratingCountV2": "348"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "23430207",
+    "name": "Butter Chicken Handi Half (boneless)",
+    "category": "Main Course",
+    "description": "Serves 1 | A delightfully hearty chicken handi with a flavor-packed butter and creamy served in half portion",
+    "imageId": "c9seum1fwm72sywzdjzo",
+    "inStock": 1,
+    "price": 45000,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.5",
+    "ratingCount": "565 ratings",
+    "ratingCountV2": "565"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "37649628",
+    "name": "Chicken Tikka Masala",
+    "category": "Main Course",
+    "description": "Serves 1 | A hot and spicy combo of delicious mini chicken tikka masala served",
+    "imageId": "uk9m6afs0indqrysi2qo",
+    "inStock": 1,
+    "price": 32500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.4",
+    "ratingCount": "433 ratings",
+    "ratingCountV2": "433"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676954",
+    "name": "Paneer Tikka Masala",
+    "category": "Main Course",
+    "description": "Serves 1 | A creamy dish with pre cooked tandoor style soft paneer chunks cooked in a rich tomato gravy seasoned with spices and butter",
+    "imageId": "rpqtpfdw6xbyn4luguyn",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 33000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451381",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451379",
+    "groupName": "Breads",
+    "choices": [
+    {
+    "id": "65080856",
+    "name": "Tandoori Roti ( 2 Pc )",
+    "price": 5000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.5",
+    "ratingCount": "473 ratings",
+    "ratingCountV2": "473"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676960",
+    "name": "Kaju Curry (sweet)",
+    "category": "Main Course",
+    "description": "Serves 1 | Assorted kaju curry with Indian spices and raw kaju mixed in sweet kaju currry .",
+    "imageId": "l7kxtyuxpgcvcqq4vnwh",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 25500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451398",
+    "groupName": "Breads",
+    "choices": [
+    {
+    "id": "65080856",
+    "name": "Tandoori Roti ( 2 Pc )",
+    "price": 5000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451401",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.0",
+    "ratingCount": "106 ratings",
+    "ratingCountV2": "106"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676972",
+    "name": "Paneer Lababdar",
+    "category": "Main Course",
+    "description": "Medium Spicy | Serves 1 | Paneer lababdar gravy is made of a spicy cashew tomato paste that is cooked with sauteed onions",
+    "imageId": "meipk0vraevjx3nudmqi",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 33000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451204",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451201",
+    "groupName": "Breads",
+    "choices": [
+    {
+    "id": "65080856",
+    "name": "Tandoori Roti ( 2 Pc )",
+    "price": 5000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "spiceLevel": "MEDIUMSPICY",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.5",
+    "ratingCount": "301 ratings",
+    "ratingCountV2": "301"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676981",
+    "name": "Sev Bhaji",
+    "category": "Main Course",
+    "description": "Serves 1 | A scrumptious meal consisting of lipsmacking sev dipped in red gravy",
+    "imageId": "kgq61m1lr9rjwa2feq0s",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 17500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451213",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451210",
+    "groupName": "Breads",
+    "choices": [
+    {
+    "id": "65080856",
+    "name": "Tandoori Roti ( 2 Pc )",
+    "price": 5000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.1",
+    "ratingCount": "546 ratings",
+    "ratingCountV2": "546"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "37649579",
+    "name": "Paneer Butter Masala",
+    "category": "Main Course",
+    "description": "Comes with Served with onion and fryums | Serves 1 | A delightfully wholesome served with along with paneer butter masala, fryums and onion",
+    "imageId": "hebgdkkvyoqb9eal8z4k",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 31000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451220",
+    "groupName": "Breads",
+    "choices": [
+    {
+    "id": "65080856",
+    "name": "Tandoori Roti ( 2 Pc )",
+    "price": 5000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451222",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "accompaniments": "Served with Served with onion and fryums",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.5",
+    "ratingCount": "306 ratings",
+    "ratingCountV2": "306"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19677011",
+    "name": "Mutton Keema Masala",
+    "category": "Main Course",
+    "description": "Serves 1 | Coupled with flavors of spices deep cooked, mouthwatering mutton kheema masala",
+    "imageId": "qn1gaoyqamfiprzs4qmq",
+    "inStock": 1,
+    "price": 29500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.0",
+    "ratingCount": "758 ratings",
+    "ratingCountV2": "758"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19677016",
+    "name": "Vegetable Dum Biryani",
+    "category": "Main Course",
+    "description": "Comes with Served with raita and Salad | Serves 1 | Rice and assorted veggies cooked in a fragrant and flavorful masala seasoned with Indian whole spices .",
+    "imageId": "eezloecojqa6bqy1kiir",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 21000,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "accompaniments": "Served with Served with raita and Salad",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.0",
+    "ratingCount": "843 ratings",
+    "ratingCountV2": "843"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19677018",
+    "name": "Hyderabadi Chicken Dum Biryani",
+    "category": "Main Course",
+    "description": "Serves 1 | Coupled with flavors of spices delicately combined with rice and chicken makes an aromatic combination that is hard to resist",
+    "imageId": "i2hwg8gpeei9540osyhj",
+    "inStock": 1,
+    "price": 29500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "3.9",
+    "ratingCount": "1997 ratings",
+    "ratingCountV2": "1997"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "37649601",
+    "name": "Egg Biryani",
+    "category": "Main Course",
+    "description": "Serves 1 | Healthy yet wholesome boiled eggs covered in flavor-packed masala and slow cooked rice",
+    "imageId": "vfql4qndrumkalywlthq",
+    "inStock": 1,
+    "price": 21500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "EGG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "3.8",
+    "ratingCount": "377 ratings",
+    "ratingCountV2": "377"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19677023",
+    "name": "Jeera Rice",
+    "category": "Main Course",
+    "description": "Serves 1 | Aromatic rice cooked in a tempering of cumin and whole spices",
+    "imageId": "kozzmt6nxu7pkqzthdu7",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 16000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451653",
+    "groupName": "Breads",
+    "choices": [
+    {
+    "id": "65080856",
+    "name": "Tandoori Roti ( 2 Pc )",
+    "price": 5000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451656",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.5",
+    "ratingCount": "333 ratings",
+    "ratingCountV2": "333"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19677013",
+    "name": "Dal Khichda",
+    "category": "Main Course",
+    "description": "Comes with Served with crunchy papad | Serves 1 | A delightfully comforting combo with simple yet flavorful dal khichdi",
+    "imageId": "h7a4uvqrqsjh9b4nurbv",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 19000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451666",
+    "groupName": "Breads",
+    "choices": [
+    {
+    "id": "65080856",
+    "name": "Tandoori Roti ( 2 Pc )",
+    "price": 5000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451669",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "accompaniments": "Served with Served with crunchy papad",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.3",
+    "ratingCount": "1156 ratings",
+    "ratingCountV2": "1156"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "37649600",
+    "name": "Chicken Fried Rice",
+    "category": "Main Course",
+    "description": "Comes with Served with Schezwan sauce dip | Serves 1 | Stir-fried rice topped with juicy chicken chunks and grated vegetables",
+    "imageId": "wo5m2slvufqfgljqpt7p",
+    "inStock": 1,
+    "price": 28500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "accompaniments": "Served with Served with Schezwan sauce dip",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.3",
+    "ratingCount": "288 ratings",
+    "ratingCountV2": "288"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676964",
+    "name": "Veg Manchurian",
+    "category": "Starters",
+    "description": "Serves 1 | Deep-fried, assorted veggies tossed in a thik and spicy Manchurian sauce",
+    "imageId": "vx7kxivltlsrgv3dddub",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 21500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451851",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451858",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.2",
+    "ratingCount": "542 ratings",
+    "ratingCountV2": "542"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676971",
+    "name": "Paneer Tikka",
+    "category": "Starters",
+    "description": "Serves 1 | Paneer marinated in lemon juice, dahi, Kashmiri lal mirch, salt, garam masala and ginger garlic paste, placed in tandoor for smoky flavour, garnished with chat masala and tandoori masala",
+    "imageId": "hin8aualduhdd5xhhbwa",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 31500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451019",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451020",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.6",
+    "ratingCount": "165 ratings",
+    "ratingCountV2": "165"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676966",
+    "name": "Paneer Chilli",
+    "category": "Starters",
+    "description": "Serves 1 | A delightfully flavorful dish prepared with soft paneer and slow cooked with flavorful chili sauce and other masalas",
+    "imageId": "ui2rxsyg3vpi2ydcapcc",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 29000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451032",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451034",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.2",
+    "ratingCount": "614 ratings",
+    "ratingCountV2": "614"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "37649635",
+    "name": "Mushroom Cheese Tikka",
+    "category": "Starters",
+    "description": "mushrooms stuffed with a mouth-watering mixture of cheese and curd with myriad taste-givers like  green chillies and spice powders.",
+    "imageId": "a84ltkwbfh9bskvpoclu",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 35000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451057",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451058",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.5",
+    "ratingCount": "111 ratings",
+    "ratingCountV2": "111"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676991",
+    "name": "Chicken Crispy",
+    "category": "Starters",
+    "description": "Serves 1 | Juicy bits of chicken fried to a perfect golden-brown, and tossed in a pan with delectable masalas - a crispy delight",
+    "imageId": "fbzd6dxnwxt22vabtqre",
+    "inStock": 1,
+    "price": 28500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451483",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451485",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.1",
+    "ratingCount": "498 ratings",
+    "ratingCountV2": "498"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676993",
+    "name": "Chicken Lollipop (8 Pcs)",
+    "category": "Starters",
+    "description": "Serves 1 | A wholesome home-spiced chicken lollipop served straight from the tandoor",
+    "imageId": "yhha4cqsgnbopltteyif",
+    "inStock": 1,
+    "price": 29500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451507",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451504",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.2",
+    "ratingCount": "1559 ratings",
+    "ratingCountV2": "1559"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676997",
+    "name": "Chicken Tikka",
+    "category": "Starters",
+    "description": "Serves 1 | Chicken skewers flavored with tikka masala and spices cooked in a tandoor- perfect to satiate your cravings",
+    "imageId": "wgy6jmqfvncenhbgz6iy",
+    "inStock": 1,
+    "price": 29500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451493",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451490",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.3",
+    "ratingCount": "294 ratings",
+    "ratingCountV2": "294"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676988",
+    "name": "Chicken Chilli",
+    "category": "Starters",
+    "description": "Serves 1 | Succulent chicken dipped in deliciously spicy batter and deep fried to a heart-pleasing crispiness",
+    "imageId": "cex3fpdhxomwitgts0qo",
+    "inStock": 1,
+    "price": 28000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451497",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451500",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.2",
+    "ratingCount": "937 ratings",
+    "ratingCountV2": "937"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19677006",
+    "name": "Tandoori Chicken",
+    "category": "Starters",
+    "description": "Dry | | Juicy chicken seasoned with freshly ground spices and grilled to perfection |",
+    "imageId": "wtpzfcjwik8hw5kelfoe",
+    "inStock": 1,
+    "price": 29500,
+    "variants": {
+    "variantGroups": [
+    {
+    "groupId": "1796088",
+    "name": "Quantity",
+    "variations": [
+    {
+    "name": "Half",
+    "id": "6249315",
+    "inStock": 1,
+    "isEnabled": 1
+    },
+    {
+    "name": "Full",
+    "price": 23000,
+    "default": 1,
+    "id": "6249316",
+    "inStock": 1,
+    "isEnabled": 1
+    }
+    ]
+    }
+    ]
+    },
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451563",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451566",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "NONVEG"
+    },
+    "ribbon": {
+    "text": "Bestseller",
+    "textColor": "#ffffff",
+    "topBackgroundColor": "#d53d4c",
+    "bottomBackgroundColor": "#b02331"
+    },
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "isBestseller": true,
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.3",
+    "ratingCount": "1855 ratings",
+    "ratingCountV2": "1855"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676995",
+    "name": "Chicken 65",
+    "category": "Starters",
+    "description": "A crispy and flavor-packed starter with succulent chicken chunks dipped in a seasoned batter and fried to golden crispiness.",
+    "imageId": "scwmbcwf7dlw42ebdtls",
+    "inStock": 1,
+    "price": 30000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451608",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451612",
+    "groupName": "Beverages",
+    "choices": [
+    {
+    "id": "65080858",
+    "name": "Veg Manchow Soup",
+    "price": 13000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "NONVEG"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.3",
+    "ratingCount": "166 ratings",
+    "ratingCountV2": "166"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "19676947",
+    "name": "Veg Manchow Soup",
+    "category": "Soups",
+    "description": "Serves 1 | A delicious hot and spicy, thick soup made from mixed vegetables and topped with fried noodles.",
+    "imageId": "tsrliymj4qwb3yyohgvz",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 14000,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451405",
+    "groupName": "Sides",
+    "choices": [
+    {
+    "id": "65080854",
+    "name": "Green Chutney",
+    "price": 2500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451410",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080857",
+    "name": "Veg Fried Rice",
+    "price": 22500,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "showImage": true,
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.4",
+    "ratingCount": "302 ratings",
+    "ratingCountV2": "302"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Recommended"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "103366395",
+    "name": "Veg Tripple Schezwan Fried Rice, Paneer Chilli    ",
+    "category": "Diwali Crackling Combos",
+    "description": "Serves 1 | Veg Tripple Schezwan Fried Rice + Paneer Chilli",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 53500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451366",
+    "groupName": "Extra Curries",
+    "choices": [
+    {
+    "id": "65080855",
+    "name": "Sev Bhaji",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451371",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "type": "ITEM",
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "3.9",
+    "ratingCount": "22 ratings",
+    "ratingCountV2": "22"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Diwali Crackling Combos"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "94960900",
+    "name": "Kachumber",
+    "category": "Extras",
+    "description": "Serves 1",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 2500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "VEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "type": "ITEM",
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.6",
+    "ratingCount": "36 ratings",
+    "ratingCountV2": "36"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Extras"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "94960898",
+    "name": "Green Chutney",
+    "category": "Extras",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 2500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "VEG"
+    },
+    "ribbon": {},
+    "type": "ITEM",
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.5",
+    "ratingCount": "23 ratings",
+    "ratingCountV2": "23"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Extras"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "94960897",
+    "name": "Schezwan Sauce",
+    "category": "Extras",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 2500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "VEG"
+    },
+    "ribbon": {},
+    "type": "ITEM",
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.6",
+    "ratingCount": "11 ratings",
+    "ratingCountV2": "11"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Extras"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "94960901",
+    "name": "Raita",
+    "category": "Extras",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 2500,
+    "variants": {},
+    "variantsV2": {},
+    "itemAttribute": {
+    "vegClassifier": "VEG"
+    },
+    "ribbon": {},
+    "type": "ITEM",
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.7",
+    "ratingCount": "95 ratings",
+    "ratingCountV2": "95"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Extras"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "60536103",
+    "name": "Chicken Handi Half, Tandoori Roti 4, Jeera Rice",
+    "category": "Family Binge Combos",
+    "description": "Serves 1 | Chicken Handi Half + Tandoori Roti 4 + Jeera Rice",
+    "inStock": 1,
+    "price": 59900,
+    "variants": {
+    "variantGroups": [
+    {
+    "groupId": "8117385",
+    "name": "Choice of Chicken Main Course",
+    "variations": [
+    {
+    "name": "Chicken Handi",
+    "default": 1,
+    "id": "27114727",
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    },
+    {
+    "name": "Butter Chicken",
+    "price": 3000,
+    "id": "27114738",
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ]
+    }
+    ]
+    },
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451352",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451346",
+    "groupName": "Extra Curries",
+    "choices": [
+    {
+    "id": "65080855",
+    "name": "Sev Bhaji",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "NONVEG",
+    "portionSize": "Serves 1"
+    },
+    "ribbon": {},
+    "type": "ITEM",
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "4.4",
+    "ratingCount": "37 ratings",
+    "ratingCountV2": "37"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Family Binge Combos"
+    },
+    {
+    "card": {
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+    "info": {
+    "id": "60536109",
+    "name": "Veg Tripple Schezwan Fried Rice, Paneer Chilli",
+    "category": "Family Binge Combos",
+    "description": "Veg Tripple Schezwan Fried Rice + Paneer Chilli",
+    "inStock": 1,
+    "isVeg": 1,
+    "price": 53500,
+    "variants": {},
+    "variantsV2": {},
+    "addons": [
+    {
+    "groupId": "80451359",
+    "groupName": "Extra Curries",
+    "choices": [
+    {
+    "id": "65080855",
+    "name": "Sev Bhaji",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    },
+    {
+    "groupId": "80451362",
+    "groupName": "Rice",
+    "choices": [
+    {
+    "id": "65080859",
+    "name": "Vegetable Dum Biryani",
+    "price": 21000,
+    "inStock": 1,
+    "isVeg": 1,
+    "isEnabled": 1
+    }
+    ],
+    "maxAddons": -1,
+    "maxFreeAddons": -1
+    }
+    ],
+    "itemAttribute": {
+    "vegClassifier": "VEG"
+    },
+    "ribbon": {},
+    "type": "ITEM",
+    "itemBadge": {},
+    "badgesV2": {},
+    "ratings": {
+    "aggregatedRating": {
+    "rating": "3.9",
+    "ratingCount": "22 ratings",
+    "ratingCountV2": "22"
+    }
+    }
+    },
+    "analytics": {},
+    "hideRestaurantDetails": true
+    },
+    "category": "Family Binge Combos"
+    }
+    ]
+    }

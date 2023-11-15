@@ -1,0 +1,22 @@
+{
+    "info": {
+    "id": "71579",
+    "name": "Hotel Inayat Cafe",
+    "avgRating": 4.2,
+    "cuisines": [
+    "North Indian",
+    "Biryani",
+    "Chinese"
+    ],
+    "promoted": true,
+    "sla": {
+    "deliveryTime": 25,
+    "lastMileTravel": 2.3,
+    "serviceability": "SERVICEABLE",
+    "slaString": "25 mins",
+    "lastMileTravelString": "2.3 km",
+    "iconType": "ICON_TYPE_EMPTY"
+    },
+    "cloudinaryImageId": "jvuhbo6nvyt8tsiwkll6"
+    }
+    }

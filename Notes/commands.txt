@@ -95,3 +95,27 @@ to make jsx work in test cases.
 🔸 Install @testing-library/jest-dom
 
 > npm i -D @testing-library/jest-dom
+
+
+🔸 Running tests🧪
+
+npm run test
+
+🔸 Running tests🧪 automatically:
+
+    - make a script inside package.json🎊 file:
+
+     //🖥️inside package.json🎊
+        {
+        ...
+        "scripts": {
+            "start": "parcel index.html",
+            "build": "parcel build index.html",
+            "test": "jest",
+            ➡️"watch-test": "jest --watch"
+        }
+        }
+
+    -and then writing on terminal:
+    
+    >npm run watch-test
