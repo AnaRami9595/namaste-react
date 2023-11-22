@@ -1413,9 +1413,12 @@ we will later write test🧪 cases💼 for that scenario
 
                     })
 
-🟢-----Checking our Coverage📁
+🟢-----Checking our Coverage📁-----•·
 
 Inside our terminal we can see that our tests have a coverage
 of 94% inside our app, to check where some coverage is missing,
 we can look at the Coverage📁 folder, then go to 
-Icov-report > index.html and open with
+Icov-report > index.html and open with our Live Server 
+extension.
+
+

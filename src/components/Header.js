@@ -20,14 +20,18 @@ const Header = () => {
 
     return (
         <div className="header flex justify-between px-2">
-            <div className="logo-text  flex"><img className="logo h-24  m-2"
-                src={""} alt="Food App logo" />
+            <div className="logo-text flex"> <img 
+                data-testid = "logo"
+                className="logo h-24  m-2"
+                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGdAJTwTgGqqz4Tf9yfVlVSku_5m-e_wGcBA&usqp=CAU"} alt="Food App logo" />
                 <p className="name-app py-4 my-4
                 px-3 font-extrabold text-xl">My Food App</p>
             </div>
             <div className="nav-items align-middle">
                 <ul className="flex p-4 m-4" >
-                    <li className="px-3">{onlineStatus ? "🟢online" : "🔴offline"}</li>
+                    <li 
+                    data-testid = "online status"
+                    className="px-3">{onlineStatus ? "🟢online" : "🔴offline"}</li>
                     <li className="px-3"><Link to="/">Home</Link></li>
                     <li className="px-3"><Link to="/about">About</Link></li>
                     <li className="px-3"><Link to="/contact">Contact</Link></li>

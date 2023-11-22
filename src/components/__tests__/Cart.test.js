@@ -76,7 +76,7 @@ it("should render Cart component with 2 items", async () => {
     /* Counting our foodItems including the ones in the 
     Restaurant Menu(4), 
     header(2)
-    and the cart component(2)*/
+    and the cart component(1)*/
     expect(screen.getAllByTestId("foodItems").length).toBe(8);
 
     //checking our "Clear Cart button"

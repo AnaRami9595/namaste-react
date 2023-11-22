@@ -1,0 +1,117 @@
+﻿
+
+Theory
+• What are the different types of testing? 
+    · Unit ⏺️Testing🧪
+        - Focuses on individual components or modules of a system
+        - Tests are typically automated and cover small pieces of code
+        - Helps ensure that each unit of the software performs as
+          designed.
+
+    · Integration🚸 testing 
+        - Checks the interactions between different components🧩
+          or systems.
+        - Verifies that integrated components work together as 
+          expected. 
+        - Can be top-down, botton-up or a combination or both.
+
+    · End to End🔚 Testing🧪
+        - Evaluates the application for start to finish, simulating
+          real user scenarios. The goal is to ensure that all components
+          of a system work together as intended and that the application
+          from the beggining to the end, including all integrated 
+          components🧩, databases, network and interfaces.
+
+• What is Enzyme?
+    · Enzyme is a Javascript🟨 utility for REACT⚛️ that is commonly
+      used for testing REACT⚛️ components🧩. It is mantained by
+      Airbnb that providees a set of testing utilities to make it
+      easier to assert, manipulate and traverse React component's
+      output.
+    
+    Enzyme provides three main types of testing utilities:
+
+        - Shallow Rendering: Is a technique where only The
+          immediate component is rendered, and child components
+          are not deeply renderd.
+
+        - Full DOM Rendering: This involves rendering the full 
+          DOM and allows you to test the behavior of the 
+          component as it would be in the real browser enviroment
+
+        - Static Rendering: Enzyme also provides a way to render
+          React components to static HTML markup. This is useful
+          for scenarios where you want to snapchot the rendered
+          output of a component🧩
+
+• Enzyme vs React Testing Library
+
+They are popular Javascript🟨 testing utilities used for React 
+Applications, but they have some differences in their philosophies
+and approaches. 
+
+    · Enzyme🦠:
+        - Shallow Rendering
+        - Component manipulation:
+          Allows you to traverse the component tree, find
+          elements, simulate events and more.
+        - Component state Inspection: Enzyme provides methods 
+          for inspecting and asserting the internal state of
+          React components, which can be useful in certain testing
+          scenarios.
+
+    · React Testing🧪Library📚:
+
+        - Philosophy of Testing User Behavior: React Testing Library
+          is designed with the philosophy of testing user behavior
+          rather than implementatio details. It encourages testing
+          components the way users would interact with them.
+        
+        - Encourages Best Practices: React Testing Testing🧪Library📚
+          is designed with the philosphy of testing user behavior, rather
+          than implementation details. It encourages testing components🧩
+          the way users would interact with the application.
+
+        - Promotes Accesibility Testing: It places a strong emphasis
+        on testing Accesibility encouraging developers to write tests
+        that ensure the applications is usable by all users, including 
+        those with disabilities.
+
+        The React team has endorsed REACT⚛️ Testing🧪Library📚 as the 
+        preferred testing library for testing React applications. 
+          
+
+• What is Jest and why do we use it?
+
+It is a popular JS tessting framewrk developed by Facebook. 
+Ot os desogned to make testing in Javascript🟨, particularly for 
+React applications, simple and effective. Jest is often used in
+conjunction with tools like Enzyme🦠 or React Testing library📚
+for testing React component🧩
+
+Key Features of Jest🃏 Include:
+
+    · Key Features of Jest🃏 include:
+        - Zero Configuration: Jest🃏 comes pre-configured with sensible
+          defaults, requiring minimal setup. This makes it easy to get
+          started without spending a lot of time on configuration.
+        - Fast and Parallel Execution: Jest is built to be fast and
+          it runs tests in parallel to speed up the testing process.
+          It optimizes the test runs for efficiency.
+        - Snapshot Testing: Jest🃏 introduces the concept of Snapshot
+          testing, where it captures the  
+        -Mocking
+        - Community Support
+
+
+
+Coding
+• Setup React Testing Library
+
+• Write Unit Tests for Header Component to test for 
+    - Logo, ✅
+    - Cart - 0 items, and ✅
+    - Online Status✅
+
+⚫ Write an Integration Test case for the search feature on the Homepage
+• Write Integration Test case for Add to Cart flow

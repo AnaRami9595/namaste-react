@@ -5,6 +5,8 @@ import Header from "../Header";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 
+describe("Header test cases", () => {
+
 
 it("Should load Header Component with a login button", () => {
     render(
@@ -72,4 +74,8 @@ it("Should change Login button to Logout on Click", () => {
         Button to be in the document:*/
 
     expect(logoutButton).toBeInTheDocument();
+})
+
+
+
 });
